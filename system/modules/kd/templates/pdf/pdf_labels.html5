@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<meta charset="<?php echo $this->charset; ?>">
+		<link rel="stylesheet" href="/system/modules/kd/assets/css/kd_labels.css">
+	</head>
+	<body<?php if ($this->debug): ?> class="debug"<?php endif; ?>>
+<?php if ($this->debug): ?>
+<?php for ($i = 0, $j = 0; $j < $this->lines; ++$j): ?>
+<?php for ($k = 0; $k < $this->cols; ++$k, ++$i): ?>
+		<div style="position:absolute;width:<?php echo 100/$this->cols; ?>%;height:<?php echo 100/$this->rows; ?>%;top:<?php echo (100/$this->rows)*$j; ?>%;left:<?php echo (100/$this->cols)*$k; ?>%;background:rgba(<?php if (($j%2==0 && $k%2==0) || ($j%2!=0 && $k%2!=0)): ?>204,204,204,.8<?php else: ?>255,255,255,.8<?php endif; ?>)">
+			<?php echo $j; ?> <?php echo $k; ?>
+<!--
+			width: <?php echo 100/$this->cols; ?>%;<br>
+			height: <?php echo 100/$this->rows; ?>%;<br>
+			top: <?php echo (100/$this->rows)*$j; ?>%;<br>
+			left: <?php echo (100/$this->cols)*$k; ?>%;<br>
+-->
+		</div>
+<?php endfor; ?>
+<?php endfor; ?>
+<?php endif; ?>
+
+<?php for ($n = 0, $i = 0, $j = 0; $j < $this->lines; ++$j): ?>
+<?php if ($i && $i % $this->per_page == 0): ?>
+		<pagebreak />
+<?php endif; ?>
+<?php for ($k = 0; $k < $this->cols; ++$k, ++$i): $arrLabel = $this->labels[$i]; ?>
+<?php if ($arrLabel && $arrLabel['price']): ++$n; ?>
+		<div style="position:absolute;width:131px;height:<?php echo 100/$this->rows; ?>%;top:<?php echo (100/$this->rows)*($j%$this->rows); ?>%;left:<?php echo (100/$this->cols)*$k; ?>%<?php if ($this->debug): ?>;background:rgba(255,0,0,.07)<?php endif; ?>">
+			<img class="logo" src="/system/modules/kd/assets/img/pdf_logo.png" alt="">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tr class="row-1">
+					<td>Kilopreis netto</td>
+					<td class="right">VK-Pres netto</td>
+				</tr>
+				<tr class="row-2">
+					<td><?php echo $arrLabel['price']; ?> €</td>
+					<td class="right"><?php echo $arrLabel['price_net']; ?> €</td>
+				</tr>
+				<tr class="row-3">
+					<td>Einwaage ℮</td>
+					<td class="right">inkl. 7% MwSt.</td>
+				</tr>
+				<tr class="row-4">
+					<td><?php echo $arrLabel['weight']; ?> kg</td>
+					<td class="right"><?php echo $arrLabel['price_brut']; ?> €</td>
+				</tr>
+			</table>
+		</div>
+		<div style="position:absolute;width:247px;height:<?php echo 100/$this->rows; ?>%;top:<?php echo (100/$this->rows)*($j%$this->rows); ?>%;right:<?php echo !$k ? 100/$this->cols : 0; ?>%<?php if ($this->debug): ?>;background:rgba(0,255,255,.1)<?php endif; ?>">
+			<div class="title"><?php echo $this->title; ?></div>
+			<div class="content">
+				<strong>Zutaten:</strong> <?php echo $this->ingredients; ?><br>
+				<strong>Ohne Farbstoffe und Geschmacksverstärker. Ohne Scheiß.</strong><br>
+				<strong>Hersteller:</strong> Kombinat Delikat Dresden Neustadt UG (haftungsbeschränkt),<br>
+				Schaufußstr. 25, D-01277 Dresden<br>
+				<strong>Charge:</strong> <?php echo $this->charge; ?>, <strong>Position:</strong> <?php echo $n; ?>, <strong>hergestellt am:</strong> <?php echo $this->date_prod; ?><br>
+				<strong>Gekühlt bei unter +7°C mindestens haltbar bis:</strong> <?php echo $this->date_exp; ?>
+<?php if ($this->add_deep && $this->date_deep): ?>
+				<br><strong>Tiefgekühlt bei unter -18°C mindestens haltbar bis:</strong> <?php echo $this->date_deep; ?>
+<?php endif; ?>
+			</div>
+		</div>
+<?php endif; ?>
+<?php endfor; ?>
+<?php endfor; ?>
+	</body>
+</html>

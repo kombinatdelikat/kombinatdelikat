@@ -1,0 +1,79 @@
+table.stock,
+table.stock table {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+table.stock th,
+table.stock td,
+table.stock li {
+	padding: 5px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+table.stock th:first-child,
+table.stock td:first-child {
+	padding-left: 0;
+}
+table.stock th:last-child,
+table.stock td:last-child {
+	padding-right: 0;
+}
+table.stock th {
+	vertical-align: bottom;
+}
+table.stock td {
+	text-align: left;
+	border-top: 1px solid #000;
+}
+
+table.stock li {
+	border-top: 1px solid #000;
+}
+table.stock li:first-child {
+	border-top: none;
+}
+
+table.stock td.collapse {
+	padding: 0;
+}
+table.stock td.collapse ul {
+	height: 19px;
+	overflow: hidden;
+
+	-webkit-transition: height .3s ease 0s;
+	-moz-transition: height .3s ease 0s;
+	-o-transition: height .3s ease 0s;
+	transition: height .3s ease 0s;
+}
+table.stock tr:hover td.collapse ul {}
+table.stock tfoot td {
+	font-weight: bold;
+}
+
+table.stock .red {
+	color: red;
+}
+table.stock .stock {
+	text-align: center;
+}
+table.stock .price {
+	text-align: right;
+}
+table.stock .price:after {
+	content: '\20ac';
+	padding-left: 5px;
+}
+table.stock th.price:after {
+	display: none;
+}
+table.stock .gross {
+	font-weight: bold;
+}
+
+#tl_messages table.stock {
+	margin: 10px 0;
+}

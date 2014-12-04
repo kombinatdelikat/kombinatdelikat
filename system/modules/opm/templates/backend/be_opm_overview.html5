@@ -1,0 +1,28 @@
+<?php echo $this->content; ?>
+
+<div class="tl_panel tl_tabs_panel">
+	<div class="tl_subpanel">
+		<ul class="tabs">
+<?php foreach ($this->modules as $strModule => $arrModule): ?>
+		    <li><button class="tl_submit"><?php echo $strModule; ?></button></li>
+<?php endforeach; ?>
+		</ul>
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="tl_buttons">
+  <a href="<?php echo $this->href; ?>" class="header_back" title="<?php echo $this->title; ?>"><?php echo $this->button; ?></a>
+</div>
+<ul class="contents">
+<?php foreach ($this->modules as $strModule => $arrModule): ?>
+    <li>
+    	<div class="tl_listing_container">
+	        <h1>MooTabs is very convinient and easy to use.</h1>
+			<p>
+            	Default setup allows you to create Tabpane which auto plays.
+				The plugin provides several options for customization.
+			</p>
+    	</div>
+    </li>
+<?php endforeach; ?>
+</ul>

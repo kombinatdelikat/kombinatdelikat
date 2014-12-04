@@ -1,0 +1,64 @@
+Name                                                  Version              Last modification
+==============================================================================================
+http://bit3.de
+bit3/contao-meta-palettes                             1.5.4                2013-12-11 07:01:03
+----------------------------------------------------------------------------------------------
+
+http://c-c-a.org/
+contao-community-alliance/backports-initialize-system dev-develop @ 0d0515 2014-06-05 11:58:46
+contao-community-alliance/composer-plugin             dev-master @ e0859b  2014-06-18 12:11:25
+contao-community-alliance/dependency-container        dev-develop @ 7fa301 2014-06-05 08:30:58
+contao-community-alliance/event-dispatcher            1.1.1                2014-05-27 02:58:55
+----------------------------------------------------------------------------------------------
+
+https://www.cyberspectrum.de
+discordier/justtextwidgets                            dev-master @ 687e04  2014-02-05 22:52:54
+----------------------------------------------------------------------------------------------
+
+http://www.men-at-work.de
+menatwork/contao-multicolumnwizard                    dev-dev @ ea15b3     2014-06-17 18:56:58
+----------------------------------------------------------------------------------------------
+
+http://now.metamodel.me/
+metamodels/attribute_alias                            dev-contao3 @ 38a75b 2014-04-18 21:36:49
+metamodels/attribute_checkbox                         dev-contao3 @ 68db82 2014-05-08 03:35:00
+metamodels/attribute_combinedvalues                   dev-contao3 @ 9da6d4 2014-01-20 19:40:56
+metamodels/attribute_country                          dev-contao3 @ b04f36 2014-04-25 03:24:55
+metamodels/attribute_decimal                          dev-contao3 @ f9a720 2014-04-25 04:07:09
+metamodels/attribute_file                             dev-contao3 @ 5dc946 2014-05-29 00:33:10
+metamodels/attribute_langcode                         dev-contao3 @ 950a72 2014-04-25 05:10:44
+metamodels/attribute_longtext                         dev-contao3 @ 2a313b 2013-09-03 01:18:18
+metamodels/attribute_numeric                          dev-contao3 @ c305d4 2013-09-03 01:42:12
+metamodels/attribute_select                           dev-contao3 @ 1a15c2 2014-04-25 07:23:06
+metamodels/attribute_tabletext                        dev-contao3 @ 5c1e19 2014-03-24 10:59:36
+metamodels/attribute_tags                             dev-contao3 @ 450ed6 2014-05-08 03:48:22
+metamodels/attribute_text                             dev-contao3 @ 132d01 2014-04-25 10:03:12
+metamodels/attribute_timestamp                        dev-contao3 @ 9918c3 2014-06-12 10:47:58
+metamodels/attribute_translatedalias                  dev-contao3 @ 0127b7 2014-01-20 19:45:53
+metamodels/attribute_translatedcheckbox               dev-contao3 @ 14486e 2014-04-30 18:28:37
+metamodels/attribute_translatedcombinedvalues         dev-contao3 @ 43d5cd 2014-02-17 14:44:12
+metamodels/attribute_translatedfile                   dev-contao3 @ 8b3aee 2014-04-24 13:12:27
+metamodels/attribute_translatedlongtext               dev-contao3 @ 635f7c 2014-01-20 19:48:02
+metamodels/attribute_translatedselect                 dev-contao3 @ 5a721d 2014-05-20 01:34:16
+metamodels/attribute_translatedtabletext              dev-contao3 @ d7df0b 2014-02-11 17:27:14
+metamodels/attribute_translatedtags                   dev-contao3 @ f59319 2014-03-13 10:03:48
+metamodels/attribute_translatedtext                   dev-contao3 @ d831f8 2014-01-20 16:49:03
+metamodels/attribute_url                              dev-contao3 @ da4a15 2014-05-08 03:51:13
+metamodels/core                                       dev-contao3 @ ccc32f 2014-05-08 13:19:32
+metamodels/dc_general                                 dev-contao3 @ 6487ca 2014-06-02 20:16:15
+metamodels/filter_checkbox                            dev-contao3 @ e4c167 2014-04-25 13:10:05
+metamodels/filter_fromto                              dev-contao3 @ c4e96f 2014-04-25 15:51:48
+metamodels/filter_range                               dev-contao3 @ 2d5d9e 2014-01-20 19:49:23
+metamodels/filter_select                              dev-contao3 @ 6ce893 2014-04-25 17:15:51
+metamodels/filter_tags                                dev-contao3 @ adfb7a 2014-05-08 03:50:10
+metamodels/filter_text                                dev-contao3 @ 18557e 2014-04-28 18:58:56
+----------------------------------------------------------------------------------------------
+
+http://pimple.sensiolabs.org
+pimple/pimple                                         1.1.x-dev @ bc2fc1   2014-04-20 07:24:09
+----------------------------------------------------------------------------------------------
+
+http://symfony.com
+symfony/event-dispatcher                              2.3.x-dev @ cb7cd3   2014-04-16 10:30:19
+----------------------------------------------------------------------------------------------
+

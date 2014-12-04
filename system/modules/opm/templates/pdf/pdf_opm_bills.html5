@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<meta charset="<?php echo $this->charset; ?>">
+<?php if ($this->stylesheet): ?>
+		<link rel="stylesheet" href="<?php echo $this->stylesheet; ?>">
+<?php endif; ?>
+	</head>
+	<body<?php if ($this->debug): ?> class="debug"<?php endif; ?>>
+
+		<div class="sender"><strong>Kombinat Delikat</strong> Dresden Neustadt UG (haftungsbeschränkt)<br>Schaufussstr. 25, D-01277 Dresden</div>
+
+		<div class="customer">
+<?php if ($this->customer->company): ?>
+			<strong><?php echo $this->customer->company; ?></strong><br>
+			<?php echo $this->customer->firstname; ?> <?php echo $this->customer->lastname; ?><br>
+<?php else: ?>
+			<strong><?php echo $this->customer->firstname; ?> <?php echo $this->customer->lastname; ?></strong><br>
+<?php endif; ?>
+			<?php echo $this->customer->street; ?><br>
+			<?php echo $this->customer->country ?: 'de'; ?>-<?php echo $this->customer->postal; ?> <?php echo $this->customer->city; ?>
+		</div>
+
+		<div class="date"><?php echo $this->date; ?></div>
+
+		<div class="content">
+			<?php echo $this->content; ?>
+		</div>
+	</body>
+</html>
