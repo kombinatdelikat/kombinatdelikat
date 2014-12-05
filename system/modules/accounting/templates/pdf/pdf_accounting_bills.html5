@@ -55,7 +55,7 @@
 			<div class="ce_text">
 				<p></p>
 				<p>
-					Der Rechnungsbetrag von <strong>{{accounting::price_total_bill::<?php echo $this->id; ?>::1}}</strong> ist ohne Abzug <strong>fällig bis zum <?php echo $this->due; ?></strong>. Zahlen Sie bitte diese Summe auf das unten angegebene Konto der Postbank Dresden. Bitte geben Sie die Rechnungsnummer als Verwendungszweck an.
+					Der Rechnungsbetrag von <strong>{{accounting::price_total_bill::<?php echo $this->id; ?>::1}}</strong> ist ohne Abzug <strong>fällig bis zum <?php echo $this->due; ?></strong>. Zahlen Sie bitte diese Summe auf das unten angegebene Konto und geben Sie die Rechnungsnummer im Verwendungszweck an.
 				</p>
 			</div>
 
