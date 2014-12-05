@@ -50,10 +50,11 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'be_accounting_overview' => 'system/modules/accounting/templates/backend',
-	'ce_accounting_item'     => 'system/modules/accounting/templates/elements',
-	'ce_accounting_subtotal' => 'system/modules/accounting/templates/elements',
-	'ce_accounting_total'    => 'system/modules/accounting/templates/elements',
-	'ce_pdf_pb'              => 'system/modules/accounting/templates/elements',
-	'pdf_accounting_bills'   => 'system/modules/accounting/templates/pdf',
+	'be_accounting_overview'        => 'system/modules/accounting/templates/backend',
+	'ce_accounting_item'            => 'system/modules/accounting/templates/elements',
+	'ce_accounting_subtotal'        => 'system/modules/accounting/templates/elements',
+	'ce_accounting_total'           => 'system/modules/accounting/templates/elements',
+	'ce_pdf_pb'                     => 'system/modules/accounting/templates/elements',
+	'pdf_accounting_bills'          => 'system/modules/accounting/templates/pdf',
+	'pdf_accounting_correspondence' => 'system/modules/accounting/templates/pdf',
 ));

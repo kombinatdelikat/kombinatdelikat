@@ -19,16 +19,4 @@ namespace develab\accounting\Elements;
 
 abstract class ContentElement extends \Contao\ContentElement
 {
-	protected function getCurrency()
-	{
-		$strReturn = 'Euro';
-		$arrCurrency = deserialize(\Config::get('accounting_currency'), true);
-
-		if (sizeof($arrCurrency) > 1)
-		{
-			$strReturn = $arrCurrency[1];
-		}
-
-		return $strReturn;
-	}
 }

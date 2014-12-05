@@ -7,6 +7,93 @@ namespace develab\accounting;
 
 class Helper extends \Contao\Controller
 {
+	public static function getCurrency()
+	{
+		$strReturn = 'Euro';
+		$arrCurrency = deserialize(\Config::get('accounting_currency'), true);
+
+		if (sizeof($arrCurrency) > 1)
+		{
+			$strReturn = $arrCurrency[1];
+		}
+
+		return $strReturn;
+	}
+
+	public static function getTotalPrice($objElements)
+	{
+		$intPriceGrand = 0;
+		$intPriceGrandTotal = 0;
+		$arrPriceGrandTax = array();
+		$arrPriceGrandQuantity = array();
+		$arrTaxes = deserialize(\Config::get('accounting_taxes'), true);
+
+		if (!is_null($objElements))
+		{
+			foreach ($objElements as $objElement)
+			{
+				$arrQuantity = deserialize($objElement->quantity, true);
+				$intQuantity = $arrQuantity['value'] ?: 0;
+				$intPrice = $intQuantity * $objElement->price_unit;
+				$intPriceTax = $intPrice * $objElement->tax / 100;
+				$intPriceTotal = $intPrice + $intPriceTax;
+
+				if (!$arrPriceGrandTax[$objElement->tax])
+				{
+					$arrPriceGrandTax[$objElement->tax] = array(
+						'raw' => 0,
+						'price' => 0,
+						'value' => '',
+						'label' => '',
+						'abbr' => ''
+					);
+
+					foreach ($arrTaxes as $arrTax)
+					{
+						if ($arrTax['accounting_tax_value'] == $objElement->tax)
+						{
+							$arrPriceGrandTax[$objElement->tax]['value'] = $arrTax['accounting_tax_value'];
+							$arrPriceGrandTax[$objElement->tax]['label'] = $arrTax['accounting_tax_name'];
+							$arrPriceGrandTax[$objElement->tax]['abbr'] = $arrTax['accounting_tax_abbr'];
+						}
+					}
+				}
+
+				if (!$arrPriceGrandQuantity[$arrQuantity['unit']])
+				{
+					$arrPriceGrandQuantity[$arrQuantity['unit']] = 0;
+				}
+
+				$intPriceGrand+= $intPrice;
+				$arrPriceGrandTax[$objElement->tax]['raw']+= $intPriceTax;
+				$arrPriceGrandTax[$objElement->tax]['price'] = \develab\accounting\Helper::formatPrice($arrPriceGrandTax[$objElement->tax]['raw']);
+				$arrPriceGrandQuantity[$arrQuantity['unit']]+= $intQuantity;
+				$intPriceGrandTotal+= $intPriceTotal;
+			}
+		}
+
+		foreach ($arrPriceGrandQuantity as $strUnit=>&$intQuantity)
+		{
+			switch ($strUnit)
+			{
+				case 'kg':
+					$intQuantity = \develab\accounting\Helper::formatWeight($intQuantity);
+					break;
+
+				case 'g':
+				case 'pc':
+					$intQuantity = \develab\accounting\Helper::formatPiece($intQuantity);
+			}
+		}
+
+		return (object) array(
+			'price' => $intPriceGrand,
+			'taxes' => $arrPriceGrandTax,
+			'total' => $intPriceGrandTotal,
+			'quantities' => $arrPriceGrandQuantity
+		);
+	}
+
 	public function replaceAccountingInsertTags($strTag)
 	{
 		$arrTags = explode('::', $strTag);
@@ -25,6 +112,40 @@ class Helper extends \Contao\Controller
 				if ($arrTags[2])
 				{
 					$strReturn = str_pad($strReturn, $arrTags[2], '0', STR_PAD_LEFT);
+				}
+
+				return $strReturn;
+				break;
+
+			case 'price_total_bill':
+				$strReturn = 0;
+
+				if ($arrTags[2])
+				{
+					$objElements = \Contao\ContentModel::findBy(array('pid=? AND ptable=? AND type=?'), array($arrTags[2], 'tl_accounting_bills', 'accounting_item'));
+					$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
+					$strReturn = $objPrice->total;
+				}
+				if ($arrTags[3])
+				{
+					$strReturn = \develab\accounting\Helper::formatPrice($strReturn) . ' ' . \develab\accounting\Helper::getCurrency();
+				}
+
+				return $strReturn;
+				break;
+
+			case 'price_total_offer':
+				$strReturn = 0;
+
+				if ($arrTags[2])
+				{
+					$objElements = \Contao\ContentModel::findBy(array('pid=? AND ptable=? AND type=?'), array($arrTags[2], 'tl_accounting_offers', 'accounting_item'));
+					$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
+					$strReturn = $objPrice->total;
+				}
+				if ($arrTags[3])
+				{
+					$strReturn = \develab\accounting\Helper::formatPrice($strReturn) . ' ' . \develab\accounting\Helper::getCurrency();
 				}
 
 				return $strReturn;
@@ -82,9 +203,19 @@ class Helper extends \Contao\Controller
 		return $groups;
 	}
 
-	public static function formatPrice($varValue)
+	public static function formatPrice($varValue, $intLength=2, $strSep=',', $strThousands='.')
 	{
-		return number_format(floatval($varValue), 2, '.', '');
+		return number_format(floatval($varValue), $intLength, $strSep, $strThousands);
+	}
+
+	public static function formatWeight($varValue, $intLength=3, $strSep=',', $strThousands='.')
+	{
+		return number_format(floatval($varValue), $intLength, $strSep, $strThousands);
+	}
+
+	public static function formatPiece($varValue, $intLength=0, $strSep=',', $strThousands='.')
+	{
+		return number_format(floatval($varValue), $intLength, $strSep, $strThousands);
 	}
 
 	public static function formatPriceTiers(array $arrPriceTiers, $strPriceLabel='', $strPriceType='tiers_count')

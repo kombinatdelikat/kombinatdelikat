@@ -23,6 +23,8 @@ $GLOBALS['TL_LANG']['tl_accounting_settings']['due_bills'] = array('Fälligkeit 
 $GLOBALS['TL_LANG']['tl_accounting_settings']['due_offers'] = array('Gültigkeit Angebote', 'Die Anzahl an Tagen der Gültigkeit des Angebots.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_bills'] = array('Rechnungstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund der Rechnung an.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers'] = array('Angebotstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund des Angebots an.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['css_bills'] = array('Rechnungs-Stylesheet', 'Geben Sie eine CSS-Datei zur Formatierung der Rechnung an.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['css_offers'] = array('Angebots-Stylesheet', 'Geben Sie eine CSS-Datei zur Formatierung des Angebots an.');
 
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_currency'] = array('Währung', 'Geben Sie die für die Buchhaltung im Schriftverkehr zu nutzende Währung an.<br>Im ersten Feld wird ein Klartextname  erwartet und im zweiten Feld kann ein Währungssymbol hinterlegt werden.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_taxes'] = array('Steuersätze', 'Hinterlegen Sie Steuersätze zur Verrechnung.');

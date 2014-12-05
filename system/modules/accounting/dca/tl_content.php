@@ -61,7 +61,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['price_unit'] = array
 	'exclude'                 => true,
 	'inputType'               => 'text',
 	'eval'                    => array('rgxp'=>'digit', 'mandatory'=>true, 'maxlength'=>255, 'tl_class' => 'clr w50'),
-	'save_callback'           => array(array('tl_content_accounting', 'formatPrice')),
+	'save_callback'           => array(array('tl_content_accounting', 'formatPriceProxy')),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_content']['fields']['tax'] = array
@@ -128,5 +128,15 @@ class tl_content_accounting extends \develab\accounting\Helper
 		}
 
 		return $arrReturn;
+	}
+
+	public function formatWeightProxy($varValue)
+	{
+		return parent::formatWeight($varValue, 3, '.', '');
+	}
+
+	public function formatPriceProxy($varValue)
+	{
+		return parent::formatPrice($varValue, 2, '.', '');
 	}
 }

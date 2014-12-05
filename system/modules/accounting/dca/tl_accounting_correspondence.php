@@ -233,7 +233,7 @@ class tl_accounting_correspondence extends Backend
 			$strCharset = \Config::get('characterSet') ?: 'utf-8';
 
 			// Create template object
-			$objTemplate = new \BackendTemplate('pdf_correspondence');
+			$objTemplate = new \BackendTemplate('pdf_accounting_correspondence');
 			$objTemplate->setData($arrRow);
 			$objTemplate->debug = $blnDebug;
 			$objTemplate->charset = $strCharset;

@@ -1,9 +1,41 @@
+<?php if (!\Input::get('key') || \Input::get('key') != 'print'): ?>
 <div class="<?php echo $this->class; ?>">
-	<div class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <?php echo $this->currency; ?></div>
-<?php if (sizeof($this->taxes)): ?>
-<?php foreach ($this->taxes as $arrTax): ?>
-	<div class="price tax"><span class="label"><?php echo $arrTax['label']; ?></span> <?php echo $arrTax['price']; ?> <?php echo $this->currency; ?></div>
+	<div class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <span class="currency"><?php echo $this->currency; ?></span></div>
+	<div class="quantity">
+<?php if (sizeof($this->quantities)): ?>
+<?php foreach ($this->quantities as $strUnit=>$strQuantity): ?>
+		<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
 <?php endforeach; ?>
 <?php endif; ?>
-	<div class="price total"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <?php echo $this->currency; ?></strong></div>
+	</div>
+	<div class="price tax">
+<?php if (sizeof($this->taxes)): ?>
+<?php foreach ($this->taxes as $i=>$arrTax): ?>
+			<span class="label"><?php echo $arrTax['label']; ?></span> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+<?php endforeach; ?>
+<?php endif; ?>
+	</div>
+	<div class="price total"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <span class="currency"><?php echo $this->currency; ?></span></strong></div>
 </div>
+<?php else: ?>
+<tr class="<?php echo $this->class; ?>">
+	<td class="col_first" colspan="2">Zwischensumme</td>
+	<td class="quantity">
+<?php if (sizeof($this->quantities)): ?>
+<?php foreach ($this->quantities as $strUnit=>$strQuantity): ?>
+		<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
+<?php endforeach; ?>
+<?php endif; ?>
+	</td>
+	<td class="price unit"></td>
+	<td class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <span class="currency"><?php echo $this->currency; ?></span></td>
+	<td class="price tax">
+<?php if (sizeof($this->taxes)): ?>
+<?php foreach ($this->taxes as $i=>$arrTax): ?>
+		<span class="label tax"><?php echo $arrTax['abbr']; ?></span> <?php echo $arrTax['abbr']; ?> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+<?php endforeach; ?>
+<?php endif; ?>
+	</td>
+	<td class="price total col_last"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <span class="currency"><?php echo $this->currency; ?></span></strong></td>
+</tr>
+<?php endif; ?>

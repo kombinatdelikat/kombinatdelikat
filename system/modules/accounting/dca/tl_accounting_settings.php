@@ -30,7 +30,7 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{no_legend:hide},no_bills_current,no_offers_current,no_bills_pattern,no_offers_pattern,due_bills,due_offers;{unit_legend},accounting_currency,accounting_taxes,accounting_units;{tpl_legend},tpl_bills,tpl_offers'
+		'default'                     => '{no_legend:hide},no_bills_current,no_offers_current,no_bills_pattern,no_offers_pattern,due_bills,due_offers;{unit_legend},accounting_currency,accounting_taxes,accounting_units;{tpl_legend},tpl_bills,tpl_offers,css_bills,css_offers'
 	),
 
 	// Subpalettes
@@ -139,6 +139,18 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers'],
 			'inputType'               => 'fileTree',
 			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'pdf', 'tl_class'=>'w50')
+		),
+		'css_bills' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['css_bills'],
+			'inputType'               => 'fileTree',
+			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'css', 'tl_class'=>'clr w50')
+		),
+		'css_offers' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['css_offers'],
+			'inputType'               => 'fileTree',
+			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'css', 'tl_class'=>'w50')
 		)
 	)
 );

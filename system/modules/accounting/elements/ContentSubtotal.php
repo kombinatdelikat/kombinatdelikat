@@ -33,11 +33,12 @@ class ContentSubtotal extends \develab\accounting\Elements\ContentTotal
 	protected function compile()
 	{
 		$objElements = \Contao\ContentModel::findBy(array('id!=? AND pid=? AND ptable=? AND type=? AND sorting<=?'), array($this->id, $this->pid, $this->ptable, 'accounting_item', $this->sorting));
-		$objPrice = $this->getTotalPrice($objElements);
+		$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
 
 		$this->Template->price = \develab\accounting\Helper::formatPrice($objPrice->price);
 		$this->Template->taxes = $objPrice->taxes;
+		$this->Template->quantities = $objPrice->quantities;
 		$this->Template->price_total = \develab\accounting\Helper::formatPrice($objPrice->total);
-		$this->Template->currency = $this->getCurrency();
+		$this->Template->currency = \develab\accounting\Helper::getCurrency();
 	}
 }

@@ -1,14 +1,48 @@
+<?php if (!\Input::get('key') || \Input::get('key') != 'print'): ?>
 <div class="<?php echo $this->class; ?>">
-	<div class="cell position"><?php echo $this->position; ?></div>
-	<div class="cell quantity"><?php echo $this->quantity; ?> <?php echo $this->unit; ?></div>
-	<div class="cell details">
-		<h2><?php echo $this->name; ?></h2>
+	<div class="description">
+		<h3><?php echo $this->name; ?></h3>
 		<p><?php echo $this->description; ?></p>
 	</div>
-	<div class="cell price unit"><span class="label">Einzelpreis</span> <?php echo $this->price_unit; ?> <?php echo $this->currency; ?></div>
-	<div class="cell price"><span class="label">Netto</span> <?php echo $this->price; ?> <?php echo $this->currency; ?></div>
-<?php if ($this->tax): ?>
-	<div class="cell price tax"><span class="label"><?php echo $this->tax_label; ?></span> <?php echo $this->price_tax; ?> <?php echo $this->currency; ?></div>
+	<div class="quantity">
+<?php if (sizeof($this->quantities)): ?>
+<?php foreach ($this->quantities as $strUnit=>$strQuantity): ?>
+		<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
+<?php endforeach; ?>
 <?php endif; ?>
-	<div class="cell price total"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <?php echo $this->currency; ?></strong></div>
+	</div>
+	<div class="price unit"><span class="label">Einzelpreis</span> <?php echo $this->price_unit; ?> <span class="currency"><?php echo $this->currency; ?></span></div>
+	<div class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <span class="currency"><?php echo $this->currency; ?></span></div>
+<?php if (sizeof($this->taxes)): ?>
+<?php foreach ($this->taxes as $i=>$arrTax): ?>
+		<span class="label"><?php echo $arrTax['label']; ?></span> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+<?php endforeach; ?>
+<?php endif; ?>
+	<div class="price total"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <span class="currency"><?php echo $this->currency; ?></span></strong></div>
 </div>
+<?php else: ?>
+<tr class="<?php echo $this->class; ?>">
+	<td class="position col_first"><?php echo $this->position; ?></td>
+	<td class="description">
+		<h3><strong><?php echo $this->name; ?></strong></h3>
+		<p><?php echo $this->description; ?></p>
+	</td>
+	<td class="quantity">
+<?php if (sizeof($this->quantities)): ?>
+<?php foreach ($this->quantities as $strUnit=>$strQuantity): ?>
+		<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
+<?php endforeach; ?>
+<?php endif; ?>
+	</td>
+	<td class="price unit"><span class="label">Einzelpreis</span> <?php echo $this->price_unit; ?> <span class="currency"><?php echo $this->currency; ?></span></td>
+	<td class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <span class="currency"><?php echo $this->currency; ?></span></td>
+	<td class="price tax">
+<?php if (sizeof($this->taxes)): ?>
+<?php foreach ($this->taxes as $i=>$arrTax): ?>
+		<span class="label"><?php echo $arrTax['label']; ?></span> <?php echo $arrTax['abbr']; ?> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+<?php endforeach; ?>
+<?php endif; ?>
+	</td>
+	<td class="price total col_last"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <span class="currency"><?php echo $this->currency; ?></span></strong></td>
+</tr>
+<?php endif; ?>

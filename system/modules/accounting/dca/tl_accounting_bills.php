@@ -285,7 +285,7 @@ class tl_accounting_bills extends Backend
 
 			$arrRow = $objBillModel->row();
 
-			require_once TL_ROOT . '/system/modules/accounting/vendor/mpdf-5.7.3/mpdf.php';
+			require_once TL_ROOT . '/vendor/mpdf-5.7.3/mpdf.php';
 
 			\System::loadLanguageFile('tl_accounting_bills');
 
@@ -300,16 +300,39 @@ class tl_accounting_bills extends Backend
 			$objTemplate->debug = $blnDebug;
 			$objTemplate->charset = $strCharset;
 			$objTemplate->date = 'Dresden, den ' . \Date::parse('d. F Y', $arrRow['date']);
-			$objTemplate->customer = (object) \MemberModel::findOneBy('id', $arrRow['customer']);
+			$objTemplate->due = \Date::parse('d. F Y', $arrRow['date'] + (60 * 60 * 24 * $arrRow['due']));
+			$objTemplate->sender = (object) \MemberModel::findOneBy('id', $arrRow['responsible']);
+			$objTemplate->recipient = (object) \MemberModel::findOneBy('id', $arrRow['customer']);
+
+			// Set stylesheet
+			if (\Config::get('css_bills'))
+			{
+				$objFile = \FilesModel::findByUuid(\Config::get('css_bills'));
+
+				if (!is_null($objFile) && file_exists(TL_ROOT . '/' . $objFile->path))
+				{
+					$objTemplate->stylesheet = '/' . $objFile->path;
+				}
+			}
 
 			// Prepare elements
 			$strElements = '';
-			$objElements = \ContentModel::findPublishedByPidAndTable($arrRow['id'], 'tl_accounting_correspondence');
+			$objElements = \ContentModel::findPublishedByPidAndTable($arrRow['id'], 'tl_accounting_bills');
 			if (!is_null($objElements))
 			{
+				$i = 1;
 				while ($objElements->next())
 				{
-					$strElements.= $this->getContentElement($objElements->id);
+					$strClass = \ContentElement::findClass($objElements->type);
+					$objElements->typePrefix = 'ce_';
+					$objElement = new $strClass($objElements);
+
+					if ($objElements->type == 'accounting_item')
+					{
+						$objElement->position = $i;
+						++$i;
+					}
+					$strElements.= $objElement->generate();
 				}
 			}
 			$objTemplate->content = preg_replace_callback(
@@ -324,16 +347,21 @@ class tl_accounting_bills extends Backend
 			// Render template
 			$strTemplate = $this->replaceInsertTags($objTemplate->parse());
 			$strTemplate = html_entity_decode($strTemplate, ENT_QUOTES, $strCharset);
-			//exit($strTemplate);
+
+			if (\Input::get('preview'))
+			{
+				exit($strTemplate);
+			}
 
 			// Create new PDF document
-			$objMpdf = new \mPDF('', strtoupper($arrRow['format']), 12, 'opensanscondensed', 25, 25, 50, 70, 0, 0, 'P');
+			$objMpdf = new \mPDF('', strtoupper($arrRow['format']), 12, 'opensanscondensed', 25, 25, 50, 50, 0, 0, 'P');
 			$objMpdf->allow_charset_conversion = true;
 			$objMpdf->list_indent_first_level = true;
 			$objMpdf->charset_in = $strCharset;
 			$objMpdf->SetDisplayMode('fullpage');
 			$objMpdf->SetImportUse();
 
+			// Sez pdf background
 			if (\Config::get('tpl_bills'))
 			{
 				$objFile = \FilesModel::findByUuid(\Config::get('tpl_bills'));

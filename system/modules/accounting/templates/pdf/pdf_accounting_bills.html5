@@ -7,23 +7,65 @@
 	</head>
 	<body<?php if ($this->debug): ?> class="debug"<?php endif; ?>>
 
-		<div class="sender"><strong>Kombinat Delikat</strong> Dresden Neustadt UG (haftungsbeschränkt)<br>Schaufussstr. 25, D-01277 Dresden</div>
+		<div class="sender"><?php if ($this->sender->company): ?><?php echo $this->sender->company; ?><?php else: ?><strong><?php echo $this->sender->firstname; ?> <?php echo $this->sender->lastname; ?></strong><?php endif; ?><br><?php echo $this->sender->street; ?>, <?php echo $this->sender->country ?: 'de'; ?>-<?php echo $this->sender->postal; ?> <?php echo $this->sender->city; ?></div>
 
-		<div class="customer">
-<?php if ($this->customer->company): ?>
-			<strong><?php echo $this->customer->company; ?></strong><br>
-			<?php echo $this->customer->firstname; ?> <?php echo $this->customer->lastname; ?><br>
+		<div class="recipient">
+<?php if ($this->recipient->company): ?>
+			<strong><?php echo $this->recipient->company; ?></strong><br>
+			<?php echo $this->recipient->firstname; ?> <?php echo $this->recipient->lastname; ?><br>
 <?php else: ?>
-			<strong><?php echo $this->customer->firstname; ?> <?php echo $this->customer->lastname; ?></strong><br>
+			<strong><?php echo $this->recipient->firstname; ?> <?php echo $this->recipient->lastname; ?></strong><br>
 <?php endif; ?>
-			<?php echo $this->customer->street; ?><br>
-			<?php echo $this->customer->country ?: 'de'; ?>-<?php echo $this->customer->postal; ?> <?php echo $this->customer->city; ?>
+			<?php echo $this->recipient->street; ?><br>
+			<?php echo $this->recipient->country ?: 'de'; ?>-<?php echo $this->recipient->postal; ?> <?php echo $this->recipient->city; ?>
 		</div>
 
 		<div class="date"><?php echo $this->date; ?></div>
 
 		<div class="content">
-			<?php echo $this->content; ?>
+			<h1><strong>Rechnung</strong> <?php echo $this->no; ?></h1>
+
+			<div class="ce_text">
+				<h2>Sehr <?php if ($this->recipient->gender == 'female'): ?>geehrte Frau<?php else: ?>geehrter Herr<?php endif; ?> <?php echo $this->recipient->lastname; ?>,</h2>
+				<p>
+					hiermit erlauben wir uns Ihnen eine Rechnung über nachfolgende Positionen zu stellen. Wir freuen uns über Ihren Einkauf bei uns und hoffen, dass alles zu Ihrer Zufriedenheit war.
+				</p>
+				<p>
+					Bei Fragen, Wünschen oder Anregungen können Sie mich gern jederzeit persönlich unter <strong><?php echo $this->sender->email; ?></strong><?php if ($this->sender->mobile): ?> oder telefonisch unter der Rufnummer <strong><?php echo $this->sender->mobile; ?></strong><?php endif; ?> kontaktieren.
+				</p>
+			</div>
+
+			<pagebreak />
+
+			<table class="ce_table">
+				<thead>
+					<tr>
+						<th class="position col_first">Pos.</th>
+						<th class="description">Beschreibung</th>
+						<th class="quantity">Menge</th>
+						<th class="price unit">Preis</th>
+						<th class="price subtotal">Netto</th>
+						<th class="price tax">Steuer</th>
+						<th class="price total col_last">Gesamt</th>
+					</tr>
+				</thead>
+<?php echo $this->content; ?>
+			</table>
+
+			<div class="ce_text">
+				<p></p>
+				<p>
+					Der Rechnungsbetrag von <strong>{{accounting::price_total_bill::<?php echo $this->id; ?>::1}}</strong> ist ohne Abzug <strong>fällig bis zum <?php echo $this->due; ?></strong>. Zahlen Sie bitte diese Summe auf das unten angegebene Konto der Postbank Dresden. Bitte geben Sie die Rechnungsnummer als Verwendungszweck an.
+				</p>
+			</div>
+
+			<div class="ce_text">
+				<p></p>
+				<p>
+					Vielen Dank und mit delikaten Grüßen,<br>
+					<?php echo $this->sender->firstname; ?> <?php echo $this->sender->lastname; ?>
+				</p>
+			</div>
 		</div>
 	</body>
 </html>
