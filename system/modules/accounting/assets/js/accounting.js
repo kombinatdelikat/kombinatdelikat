@@ -89,15 +89,17 @@ Backend.makeParentViewSortable = function(ul) {
 			pid = el.getPrevious('li').get('id').replace(/li_/, '');
 			req = window.location.search.replace(/id=[0-9]*/, 'id=' + id) + '&act=cut&mode=1&pid=' + pid;
 			href = window.location.href.replace(/\?.*$/, '');
-			new Request.Contao({'url':href+req, 'followRedirects':false}).get();
-			AjaxRequest.updateContentElements(p, pid);
+			new Request.Contao({'url':href+req, 'followRedirects':false, 'onSuccess':function() {
+				AjaxRequest.updateContentElements(p, pid);
+			}}).get();
 		} else if (el.getParent('ul')) {
 			id = el.get('id').replace(/li_/, '');
 			pid = el.getParent('ul').get('id').replace(/ul_/, '');
 			req = window.location.search.replace(/id=[0-9]*/, 'id=' + id) + '&act=cut&mode=2&pid=' + pid;
 			href = window.location.href.replace(/\?.*$/, '');
-			new Request.Contao({'url':href+req, 'followRedirects':false}).get();
-			AjaxRequest.updateContentElements(p, pid);
+			new Request.Contao({'url':href+req, 'followRedirects':false, 'onSuccess':function() {
+				AjaxRequest.updateContentElements(p, pid);
+			}}).get();
 		}
 	});
 }
