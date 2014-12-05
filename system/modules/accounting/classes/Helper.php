@@ -117,4 +117,34 @@ class Helper extends \Contao\Controller
 
 		return $arrReturn;
 	}
+
+	public function updateContentElement($strAction, $dc)
+	{
+		if ($strAction == 'updateContentElements')
+		{
+			$intPid = \Input::post('pid');
+			$strPtable = 'tl_accounting_bills';
+	
+			if (!$intPid)
+			{
+				echo 'false';
+			}
+	
+			$objContentElements = \Contao\ContentModel::findBy(array('pid=? AND ptable=?'), array($intPid, $strPtable));
+	
+			if (!is_null($objContentElements))
+			{
+				$arrReturn = array();
+				foreach ($objContentElements as $objContentElement)
+				{
+					$arrReturn[$objContentElement->id] = $this->getContentElement($objContentElement->id);
+				}
+				echo json_encode($arrReturn);
+			}
+			else
+			{
+				echo 'false';
+			}
+		}
+	}
 }

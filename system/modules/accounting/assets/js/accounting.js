@@ -1,3 +1,26 @@
+AjaxRequest.updateContentElements = function(el, pid) {
+	if (!el || !pid) {
+		return false;
+	}
+
+	new Request.Contao({
+		onRequest: AjaxRequest.displayBox(Contao.lang.loading + ' …'),
+		onSuccess:function(txt) {
+			var id = el.get('id');
+			console.log(id, el)
+
+			new Element('div', { 'html':txt }).getElement('.tl_listing_container > ul#' + id).replaces(el);
+			Backend.limitPreviewHeight();
+			Backend.makeParentViewSortable(id);
+
+			AjaxRequest.hideBox();
+		}
+	}).get();
+	//.post({'action':'updateContentElements', 'pid':pid, 'load':1, 'REQUEST_TOKEN':Contao.request_token});
+
+	return false;
+}
+
 Backend.makeParentViewSortable = function(ul) {
 	var ds = new Scroller(document.getElement('body'), {
 		onChange: function(x, y) {
@@ -59,29 +82,22 @@ Backend.makeParentViewSortable = function(ul) {
 
 	list.addEvent('complete', function(el) {
 		if (!list.active) return;
-		var id, pid, req, href;
+		var id, pid, req, href, p = el.getParent('ul');
 
 		if (el.getPrevious('li')) {
 			id = el.get('id').replace(/li_/, '');
 			pid = el.getPrevious('li').get('id').replace(/li_/, '');
 			req = window.location.search.replace(/id=[0-9]*/, 'id=' + id) + '&act=cut&mode=1&pid=' + pid;
 			href = window.location.href.replace(/\?.*$/, '');
-			new Request.Contao({
-				evalScripts: false,
-				'url':href+req,
-				'followRedirects':true,
-				'onSuccess':function(txt, json) {
-					console.log(txt)
-				}
-			}).post({'REQUEST_TOKEN':Contao.request_token});
+			new Request.Contao({'url':href+req, 'followRedirects':false}).get();
+			AjaxRequest.updateContentElements(p, pid);
 		} else if (el.getParent('ul')) {
 			id = el.get('id').replace(/li_/, '');
 			pid = el.getParent('ul').get('id').replace(/ul_/, '');
 			req = window.location.search.replace(/id=[0-9]*/, 'id=' + id) + '&act=cut&mode=2&pid=' + pid;
 			href = window.location.href.replace(/\?.*$/, '');
-			new Request.Contao({'url':href+req, 'followRedirects':false, 'onSuccess':function(txt) {
-				console.log(txt)
-			}}).get();
+			new Request.Contao({'url':href+req, 'followRedirects':false}).get();
+			AjaxRequest.updateContentElements(p, pid);
 		}
 	});
 }

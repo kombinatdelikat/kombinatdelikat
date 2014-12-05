@@ -76,3 +76,4 @@ $GLOBALS['TL_MODELS']['tl_accounting_offers'] = 'develab\accounting\Models\Offer
 
 // !Hook's
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('\develab\accounting\Helper', 'replaceAccountingInsertTags');
+$GLOBALS['TL_HOOKS']['executePostActions'][] = array('\develab\accounting\Helper', 'updateContentElement');
