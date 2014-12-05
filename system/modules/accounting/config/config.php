@@ -37,7 +37,8 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 		),
 		'accounting_bills' => array(
 			'tables'		=> array('tl_accounting_bills', 'tl_content'),
-			'icon'			=> 'system/modules/accounting/assets/img/accounting_bills.png'
+			'icon'			=> 'system/modules/accounting/assets/img/accounting_bills.png',
+			'javascript'	=> 'system/modules/accounting/assets/js/accounting.js'
 		),
 		'accounting_offers' => array(
 			'tables'		=> array('tl_accounting_offers', 'tl_content'),
@@ -55,16 +56,18 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 ));
 
 // !Content elements
+$GLOBALS['TL_CTE_CORRESPONDENCE'] = $GLOBALS['TL_CTE'];
 $GLOBALS['TL_CTE_BILLS'] = array(
 	'accounting' => array(
-		'accounting_item' => '\develab\accounting\Elements\ContentItem',
-		'accounting_subtotal' => '\develab\accounting\Elements\ContentSubtotal',
-		'accounting_total' => '\develab\accounting\Elements\ContentTotal'
+		'accounting_item' => 'develab\accounting\Elements\ContentItem',
+		'accounting_subtotal' => 'develab\accounting\Elements\ContentSubtotal',
+		'accounting_total' => 'develab\accounting\Elements\ContentTotal'
 	),
 	'layout' => array(
-		'accounting_pdf_pb' => '\develab\accounting\Elements\ContentPdfPb'
+		'accounting_pdf_pb' => 'develab\accounting\Elements\ContentPdfPb'
 	)
 );
+$GLOBALS['TL_CTE_OFFERS'] = array();
 
 // !Models
 $GLOBALS['TL_MODELS']['tl_accounting_bills'] = 'develab\accounting\Models\Bills';

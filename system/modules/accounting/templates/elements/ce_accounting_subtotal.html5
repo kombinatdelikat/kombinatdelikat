@@ -1,0 +1,9 @@
+<div class="<?php echo $this->class; ?>">
+	<div class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <?php echo $this->currency; ?></div>
+<?php if (sizeof($this->taxes)): ?>
+<?php foreach ($this->taxes as $arrTax): ?>
+	<div class="price tax"><span class="label"><?php echo $arrTax['label']; ?></span> <?php echo $arrTax['price']; ?> <?php echo $this->currency; ?></div>
+<?php endforeach; ?>
+<?php endif; ?>
+	<div class="price total"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <?php echo $this->currency; ?></strong></div>
+</div>

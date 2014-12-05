@@ -24,6 +24,11 @@ $GLOBALS['TL_LANG']['tl_accounting_settings']['due_offers'] = array('Gültigkeit
 $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_bills'] = array('Rechnungstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund der Rechnung an.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers'] = array('Angebotstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund des Angebots an.');
 
+$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_currency'] = array('Währung', 'Geben Sie die für die Buchhaltung im Schriftverkehr zu nutzende Währung an.<br>Im ersten Feld wird ein Klartextname  erwartet und im zweiten Feld kann ein Währungssymbol hinterlegt werden.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_taxes'] = array('Steuersätze', 'Hinterlegen Sie Steuersätze zur Verrechnung.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_value'] = 'Steuersatz';
+$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_name'] = 'Bezeichnung';
+$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_abbr'] = 'Abkürzung';
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_units'] = array('Verfügbare Einheiten', 'Geben Sie die für die Buchhaltung verfügbaren Einheiten an.');
 
 

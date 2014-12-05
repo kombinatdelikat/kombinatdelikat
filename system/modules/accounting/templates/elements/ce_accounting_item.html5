@@ -1,0 +1,14 @@
+<div class="<?php echo $this->class; ?>">
+	<div class="cell position"><?php echo $this->position; ?></div>
+	<div class="cell quantity"><?php echo $this->quantity; ?> <?php echo $this->unit; ?></div>
+	<div class="cell details">
+		<h2><?php echo $this->name; ?></h2>
+		<p><?php echo $this->description; ?></p>
+	</div>
+	<div class="cell price unit"><span class="label">Einzelpreis</span> <?php echo $this->price_unit; ?> <?php echo $this->currency; ?></div>
+	<div class="cell price"><span class="label">Netto</span> <?php echo $this->price; ?> <?php echo $this->currency; ?></div>
+<?php if ($this->tax): ?>
+	<div class="cell price tax"><span class="label"><?php echo $this->tax_label; ?></span> <?php echo $this->price_tax; ?> <?php echo $this->currency; ?></div>
+<?php endif; ?>
+	<div class="cell price total"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <?php echo $this->currency; ?></strong></div>
+</div>

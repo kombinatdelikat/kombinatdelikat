@@ -81,4 +81,40 @@ class Helper extends \Contao\Controller
 
 		return $groups;
 	}
+
+	public static function formatPrice($varValue)
+	{
+		return number_format(floatval($varValue), 2, '.', '');
+	}
+
+	public static function formatPriceTiers(array $arrPriceTiers, $strPriceLabel='', $strPriceType='tiers_count')
+	{
+		$arrReturn = array(
+			'size' => sizeof($arrPriceTiers),
+			'tiers' => '',
+			'price' => '',
+			'gross' => ''
+		);
+		$strUnit = $strPriceType == 'tiers_count' ? 'Stück' : 'Kilogramm';
+
+		if ($arrReturn['size'])
+		{
+			$arrReturn['tiers'] = '<ul>';
+			$arrReturn['price'] = '<ul>';
+			$arrReturn['gross'] = '<ul>';
+
+			foreach ($arrPriceTiers as $arrPriceTier)
+			{
+				$arrReturn['tiers'].= '<li class="tier">ab ' . $arrPriceTier['range_from'] . ' ' . $strUnit . '</li>';
+				$arrReturn['price'].= '<li class="price">' . $arrPriceTier['range_price'] . $strPriceLabel . '</li>';
+				$arrReturn['gross'].= '<li class="price gross">' . $this->formatPrice($arrPriceTier['range_price'] * 1.07) . $strPriceLabel . '</li>';
+			}
+
+			$arrReturn['tiers'].= '</ul>';
+			$arrReturn['price'].= '</ul>';
+			$arrReturn['gross'].= '</ul>';
+		}
+
+		return $arrReturn;
+	}
 }
