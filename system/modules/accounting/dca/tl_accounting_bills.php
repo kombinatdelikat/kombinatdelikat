@@ -26,7 +26,7 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 		'enableVersioning'            => true,
 		'onload_callback'             => array
 		(
-			array('tl_accounting_bills', 'checkLocked')
+			array('tl_accounting_bills', 'onLoad')
 		),
 		'sql' => array
 		(
@@ -42,10 +42,9 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 	(
 		'sorting' => array
 		(
-			'mode'                    => 1,
-			'fields'                  => array('date DESC', 'no'),
-			'flag'                    => 8,
-			'panelLayout'             => 'filter;search,limit'
+			'mode'                    => 2,
+			'fields'                  => array('date', 'no DESC'),
+			'panelLayout'             => 'filter;sort,search,limit'
 		),
 		'label' => array
 		(
@@ -142,8 +141,19 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
+		'tstamp_generated' => array
+		(
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'file_generated' => array
+		(
+			'sql'                     => "binary(16) NULL"
+		),
 		'generated' => array
 		(
+			'inputType'               => 'checkbox',
+			'default'                 => 0,
+			'eval'                    => array('doNotCopy'=>true, 'doNotShow'=>true),
 			'sql'                     => "char(1) NOT NULL default '0'"
 		),
 		'no' => array
@@ -152,9 +162,9 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 			'exclude'                 => true,
 			'search'                  => true,
 			'sorting'                 => true,
-			'flag'                    => 11,
+			'flag'                    => 12,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'readonly'=>true),
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'readonly'=>true, 'doNotCopy'=>true, 'doNotShow'=>true),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'locked' => array
@@ -162,7 +172,9 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_bills']['locked'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12'),
+			'filter'                  => true,
+			'default'                 => 0,
+			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12', 'doNotCopy'=>true, 'doNotShow'=>true),
 			'sql'                     => "char(1) NOT NULL default '0'"
 		),
 		'date' => array
@@ -170,7 +182,7 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_bills']['date'],
 			'exclude'                 => true,
 			'sorting'                 => true,
-			'flag'                    => 6,
+			'flag'                    => 8,
 			'inputType'               => 'text',
 			'default'                 => time(),
 			'eval'                    => array('mandatory'=>true, 'rgxp'=>'date', 'datepicker'=>true, 'tl_class'=>'clr w50 wizard'),
@@ -180,6 +192,7 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_bills']['due'],
 			'exclude'                 => true,
+			'filter'                  => true,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'rgxp'=>'digit', 'tl_class'=> 'w50'),
 			'load_callback'           => array(array('tl_accounting_bills', 'getDue')),
@@ -189,6 +202,7 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_bills']['customer'],
 			'exclude'                 => true,
+			'filter'                  => true,
 			'inputType'               => 'select',
 			'foreignKey'              => 'tl_member.id',
 			'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
@@ -200,6 +214,7 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_bills']['responsible'],
 			'exclude'                 => true,
+			'filter'                  => true,
 			'inputType'               => 'select',
 			'foreignKey'              => 'tl_member.id',
 			'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
@@ -212,8 +227,19 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 
 class tl_accounting_bills extends Backend
 {
+	public function onLoad(DataContainer $dc)
+	{
+		$arrSession = $this->Session->getData();
 
-	public function checkLocked(DataContainer $dc)
+		if ($arrSession['sorting'][$dc->table] == 'no DESC')
+		{
+			$GLOBALS['TL_DCA'][$dc->table]['list']['sorting']['disableGrouping'] = true;
+		}
+
+		$this->checkLocked();
+	}
+
+	protected function checkLocked()
 	{
 		if (!\Input::get('id'))
 		{
@@ -227,7 +253,15 @@ class tl_accounting_bills extends Backend
 			return;
 		}
 
-		$GLOBALS['TL_DCA']['tl_accounting_bills']['fields']['no']['eval']['readonly'] = $objBillModel->generated ?: $objBillModel->locked;
+		foreach ($GLOBALS['TL_DCA']['tl_accounting_bills']['fields'] as $k=>&$v)
+		{
+			$blnReadonly = \Config::get('edit_locked') ? $objBillModel->locked : ($objBillModel->generated ?: $objBillModel->locked);
+			if ($k != 'locked')
+			{
+				$v['eval']['readonly'] = $blnReadonly;
+			}
+		}
+		//$GLOBALS['TL_DCA']['tl_accounting_bills']['fields']['no']['eval']['readonly'] = $objBillModel->generated ?: $objBillModel->locked;
 	}
 
 	public function setLabel($arrRow, $strLabel, DataContainer $dc, $args)
@@ -273,109 +307,158 @@ class tl_accounting_bills extends Backend
 				return $strReturn;
 			}
 
-			if (!$objBillModel->generated && empty($objBillModel->no))
+			// Get cached
+			$strFile = false;
+			if ($objBillModel->file_generated)
 			{
-				$objBillModel->no = $this->replaceInsertTags(\Contao\Config::get('no_bills_pattern'), false);
-				$objBillModel->generated = true;
-				$objBillModel->locked = true;
+				$objFile = \FilesModel::findByUuid($objBillModel->file_generated);
+
+				if (!is_null($objFile) && file_exists(TL_ROOT . '/' . $objFile->path))
+				{
+					$strFile = $objFile->path;
+				}
+			}
+
+			if (!$objBillModel->generated || !$objBillModel->locked || !$strFile)
+			{
+				// Generate bill number
+				if (empty($objBillModel->no))
+				{
+					$objBillModel->no = $this->replaceInsertTags(\Contao\Config::get('no_bills_pattern'), false);
+					\Contao\Config::persist('no_bills_current', \Contao\Config::get('no_bills_current') + 1);
+				}
+
+				$objBillModel->tstamp_generated = time();
+				$objBillModel->generated = 1;
+				$objBillModel->locked = 1;
 				$objBillModel->save();
 
-				\Contao\Config::persist('no_bills_current', \Contao\Config::get('no_bills_current') + 1);
-			}
+				$arrRow = $objBillModel->row();
 
-			$arrRow = $objBillModel->row();
+				require_once TL_ROOT . '/vendor/mpdf-5.7.3/mpdf.php';
 
-			require_once TL_ROOT . '/vendor/mpdf-5.7.3/mpdf.php';
+				\System::loadLanguageFile('tl_accounting_bills');
 
-			\System::loadLanguageFile('tl_accounting_bills');
+				$blnDebug = false;
+				$strTitle = strip_tags($arrRow['title']);
+				$strCharset = \Config::get('characterSet') ?: 'utf-8';
+				$strBillsTemplate = 'pdf_accounting_bills';
 
-			$blnDebug = false;
-			$strTitle = strip_tags($arrRow['title']);
-			$strCharset = \Config::get('characterSet') ?: 'utf-8';
-			$strBillsTemplate = 'pdf_accounting_bills';
+				// Create template object
+				$objTemplate = new \BackendTemplate($strBillsTemplate);
+				$objTemplate->setData($arrRow);
+				$objTemplate->debug = $blnDebug;
+				$objTemplate->charset = $strCharset;
+				$objTemplate->date = 'Dresden, den ' . \Date::parse('d. F Y', $arrRow['date']);
+				$objTemplate->due = \Date::parse('d. F Y', $arrRow['date'] + (60 * 60 * 24 * $arrRow['due']));
+				$objTemplate->sender = (object) \MemberModel::findOneBy('id', $arrRow['responsible']);
+				$objTemplate->recipient = (object) \MemberModel::findOneBy('id', $arrRow['customer']);
 
-			// Create template object
-			$objTemplate = new \BackendTemplate($strBillsTemplate);
-			$objTemplate->setData($arrRow);
-			$objTemplate->debug = $blnDebug;
-			$objTemplate->charset = $strCharset;
-			$objTemplate->date = 'Dresden, den ' . \Date::parse('d. F Y', $arrRow['date']);
-			$objTemplate->due = \Date::parse('d. F Y', $arrRow['date'] + (60 * 60 * 24 * $arrRow['due']));
-			$objTemplate->sender = (object) \MemberModel::findOneBy('id', $arrRow['responsible']);
-			$objTemplate->recipient = (object) \MemberModel::findOneBy('id', $arrRow['customer']);
-
-			// Set stylesheet
-			if (\Config::get('css_bills'))
-			{
-				$objFile = \FilesModel::findByUuid(\Config::get('css_bills'));
-
-				if (!is_null($objFile) && file_exists(TL_ROOT . '/' . $objFile->path))
+				// Set stylesheet
+				if (\Config::get('css_bills'))
 				{
-					$objTemplate->stylesheet = '/' . $objFile->path;
-				}
-			}
+					$objFile = \FilesModel::findByUuid(\Config::get('css_bills'));
 
-			// Prepare elements
-			$strElements = '';
-			$objElements = \ContentModel::findPublishedByPidAndTable($arrRow['id'], 'tl_accounting_bills');
-			if (!is_null($objElements))
-			{
-				$i = 1;
-				while ($objElements->next())
-				{
-					$strClass = \ContentElement::findClass($objElements->type);
-					$objElements->typePrefix = 'ce_';
-					$objElement = new $strClass($objElements);
-
-					if ($objElements->type == 'accounting_item')
+					if (!is_null($objFile) && file_exists(TL_ROOT . '/' . $objFile->path))
 					{
-						$objElement->position = $i;
-						++$i;
+						$objTemplate->stylesheet = '/' . $objFile->path;
 					}
-					$strElements.= $objElement->generate();
 				}
-			}
-			$objTemplate->content = preg_replace_callback(
-				'/(<h2)+( class=")*/i',
-				function($arrResults) {
-					return $arrResults[1] . ' class="first-of-type' . ($arrResults[2] ? ' ' : '"');
-				},
-				$strElements,
-				1
-			);
 
-			// Render template
-			$strTemplate = $this->replaceInsertTags($objTemplate->parse());
-			$strTemplate = html_entity_decode($strTemplate, ENT_QUOTES, $strCharset);
-
-			if (\Input::get('preview'))
-			{
-				exit($strTemplate);
-			}
-
-			// Create new PDF document
-			$objMpdf = new \mPDF('', strtoupper($arrRow['format']), 12, 'opensanscondensed', 25, 25, 50, 50, 0, 0, 'P');
-			$objMpdf->allow_charset_conversion = true;
-			$objMpdf->list_indent_first_level = true;
-			$objMpdf->charset_in = $strCharset;
-			$objMpdf->SetDisplayMode('fullpage');
-			$objMpdf->SetImportUse();
-
-			// Sez pdf background
-			if (\Config::get('tpl_bills'))
-			{
-				$objFile = \FilesModel::findByUuid(\Config::get('tpl_bills'));
-
-				if (!is_null($objFile) && file_exists(TL_ROOT . '/' . $objFile->path))
+				// Prepare elements
+				$strElements = '';
+				$objElements = \ContentModel::findPublishedByPidAndTable($arrRow['id'], 'tl_accounting_bills');
+				if (!is_null($objElements))
 				{
-					$objMpdf->SetDocTemplate(TL_ROOT . '/' . $objFile->path, true);
+					$i = 1;
+					while ($objElements->next())
+					{
+						$strClass = \ContentElement::findClass($objElements->type);
+						$objElements->typePrefix = 'ce_';
+						$objElement = new $strClass($objElements);
+
+						if ($objElements->type == 'accounting_item')
+						{
+							$objElement->position = $i;
+							++$i;
+						}
+						$strElements.= $objElement->generate();
+					}
 				}
+				$objTemplate->content = preg_replace_callback(
+					'/(<h2)+( class=")*/i',
+					function($arrResults) {
+						return $arrResults[1] . ' class="first-of-type' . ($arrResults[2] ? ' ' : '"');
+					},
+					$strElements,
+					1
+				);
+
+				// Render template
+				$strTemplate = $this->replaceInsertTags($objTemplate->parse());
+				$strTemplate = html_entity_decode($strTemplate, ENT_QUOTES, $strCharset);
+
+				if (\Input::get('preview'))
+				{
+					exit($strTemplate);
+				}
+
+				// Create new PDF document
+				$objMpdf = new \mPDF('', strtoupper($arrRow['format']), 12, 'opensanscondensed', 25, 25, 50, 50, 0, 0, 'P');
+				$objMpdf->allow_charset_conversion = true;
+				$objMpdf->list_indent_first_level = true;
+				$objMpdf->charset_in = $strCharset;
+				$objMpdf->SetDisplayMode('fullpage');
+				$objMpdf->SetImportUse();
+
+				// Set pdf background
+				if (\Config::get('tpl_bills'))
+				{
+					$objTemplateFile = \FilesModel::findByUuid(\Config::get('tpl_bills'));
+
+					if (!is_null($objTemplateFile) && file_exists(TL_ROOT . '/' . $objTemplateFile->path))
+					{
+						$objMpdf->SetDocTemplate(TL_ROOT . '/' . $objTemplateFile->path, true);
+					}
+				}
+
+				// Set save path
+				$strFolder = '/system/tmp';
+				if (\Config::get('path_bills'))
+				{
+					$objFolder = \FilesModel::findByUuid(\Config::get('path_bills'));
+
+					if (!is_null($objFolder) && file_exists(TL_ROOT . '/' . $objFolder->path))
+					{
+						$strFolder = $objFolder->path;
+					}
+				}
+				$strFile = $arrRow['no'] . '.pdf';
+				$strPath = $strFolder. '/' . $strFile;
+
+				// Output to file
+				$objMpdf->WriteHTML($strTemplate);
+				$objMpdf->Output(TL_ROOT. '/' . $strPath, 'F');
+
+				// Save cached file to bill
+				$objFile = new \File($strPath);
+				if (!is_null($objFile))
+				{
+					$objFile->close();
+					$objBillModel->file_generated = $objFile->getModel()->uuid;
+					$objBillModel->save();
+				}
+
+				// Output to screen
+				$objMpdf->Output();
+				exit;
 			}
 
-			$objMpdf->WriteHTML($strTemplate);
-			$objMpdf->Output();
-
-			exit;
+			// Load cached file
+			elseif ($strFile)
+			{
+				$this->redirect($strFile);
+			}
 		}
 
 		return $strReturn;

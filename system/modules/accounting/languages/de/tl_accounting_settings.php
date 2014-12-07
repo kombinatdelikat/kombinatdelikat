@@ -15,6 +15,7 @@
 /**
  * Fields
  */
+$GLOBALS['TL_LANG']['tl_accounting_settings']['edit_locked'] = array('Geschützte Dokumente editierbar?', 'Geben Sie an, ob bereits generierte Dokumente nachträglich entsperrt und bearbeitet werden dürfen.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['no_bills_current'] = array('Aktuelle Rechnungsnummer', 'Die aktuelle Zahl der fortlaufenden Rechnungsnummer.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['no_offers_current'] = array('Aktuelle Angebotsnummer', 'Die aktuelle Zahl der fortlaufenden Angebotsnummer.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['no_bills_pattern'] = array('Formatierung der Rechnungsnummer', 'Die Aufbau der zu vergebenden Rechnungsnummer.');
@@ -25,6 +26,9 @@ $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_bills'] = array('Rechnungstem
 $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers'] = array('Angebotstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund des Angebots an.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['css_bills'] = array('Rechnungs-Stylesheet', 'Geben Sie eine CSS-Datei zur Formatierung der Rechnung an.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['css_offers'] = array('Angebots-Stylesheet', 'Geben Sie eine CSS-Datei zur Formatierung des Angebots an.');
+
+$GLOBALS['TL_LANG']['tl_accounting_settings']['path_bills'] = array('Speicherort für Rechnungen', 'Geben Sie einen Zielordner zum Speichern der generierten Rechnungen an.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['path_offers'] = array('Speicherort für Angebote', 'Geben Sie einen Zielordner zum Speichern der generierten Angebote an.');
 
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_currency'] = array('Währung', 'Geben Sie die für die Buchhaltung im Schriftverkehr zu nutzende Währung an.<br>Im ersten Feld wird ein Klartextname  erwartet und im zweiten Feld kann ein Währungssymbol hinterlegt werden.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_taxes'] = array('Steuersätze', 'Hinterlegen Sie Steuersätze zur Verrechnung.');
@@ -39,6 +43,7 @@ $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_units'] = array('Verf�
  */
 $GLOBALS['TL_LANG']['tl_accounting_settings']['no_legend'] = 'Automatisierte Nummerierung';
 $GLOBALS['TL_LANG']['tl_accounting_settings']['unit_legend'] = 'Einheiten';
+$GLOBALS['TL_LANG']['tl_accounting_settings']['output_legend'] = 'Speicherorte';
 $GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_legend'] = 'Templates';
 
 

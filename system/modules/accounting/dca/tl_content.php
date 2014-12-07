@@ -27,6 +27,7 @@ if (Input::get('do') == 'accounting_bills')
 	$GLOBALS['TL_CTE'] = $GLOBALS['TL_CTE_BILLS'];
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_bills';
+	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = array('tl_content_accounting', 'getBillContentElements');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'accounting_item';
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['helpwizard'] = false;
@@ -36,6 +37,7 @@ if (Input::get('do') == 'accounting_offers')
 	$GLOBALS['TL_CTE'] = $GLOBALS['TL_CTE_OFFERS'];
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_offers';
+	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = array('tl_content_accounting', 'getOfferContentElements');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'accounting_item';
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['helpwizard'] = false;
