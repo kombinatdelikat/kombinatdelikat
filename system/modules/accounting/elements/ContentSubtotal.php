@@ -17,7 +17,7 @@
  */
 namespace develab\accounting\Elements;
 
-class ContentSubtotal extends \develab\accounting\Elements\ContentTotal
+class ContentSubtotal extends \Contao\ContentElement
 {
 
 	/**
@@ -34,8 +34,10 @@ class ContentSubtotal extends \develab\accounting\Elements\ContentTotal
 	{
 		$objElements = \Contao\ContentModel::findBy(array('id!=? AND pid=? AND ptable=? AND type=? AND sorting<=?'), array($this->id, $this->pid, $this->ptable, 'accounting_item', $this->sorting));
 		$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
+		$arrHeaders = \develab\accounting\Helper::getHeaders($this->ptable);
 
-		$this->Template->price = \develab\accounting\Helper::formatPrice($objPrice->price);
+		$this->Template->headers = $arrHeaders;
+		$this->Template->price_subtotal = \develab\accounting\Helper::formatPrice($objPrice->price);
 		$this->Template->taxes = $objPrice->taxes;
 		$this->Template->quantities = $objPrice->quantities;
 		$this->Template->price_total = \develab\accounting\Helper::formatPrice($objPrice->total);

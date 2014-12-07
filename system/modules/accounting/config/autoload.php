@@ -41,7 +41,7 @@ ClassLoader::addClasses(array
 	'develab\accounting\Models\Offers'            => 'system/modules/accounting/models/Offers.php',
 
 	// Modules
-	'develab\accounting\ModuleOverview'           => 'system/modules/accounting/modules/ModuleOverview.php',
+	'develab\accounting\Modules\ModulePDF'        => 'system/modules/accounting/modules/ModulePDF.php',
 ));
 
 

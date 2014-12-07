@@ -22,10 +22,22 @@ $GLOBALS['TL_LANG']['tl_accounting_settings']['no_bills_pattern'] = array('Forma
 $GLOBALS['TL_LANG']['tl_accounting_settings']['no_offers_pattern'] = array('Formatierung der Angebotsnummer', 'Die Aufbau der zu vergebenden Angebotsnummer.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['due_bills'] = array('Fälligkeit Rechnungen', 'Die Anzahl an Tagen bis zur Fälligkeit der Rechnung.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['due_offers'] = array('Gültigkeit Angebote', 'Die Anzahl an Tagen der Gültigkeit des Angebots.');
-$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_bills'] = array('Rechnungstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund der Rechnung an.');
-$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers'] = array('Angebotstemplate', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund des Angebots an.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_bills'] = array('Rechnungshintergrund fortlaufend', 'Geben Sie eine PDF-Datei zur Darstellung im Hintergrund der Rechnung an. Die letzte Seite wird fortlaufend wiederholt.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers'] = array('Angebotshintergrund fortlaufend', 'Geben Sie eine PDF-Datei zur fortlaufenden Darstellung im Hintergrund des Angebots an.. Die letzte Seite wird fortlaufend wiederholt.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['css_bills'] = array('Rechnungs-Stylesheet', 'Geben Sie eine CSS-Datei zur Formatierung der Rechnung an.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['css_offers'] = array('Angebots-Stylesheet', 'Geben Sie eine CSS-Datei zur Formatierung des Angebots an.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_bills'] = array('Rechnungsbausteine', 'Wählen Sie die Elemente der Rechnung und deren Reihenfolge aus.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_offers'] = array('Angebotsbausteine', 'Wählen Sie die Elemente der Angebote und deren Reihenfolge aus.');
+$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_types'] = array(
+	'position' => 'Position',
+	'description' => 'Name und Beschreibung',
+	'quantity' => 'Menge',
+	'period' => 'Zeitraum',
+	'price_unit' => 'Einzelpreis',
+	'price_subtotal' => 'Preis Netto',
+	'price_tax' => 'Enthaltene Steuer',
+	'price_total' => 'Preis Gesamt'
+);
 
 $GLOBALS['TL_LANG']['tl_accounting_settings']['path_bills'] = array('Speicherort für Rechnungen', 'Geben Sie einen Zielordner zum Speichern der generierten Rechnungen an.');
 $GLOBALS['TL_LANG']['tl_accounting_settings']['path_offers'] = array('Speicherort für Angebote', 'Geben Sie einen Zielordner zum Speichern der generierten Angebote an.');
@@ -37,14 +49,13 @@ $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_name'] = 'Bezeichn
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_abbr'] = 'Abkürzung';
 $GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_units'] = array('Verfügbare Einheiten', 'Geben Sie die für die Buchhaltung verfügbaren Einheiten an.');
 
-
 /**
  * Legends
  */
 $GLOBALS['TL_LANG']['tl_accounting_settings']['no_legend'] = 'Automatisierte Nummerierung';
 $GLOBALS['TL_LANG']['tl_accounting_settings']['unit_legend'] = 'Einheiten';
 $GLOBALS['TL_LANG']['tl_accounting_settings']['output_legend'] = 'Speicherorte';
-$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_legend'] = 'Templates';
+$GLOBALS['TL_LANG']['tl_accounting_settings']['layout_legend'] = 'Layout';
 
 
 /**

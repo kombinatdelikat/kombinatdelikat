@@ -16,13 +16,12 @@
  * Back end modules
  */
 //$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
-$GLOBALS['TL_LANG']['MOD']['accounting'] = 'Korrespondenz';
-$GLOBALS['TL_LANG']['MOD']['accounting_overview'] = array('accounting', 'Übersicht über die verfügbaren Module');
+$GLOBALS['TL_LANG']['MOD']['accounting'] = 'Buchhaltung';
 $GLOBALS['TL_LANG']['MOD']['accounting_contacts'] = array('Kontakte', 'Kontakte verwalten');
 $GLOBALS['TL_LANG']['MOD']['accounting_contact_groups'] = array('Kontaktgruppen', 'Kontakte in Gruppen unterteilen');
 $GLOBALS['TL_LANG']['MOD']['accounting_bills'] = array('Rechnungen', 'Rechnungen erstellen und als PDF zum Druck ausgeben');
 $GLOBALS['TL_LANG']['MOD']['accounting_offers'] = array('Angebote', 'Angebote schreiben und als PDF erstellen und drucken');
-$GLOBALS['TL_LANG']['MOD']['accounting_correspondence'] = array('Anschreiben', 'Anschreiben erstellen, als PDF ausgeben und drucken');
+$GLOBALS['TL_LANG']['MOD']['accounting_correspondence'] = array('Korrespondenz', 'Anschreiben erstellen, als PDF ausgeben und drucken');
 $GLOBALS['TL_LANG']['MOD']['accounting_settings'] = array('Einstellungen', 'Bearbeiten der Einstellungen');
 
 

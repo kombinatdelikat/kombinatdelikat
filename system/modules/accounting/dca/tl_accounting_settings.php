@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 		'default'                     => '{no_legend:hide},edit_locked,no_bills_current,no_offers_current,no_bills_pattern,no_offers_pattern,due_bills,due_offers;
 										  {unit_legend},accounting_currency,accounting_taxes,accounting_units;
 										  {output_legend},path_bills,path_offers;
-										  {tpl_legend},tpl_bills,tpl_offers,css_bills,css_offers'
+										  {layout_legend},tpl_bills,tpl_offers,css_bills,css_offers,elements_bills,elements_offers'
 	),
 
 	// Subpalettes
@@ -114,19 +114,19 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 					(
 						'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_value'],
 						'inputType'               => 'text',
-						'eval'                    => array('mandatory'=>true, 'rgxp'=>'prcnt', 'style'=>'width:200px')
+						'eval'                    => array('mandatory'=>true, 'rgxp'=>'prcnt', 'style'=>'width:180px')
 					),
 					'accounting_tax_name' => array
 					(
 						'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_name'],
 						'inputType'               => 'text',
-						'eval'                    => array('mandatory'=>true, 'rgxp'=>'extnd', 'style'=>'width:200px')
+						'eval'                    => array('mandatory'=>true, 'rgxp'=>'extnd', 'style'=>'width:180px')
 					),
 					'accounting_tax_abbr' => array
 					(
 						'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['accounting_tax_abbr'],
 						'inputType'               => 'text',
-						'eval'                    => array('mandatory'=>true, 'rgxp'=>'extnd', 'style'=>'width:200px')
+						'eval'                    => array('mandatory'=>true, 'rgxp'=>'extnd', 'style'=>'width:180px')
 					)
 				)
 			)
@@ -163,6 +163,18 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 			'inputType'               => 'fileTree',
 			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'pdf', 'tl_class'=>'w50')
 		),
+		'tpl_bills_first' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_bills_first'],
+			'inputType'               => 'fileTree',
+			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'pdf', 'tl_class'=>'clr w50')
+		),
+		'tpl_offers_first' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['tpl_offers_first'],
+			'inputType'               => 'fileTree',
+			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'pdf', 'tl_class'=>'w50')
+		),
 		'css_bills' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['css_bills'],
@@ -174,13 +186,30 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['css_offers'],
 			'inputType'               => 'fileTree',
 			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'css', 'tl_class'=>'w50')
+		),
+		'elements_bills' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_bills'],
+			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_types'],
+			'inputType'               => 'checkboxWizard',
+			'default'                 => 'a:6:{i:0;s:8:"position";i:1;s:11:"description";i:2;s:8:"quantity";i:3;s:14:"price_subtotal";i:4;s:9:"price_tax";i:5;s:11:"price_total";}',
+			'eval' 			          => array('mandatory'=>true, 'tl_class'=>'clr w50', 'multiple'=>true)
+		),
+		'elements_offers' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_offers'],
+			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_types'],
+			'inputType'               => 'checkboxWizard',
+			'default'                 => 'a:6:{i:0;s:8:"position";i:1;s:11:"description";i:2;s:8:"quantity";i:3;s:14:"price_subtotal";i:4;s:9:"price_tax";i:5;s:11:"price_total";}',
+			'eval' 			          => array('mandatory'=>true, 'tl_class'=>'w50', 'multiple'=>true)
 		)
 	)
 );
 
 class tl_accounting_settings extends Backend
 {
-	public function setDefaultValues(DataContainer $dc) {
+	public function setDefaultValues(DataContainer $dc)
+	{
 		$arrModified = array();
 		foreach ($GLOBALS['TL_DCA']['tl_accounting_settings']['fields'] as $strName => $arrField)
 		{

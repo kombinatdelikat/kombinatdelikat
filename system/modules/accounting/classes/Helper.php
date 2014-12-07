@@ -187,6 +187,36 @@ class Helper extends \Contao\Controller
 		return $arrContacts;
 	}
 
+	public static function getHeaders($strType='tl_accounting_bills')
+	{
+		\System::loadLanguageFile('tl_accounting_settings');
+
+		$arrHeadersAvailable = deserialize(\Config::get('elements_' . str_replace('tl_accounting_', '', $strType)), true);
+		$arrHeaders = array();
+
+		for ($i=0, $l=sizeof($arrHeadersAvailable); $i < $l; ++$i)
+		{
+			$strHeader = $arrHeadersAvailable[$i];
+			$arrHeaders[$strHeader] = array();
+			$arrClass = explode('_', $strHeader);
+			if (!$i)
+			{
+				$arrClass[] = 'col_first';
+				$arrHeaders[$strHeader]['first'] = true;
+			}
+			if ($i == $l-1)
+			{
+				$arrClass[] = 'col_last';
+				$arrHeaders[$strHeader]['last'] = true;
+			}
+
+			$arrHeaders[$strHeader]['class'] = implode(' ', $arrClass);
+			$arrHeaders[$strHeader]['label'] = $GLOBALS['TL_LANG']['tl_accounting_settings']['elements_types'][$strHeader];
+		}
+
+		return $arrHeaders;
+	}
+
 	public function getAccountingContentElements($type='TL_CTE')
 	{
 		$groups = array();

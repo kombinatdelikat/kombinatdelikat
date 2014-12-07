@@ -19,23 +19,32 @@
 </div>
 <?php else: ?>
 <tr class="<?php echo $this->class; ?>">
-	<td class="col_first" colspan="2">Zwischensumme</td>
-	<td class="quantity">
-<?php if (sizeof($this->quantities)): ?>
+<?php $blnSkip = false; ?>
+<?php foreach ($this->headers as $k=>$arrHeader): ?>
+<?php if ($blnSkip): $blnSkip = false; continue; endif; ?>
+	<td class="<?php echo $arrHeader['class']; ?>"<?php if ($arrHeader['first']): ?> colspan="2"<?php endif; ?>>
+<?php if ($arrHeader['first']): ?>
+		Zwischensumme
+<?php $blnSkip = true; continue; ?>
+<?php endif; ?>
+<?php if ($k == 'description'): ?>
+		<h3><strong><?php echo $this->name; ?></strong></h3>
+		<p><?php echo $this->description; ?></p>
+<?php elseif ($k == 'quantity' && sizeof($this->quantities)): ?>
 <?php foreach ($this->quantities as $strUnit=>$strQuantity): ?>
 		<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
 <?php endforeach; ?>
-<?php endif; ?>
-	</td>
-	<td class="price unit"></td>
-	<td class="price"><span class="label">Netto</span> <?php echo $this->price; ?> <span class="currency"><?php echo $this->currency; ?></span></td>
-	<td class="price tax">
-<?php if (sizeof($this->taxes)): ?>
+<?php elseif ($k == 'price_tax' && sizeof($this->taxes)): ?>
 <?php foreach ($this->taxes as $i=>$arrTax): ?>
-		<span class="label tax"><?php echo $arrTax['abbr']; ?></span> <?php echo $arrTax['abbr']; ?> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+		<span class="label"><?php echo $arrTax['label']; ?></span> <?php echo $arrTax['abbr']; ?> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
 <?php endforeach; ?>
+<?php elseif (in_array($k, array('price', 'price_unit', 'price_total', 'price_subtotal'))): ?>
+		<?php echo $this->$k; ?> <span class="currency"><?php echo $this->currency; ?></span>
+<?php else: ?>
+		<?php echo $this->$k; ?>
+
 <?php endif; ?>
 	</td>
-	<td class="price total col_last"><strong><span class="label">Brutto</span> <?php echo $this->price_total; ?> <span class="currency"><?php echo $this->currency; ?></span></strong></td>
+<?php endforeach; ?>
 </tr>
 <?php endif; ?>

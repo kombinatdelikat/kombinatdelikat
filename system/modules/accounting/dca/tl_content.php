@@ -27,6 +27,7 @@ if (Input::get('do') == 'accounting_bills')
 	$GLOBALS['TL_CTE'] = $GLOBALS['TL_CTE_BILLS'];
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_bills';
+	$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_accounting', 'checkPermissions');
 	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = array('tl_content_accounting', 'getBillContentElements');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'accounting_item';
@@ -37,6 +38,7 @@ if (Input::get('do') == 'accounting_offers')
 	$GLOBALS['TL_CTE'] = $GLOBALS['TL_CTE_OFFERS'];
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_offers';
+	$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_accounting', 'checkPermissions');
 	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = array('tl_content_accounting', 'getOfferContentElements');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'accounting_item';
@@ -44,7 +46,7 @@ if (Input::get('do') == 'accounting_offers')
 }
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_pdf_pb'] = '{type_legend},type;{template_legend:hide},customTpl';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_item'] = '{type_legend},type;{content_legend},quantity,price_unit,tax,name,description';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_item'] = '{type_legend},type;{price_legend},quantity,price_unit,tax;{date_legend:hide},date_from,date_to;{content_legend},name,description';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_subtotal'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_total'] = '{type_legend},type';
 
@@ -75,6 +77,28 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['tax'] = array
 	'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
 	'sql'                     => "varchar(32) NOT NULL default ''"
 );
+$GLOBALS['TL_DCA']['tl_content']['fields']['date_from'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['date_from'],
+	'default'                 => time(),
+	'exclude'                 => true,
+	'sorting'                 => true,
+	'flag'                    => 8,
+	'inputType'               => 'text',
+	'eval'                    => array('rgxp'=>'date', 'datepicker'=>true, 'tl_class'=>'clr w50 wizard'),
+	'sql'                     => "int(10) unsigned NOT NULL default '0'"
+);
+$GLOBALS['TL_DCA']['tl_content']['fields']['date_to'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['date_to'],
+	'default'                 => time(),
+	'exclude'                 => true,
+	'sorting'                 => true,
+	'flag'                    => 8,
+	'inputType'               => 'text',
+	'eval'                    => array('rgxp'=>'date', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+	'sql'                     => "int(10) unsigned NOT NULL default '0'"
+);
 $GLOBALS['TL_DCA']['tl_content']['fields']['name'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['name'],
@@ -97,6 +121,37 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['description'] = array
 
 class tl_content_accounting extends \develab\accounting\Helper
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->import('BackendUser', 'User');
+	}
+
+	public function checkPermissions(DataContainer $dc)
+	{
+		if ($this->User->isAdmin)
+		{
+			return;
+		}
+
+		$objParent = null;
+		switch ($dc->parentTable)
+		{
+			case 'tl_accounting_bills':
+				$objParent = \develab\accounting\Models\Bills::findOneBy('id', $dc->id);
+				break;
+			case 'tl_accounting_offers':
+				$objParent = \develab\accounting\Models\Bills::findOneBy('id', $dc->id);
+				break;
+		}
+
+		if (is_null($objParent) || $objParent->locked)
+		{
+			$this->log('The parent entry is locked or not existant.', __METHOD__, TL_ERROR);
+			$this->redirect('contao/main.php?act=error');
+		}
+	}
+
 	public function getBillContentElements()
 	{
 		return $this->getAccountingContentElements('TL_CTE_BILLS');

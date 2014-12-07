@@ -40,13 +40,9 @@
 			<table class="ce_table">
 				<thead>
 					<tr>
-						<th class="position col_first">Pos.</th>
-						<th class="description">Beschreibung</th>
-						<th class="quantity">Menge</th>
-						<th class="price unit">Preis</th>
-						<th class="price subtotal">Netto</th>
-						<th class="price tax">Steuer</th>
-						<th class="price total col_last">Gesamt</th>
+<?php foreach ($this->headers as $arrHeader): ?>
+						<th class="<?php echo $arrHeader['class']; ?>"><?php echo $arrHeader['label']; ?></th>
+<?php endforeach; ?>
 					</tr>
 				</thead>
 <?php echo $this->content; ?>
