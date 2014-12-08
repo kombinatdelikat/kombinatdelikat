@@ -26,7 +26,7 @@ class ModulePDF extends \Contao\Module {
 		$this->Template->due = \Date::parse('d. F Y', $this->date + (60 * 60 * 24 * $this->due));
 		$this->Template->sender = (object) \MemberModel::findOneBy('id', $this->responsible);
 		$this->Template->recipient = (object) \MemberModel::findOneBy('id', $this->customer);
-		$this->Template->headers = \develab\accounting\Helper::getHeaders($this->ptable);
+		$this->Template->fields = \develab\accounting\Helper::getFields($this->ptable);
 
 		// Set stylesheet
 		if (\Config::get('css_bills'))

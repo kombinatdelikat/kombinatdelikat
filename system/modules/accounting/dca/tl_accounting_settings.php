@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 		'default'                     => '{no_legend:hide},edit_locked,no_bills_current,no_offers_current,no_bills_pattern,no_offers_pattern,due_bills,due_offers;
 										  {unit_legend},accounting_currency,accounting_taxes,accounting_units;
 										  {output_legend},path_bills,path_offers;
-										  {layout_legend},tpl_bills,tpl_offers,css_bills,css_offers,elements_bills,elements_offers'
+										  {layout_legend},tpl_bills,tpl_offers,css_bills,css_offers,fields_bills,fields_offers'
 	),
 
 	// Subpalettes
@@ -187,18 +187,18 @@ $GLOBALS['TL_DCA']['tl_accounting_settings'] = array
 			'inputType'               => 'fileTree',
 			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'css', 'tl_class'=>'w50')
 		),
-		'elements_bills' => array
+		'fields_bills' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_bills'],
-			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_types'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_bills'],
+			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_types'],
 			'inputType'               => 'checkboxWizard',
 			'default'                 => 'a:6:{i:0;s:8:"position";i:1;s:11:"description";i:2;s:8:"quantity";i:3;s:14:"price_subtotal";i:4;s:9:"price_tax";i:5;s:11:"price_total";}',
 			'eval' 			          => array('mandatory'=>true, 'tl_class'=>'clr w50', 'multiple'=>true)
 		),
-		'elements_offers' => array
+		'fields_offers' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_offers'],
-			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['elements_types'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_offers'],
+			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_types'],
 			'inputType'               => 'checkboxWizard',
 			'default'                 => 'a:6:{i:0;s:8:"position";i:1;s:11:"description";i:2;s:8:"quantity";i:3;s:14:"price_subtotal";i:4;s:9:"price_tax";i:5;s:11:"price_total";}',
 			'eval' 			          => array('mandatory'=>true, 'tl_class'=>'w50', 'multiple'=>true)

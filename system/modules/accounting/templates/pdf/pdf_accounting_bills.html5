@@ -40,8 +40,8 @@
 			<table class="ce_table">
 				<thead>
 					<tr>
-<?php foreach ($this->headers as $arrHeader): ?>
-						<th class="<?php echo $arrHeader['class']; ?>"><?php echo $arrHeader['label']; ?></th>
+<?php foreach ($this->fields as $arrField): ?>
+						<th class="<?php echo $arrField['class']; ?>"><?php echo $arrField['label']; ?></th>
 <?php endforeach; ?>
 					</tr>
 				</thead>

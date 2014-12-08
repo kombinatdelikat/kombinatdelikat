@@ -24,8 +24,8 @@
 <?php else: ?>
 
 <tr class="<?php echo $this->class; ?>">
-<?php foreach ($this->headers as $k=>$arrHeader): ?>
-	<td class="<?php echo $arrHeader['class']; ?>">
+<?php foreach ($this->fields as $k=>$arrField): ?>
+	<td class="<?php echo $arrField['class']; ?>">
 <?php if ($k == 'description'): ?>
 		<h3><strong><?php echo $this->name; ?></strong></h3>
 		<p><?php echo $this->description; ?></p>

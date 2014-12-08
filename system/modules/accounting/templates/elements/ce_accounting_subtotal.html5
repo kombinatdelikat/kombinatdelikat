@@ -19,14 +19,9 @@
 </div>
 <?php else: ?>
 <tr class="<?php echo $this->class; ?>">
-<?php $blnSkip = false; ?>
-<?php foreach ($this->headers as $k=>$arrHeader): ?>
-<?php if ($blnSkip): $blnSkip = false; continue; endif; ?>
-	<td class="<?php echo $arrHeader['class']; ?>"<?php if ($arrHeader['first']): ?> colspan="2"<?php endif; ?>>
-<?php if ($arrHeader['first']): ?>
-		Zwischensumme
-<?php $blnSkip = true; continue; ?>
-<?php endif; ?>
+	<td colspan="2">Zwischensumme</td>
+<?php foreach ($this->fields as $k=>$arrField): ?>
+	<td class="<?php echo $arrField['class']; ?>"<?php if ($arrField['first']): ?> colspan="2"<?php endif; ?>>
 <?php if ($k == 'description'): ?>
 		<h3><strong><?php echo $this->name; ?></strong></h3>
 		<p><?php echo $this->description; ?></p>

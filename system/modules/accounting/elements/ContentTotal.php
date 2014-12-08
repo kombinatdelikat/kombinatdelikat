@@ -34,9 +34,9 @@ class ContentTotal extends \Contao\ContentElement
 	{
 		$objElements = \Contao\ContentModel::findBy(array('id!=? AND pid=? AND ptable=? AND type=?'), array($this->id, $this->pid, $this->ptable, 'accounting_item'));
 		$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
-		$arrHeaders = \develab\accounting\Helper::getHeaders($this->ptable);
+		$arrFields = \develab\accounting\Helper::getFields($this->ptable, 2);
 
-		$this->Template->headers = $arrHeaders;
+		$this->Template->fields = $arrFields;
 		$this->Template->price_subtotal = \develab\accounting\Helper::formatPrice($objPrice->price);
 		$this->Template->taxes = $objPrice->taxes;
 		$this->Template->quantities = $objPrice->quantities;

@@ -37,7 +37,7 @@ class ContentItem extends \Contao\ContentElement
 		$this->tax_label = 'Steuerfrei';
 
 		$objPrice = \develab\accounting\Helper::getTotalPrice(array($this));
-		$arrHeaders = \develab\accounting\Helper::getHeaders($this->ptable);
+		$arrFields = \develab\accounting\Helper::getFields($this->ptable);
 
 		$this->Template->price_unit = \develab\accounting\Helper::formatPrice($this->price_unit);
 		$this->Template->price_subtotal = \develab\accounting\Helper::formatPrice($objPrice->price);
@@ -45,7 +45,7 @@ class ContentItem extends \Contao\ContentElement
 		$this->Template->quantities = $objPrice->quantities;
 		$this->Template->price_total = \develab\accounting\Helper::formatPrice($objPrice->total);
 
-		$this->Template->headers = $arrHeaders;
+		$this->Template->fields = $arrFields;
 		$this->Template->name = $this->name;
 		$this->Template->description = $this->replaceInsertTags($this->description, true);
 		$this->Template->position = $this->position;
