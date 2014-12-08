@@ -24,9 +24,10 @@ class ModulePDF extends \Contao\Module {
 		$this->Template->charset = $strCharset;
 		$this->Template->date = 'Dresden, den ' . \Date::parse('d. F Y', $this->date);
 		$this->Template->due = \Date::parse('d. F Y', $this->date + (60 * 60 * 24 * $this->due));
-		$this->Template->sender = (object) \MemberModel::findOneBy('id', $this->responsible);
-		$this->Template->recipient = (object) \MemberModel::findOneBy('id', $this->customer);
-		$this->Template->fields = \develab\accounting\Helper::getFields($this->ptable);
+		$this->Template->salutation = $this->salutation;
+		$this->Template->sender = $this->objModel->getRelated('responsible');
+		$this->Template->recipient = $this->objModel->getRelated('customer');
+		$this->Template->fields = \develab\accounting\Helper::getFields($this->objModel);
 
 		// Set stylesheet
 		if (\Config::get('css_bills'))
@@ -41,7 +42,8 @@ class ModulePDF extends \Contao\Module {
 
 		// Prepare elements
 		$strElements = '';
-		$objElements = \ContentModel::findPublishedByPidAndTable($this->bill, 'tl_accounting_bills');
+		$strAccounting = '';
+		$objElements = \ContentModel::findPublishedByPidAndTable($this->objModel->id, 'tl_accounting_bills');
 		if (!is_null($objElements))
 		{
 			$i = 1;
@@ -50,15 +52,34 @@ class ModulePDF extends \Contao\Module {
 				$strClass = \ContentElement::findClass($objElements->type);
 				$objElements->typePrefix = 'ce_';
 				$objElement = new $strClass($objElements);
+				$objElement->objParentModel = $this->objModel;
+				$objElement->sender = $this->Template->sender;
+				$objElement->recipient = $this->Template->recipient;
 
 				if ($objElements->type == 'accounting_item')
 				{
 					$objElement->position = $i;
 					++$i;
 				}
-				$strElements.= $objElement->generate();
+
+				if (in_array($objElements->type, array_flip($GLOBALS['TL_CTE_BILLS']['accounting'])))
+				{
+					$strAccounting.= $objElement->generate();
+				}
+				else
+				{
+					$strElements.= $objElement->generate();
+				}
 			}
 		}
+		$this->Template->accounting = preg_replace_callback(
+			'/(<h2)+( class=")*/i',
+			function($arrResults) {
+				return $arrResults[1] . ' class="first-of-type' . ($arrResults[2] ? ' ' : '"');
+			},
+			$strAccounting,
+			1
+		);
 		$this->Template->content = preg_replace_callback(
 			'/(<h2)+( class=")*/i',
 			function($arrResults) {

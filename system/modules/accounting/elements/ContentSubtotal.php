@@ -34,7 +34,7 @@ class ContentSubtotal extends \Contao\ContentElement
 	{
 		$objElements = \Contao\ContentModel::findBy(array('id!=? AND pid=? AND ptable=? AND type=? AND sorting<=?'), array($this->id, $this->pid, $this->ptable, 'accounting_item', $this->sorting));
 		$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
-		$arrFields = \develab\accounting\Helper::getFields($this->ptable, 2);
+		$arrFields = \develab\accounting\Helper::getFields($this->objParentModel, 2);
 
 		$this->Template->fields = $arrFields;
 		$this->Template->price_subtotal = \develab\accounting\Helper::formatPrice($objPrice->price);

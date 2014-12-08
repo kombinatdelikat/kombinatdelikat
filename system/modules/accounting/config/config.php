@@ -58,6 +58,12 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 // !Content elements
 $GLOBALS['TL_CTE_CORRESPONDENCE'] = $GLOBALS['TL_CTE'];
 $GLOBALS['TL_CTE_BILLS'] = array(
+	'texts' => array(
+		'headline' => $GLOBALS['TL_CTE']['texts']['headline'],
+		'text' => $GLOBALS['TL_CTE']['texts']['text'],
+		'list' => $GLOBALS['TL_CTE']['texts']['list'],
+		'table' => $GLOBALS['TL_CTE']['texts']['table']
+	),
 	'accounting' => array(
 		'accounting_item' => 'develab\accounting\Elements\ContentItem',
 		'accounting_subtotal' => 'develab\accounting\Elements\ContentSubtotal',

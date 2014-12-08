@@ -11,6 +11,7 @@
  * @copyright David Enke 2014
  */
 
+\System::loadLanguageFile('tl_accounting_settings');
 
 /**
  * Table tl_accounting_bills
@@ -125,7 +126,7 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{date_legend},no,locked,date,due;{content_legend},customer,responsible'
+		'default'                     => '{date_legend},no,locked,date,due;{content_legend},customer,responsible,salutation;{fields_legend:hide},fields'
 	),
 
 	// Subpalettes
@@ -205,8 +206,8 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'select',
-			'foreignKey'              => 'tl_member.id',
 			'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
+			'foreignKey'              => 'tl_member.id',
 			'relation'                => array('type'=>'hasOne', 'load'=>'lazy'),
 			'options_callback'        => array('\develab\accounting\Helper', 'getContacts'),
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
@@ -217,11 +218,30 @@ $GLOBALS['TL_DCA']['tl_accounting_bills'] = array
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'select',
-			'foreignKey'              => 'tl_member.id',
 			'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
+			'foreignKey'              => 'tl_member.id',
 			'relation'                => array('type'=>'hasOne', 'load'=>'lazy'),
 			'options_callback'        => array('\develab\accounting\Helper', 'getContacts'),
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'salutation' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_bills']['salutation'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('rte'=>'tinyMCE', 'decodeEntities'=>true, 'tl_class'=>'clr'),
+			'explanation'             => 'insertTags',
+			'sql'                     => "mediumtext NULL"
+		),
+		'fields' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_bills'],
+			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_types'],
+			'load_callback'           => array(array('tl_accounting_bills', 'getDefaultFields')),
+			'inputType'               => 'checkboxWizard',
+			'eval' 			          => array('mandatory'=>true, 'tl_class'=>'clr w50', 'multiple'=>true),
+			'sql'                     => "blob NULL"
 		)
 	)
 );
@@ -317,6 +337,24 @@ class tl_accounting_bills extends Backend
 		return $varValue;
 	}
 
+	public function getDefaultFields($varValue, DataContainer $dc)
+	{
+		if (strlen($varValue))
+		{
+			return $varValue;
+		}
+
+		$strFieldsDefault = \Config::get('fields_bills');
+
+		if (!strlen($strFieldsDefault))
+		{
+			$this->loadDataContainer('tl_accounting_settings');
+			$strFieldsDefault = $GLOBALS['TL_DCA']['tl_accounting_settings']['fields']['fields_bills']['default'];
+		}
+
+		return $strFieldsDefault;
+	}
+
 	public function printBill($arrRow, $strHref, $strLabel, $strTitle, $strIcon)
 	{
 		$strReturn = '<a href="'.$this->addToUrl($strHref.'&amp;id='.$arrRow['id']).'" target="_blank" title="'.specialchars($strTitle).'">'.Image::getHtml($strIcon, $strLabel).'</a> ';
@@ -362,8 +400,6 @@ class tl_accounting_bills extends Backend
 
 				// Render template
 				$objModule = new \develab\accounting\Modules\ModulePDF($objBillModel);
-				$objModule->ptable = 'tl_accounting_bills';
-				$objModule->bill = $arrRow['id'];
 
 				$strTemplate = $objModule->generate();
 				$strTemplate = $this->replaceInsertTags($strTemplate);

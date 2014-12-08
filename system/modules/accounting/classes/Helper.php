@@ -105,6 +105,10 @@ class Helper extends \Contao\Controller
 
 		switch ($arrTags[1])
 		{
+		}
+
+		switch ($arrTags[1])
+		{
 			case 'no_bills_current':
 			case 'no_offers_current':
 				$strReturn = \Contao\Config::get($arrTags[1]);
@@ -120,9 +124,13 @@ class Helper extends \Contao\Controller
 			case 'price_total_bill':
 				$strReturn = 0;
 
-				if ($arrTags[2])
+				if ($arrTags[2] || \Input::get('id'))
 				{
-					$objElements = \Contao\ContentModel::findBy(array('pid=? AND ptable=? AND type=?'), array($arrTags[2], 'tl_accounting_bills', 'accounting_item'));
+					$objElements = \Contao\ContentModel::findBy(array('pid=? AND ptable=? AND type=?'), array($arrTags[2] ?: \Input::get('id'), 'tl_accounting_bills', 'accounting_item'));
+					if (is_null($objElements))
+					{
+						return false;
+					}
 					$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
 					$strReturn = $objPrice->total;
 				}
@@ -134,18 +142,99 @@ class Helper extends \Contao\Controller
 				return $strReturn;
 				break;
 
-			case 'price_total_offer':
-				$strReturn = 0;
+			case 'date_bill':
+				$strReturn = false;
 
-				if ($arrTags[2])
+				if ($arrTags[2] || \Input::get('id'))
 				{
-					$objElements = \Contao\ContentModel::findBy(array('pid=? AND ptable=? AND type=?'), array($arrTags[2], 'tl_accounting_offers', 'accounting_item'));
-					$objPrice = \develab\accounting\Helper::getTotalPrice($objElements);
-					$strReturn = $objPrice->total;
+					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					if (is_null($objBillModel))
+					{
+						return false;
+					}
+					$strReturn = $objBillModel->date;
 				}
 				if ($arrTags[3])
 				{
-					$strReturn = \develab\accounting\Helper::formatPrice($strReturn) . ' ' . \develab\accounting\Helper::getCurrency();
+					$strReturn = \Date::parse('d. F Y', $objBillModel->date);
+				}
+
+				return $strReturn;
+				break;
+
+			case 'date_due_bill':
+				$strReturn = false;
+
+				if ($arrTags[2] || \Input::get('id'))
+				{
+					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					if (is_null($objBillModel))
+					{
+						return false;
+					}
+					$strReturn = $objBillModel->due;
+				}
+				if ($arrTags[3])
+				{
+					$strReturn = \Date::parse('d. F Y', $objBillModel->date + (60 * 60 * 24 * $objBillModel->due));
+				}
+
+				return $strReturn;
+				break;
+
+			case 'sender_bill':
+				$strReturn = false;
+
+				if (($arrTags[2] || \Input::get('id')) && $arrTags[3])
+				{
+					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					if (is_null($objBillModel))
+					{
+						return false;
+					}
+					$objRelatedModel = $objBillModel->getRelated('responsible');
+					$strReturn = $objRelatedModel->$arrTags[3];
+
+					if ($arrTags[3] == 'salutation')
+					{
+						if ($objRelatedModel->gender)
+						{
+							$strReturn = 'Sehr' . ($objRelatedModel->gender == 'female' ? 'geehrte Frau' : 'geehrter Herr') . ' ' . $objRelatedModel->lastname;
+						}
+						else
+						{
+							$strReturn = 'Guten Tag';
+						}
+					}
+				}
+
+				return $strReturn;
+				break;
+
+			case 'recipient_bill':
+				$strReturn = false;
+
+				if (($arrTags[2] || \Input::get('id')) && $arrTags[3])
+				{
+					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					if (is_null($objBillModel))
+					{
+						return false;
+					}
+					$objRelatedModel = $objBillModel->getRelated('customer');
+					$strReturn = $objRelatedModel->$arrTags[3];
+
+					if ($arrTags[3] == 'salutation')
+					{
+						if ($objRelatedModel->gender)
+						{
+							$strReturn = 'Sehr ' . ($objRelatedModel->gender == 'female' ? 'geehrte Frau' : 'geehrter Herr') . ' ' . $objRelatedModel->lastname;
+						}
+						else
+						{
+							$strReturn = 'Guten Tag';
+						}
+					}
 				}
 
 				return $strReturn;
@@ -187,11 +276,11 @@ class Helper extends \Contao\Controller
 		return $arrContacts;
 	}
 
-	public static function getFields($strType='tl_accounting_bills', $blnSkip=0)
+	public static function getFields($objModel, $blnSkip=0)
 	{
 		\System::loadLanguageFile('tl_accounting_settings');
 
-		$arrFieldsAvailable = deserialize(\Config::get('fields_' . str_replace('tl_accounting_', '', $strType)), true);
+		$arrFieldsAvailable = deserialize($objModel->fields, true);
 		$arrFields = array();
 
 		for ($i=$blnSkip, $l=sizeof($arrFieldsAvailable); $i < $l; ++$i)

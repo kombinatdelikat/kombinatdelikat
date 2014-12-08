@@ -17,7 +17,7 @@
  */
 namespace develab\accounting\Elements;
 
-class ContentPdfPb extends \develab\accounting\Elements\ContentElement
+class ContentPdfPb extends \Contao\ContentElement
 {
 
 	/**

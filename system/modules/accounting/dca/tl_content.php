@@ -45,7 +45,7 @@ if (Input::get('do') == 'accounting_offers')
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['helpwizard'] = false;
 }
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_pdf_pb'] = '{type_legend},type;{template_legend:hide},customTpl';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_pdf_pb'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_item'] = '{type_legend},type;{price_legend},quantity,price_unit,tax;{date_legend:hide},date_from,date_to;{content_legend},name,description';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_subtotal'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_total'] = '{type_legend},type';

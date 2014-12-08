@@ -37,7 +37,7 @@ class ContentItem extends \Contao\ContentElement
 		$this->tax_label = 'Steuerfrei';
 
 		$objPrice = \develab\accounting\Helper::getTotalPrice(array($this));
-		$arrFields = \develab\accounting\Helper::getFields($this->ptable);
+		$arrFields = \develab\accounting\Helper::getFields($this->objParentModel);
 
 		$this->Template->price_unit = \develab\accounting\Helper::formatPrice($this->price_unit);
 		$this->Template->price_subtotal = \develab\accounting\Helper::formatPrice($objPrice->price);

@@ -25,15 +25,11 @@
 		<div class="content">
 			<h1><strong>Rechnung</strong> <?php echo $this->no; ?></h1>
 
+<?php if ($this->salutation): ?>
 			<div class="ce_text">
-				<h2>Sehr <?php if ($this->recipient->gender == 'female'): ?>geehrte Frau<?php else: ?>geehrter Herr<?php endif; ?> <?php echo $this->recipient->lastname; ?>,</h2>
-				<p>
-					hiermit erlauben wir uns Ihnen eine Rechnung über nachfolgende Positionen zu stellen. Wir freuen uns über Ihren Einkauf bei uns und hoffen, dass alles zu Ihrer Zufriedenheit war.
-				</p>
-				<p>
-					Bei Fragen, Wünschen oder Anregungen können Sie mich gern jederzeit persönlich unter <strong><?php echo $this->sender->email; ?></strong><?php if ($this->sender->mobile): ?> oder telefonisch unter der Rufnummer <strong><?php echo $this->sender->mobile; ?></strong><?php endif; ?> kontaktieren.
-				</p>
+<?php echo $this->salutation; ?>
 			</div>
+<?php endif; ?>
 
 			<pagebreak />
 
@@ -45,23 +41,11 @@
 <?php endforeach; ?>
 					</tr>
 				</thead>
-<?php echo $this->content; ?>
+<?php echo $this->accounting; ?>
 			</table>
 
-			<div class="ce_text">
-				<p></p>
-				<p>
-					Der Rechnungsbetrag von <strong>{{accounting::price_total_bill::<?php echo $this->id; ?>::1}}</strong> ist ohne Abzug <strong>fällig bis zum <?php echo $this->due; ?></strong>. Zahlen Sie bitte diese Summe auf das unten angegebene Konto und geben Sie die Rechnungsnummer im Verwendungszweck an.
-				</p>
-			</div>
+<?php echo $this->content; ?>
 
-			<div class="ce_text">
-				<p></p>
-				<p>
-					Vielen Dank und mit delikaten Grüßen,<br>
-					<?php echo $this->sender->firstname; ?> <?php echo $this->sender->lastname; ?>
-				</p>
-			</div>
 		</div>
 	</body>
 </html>
