@@ -22,6 +22,7 @@ $GLOBALS['TL_LANG']['tl_accounting_bills']['due'] = array('Fälligkeit', 'Der Ze
 $GLOBALS['TL_LANG']['tl_accounting_bills']['customer'] = array('Kunde', 'Der rechnungsempfangende Kunde.');
 $GLOBALS['TL_LANG']['tl_accounting_bills']['responsible'] = array('Verantwortlicher', 'Der verantwortliche Kundebetreuer.');
 $GLOBALS['TL_LANG']['tl_accounting_bills']['salutation'] = array('Begrüßung', 'Geben Sie einen optionalen Begrüßungs- oder Betrefftext an.');
+$GLOBALS['TL_LANG']['tl_accounting_bills']['layout'] = array('Layout', 'Wählen Sie ein Layout für die Rechnung aus.');
 
 
 /**
@@ -30,6 +31,7 @@ $GLOBALS['TL_LANG']['tl_accounting_bills']['salutation'] = array('Begrüßung', 
 $GLOBALS['TL_LANG']['tl_accounting_bills']['date_legend'] = 'Datum';
 $GLOBALS['TL_LANG']['tl_accounting_bills']['content_legend'] = 'Inhalte';
 $GLOBALS['TL_LANG']['tl_accounting_bills']['fields_legend'] = 'Felder';
+$GLOBALS['TL_LANG']['tl_accounting_bills']['layout_legend'] = 'Layout';
 
 
 /**
@@ -37,7 +39,8 @@ $GLOBALS['TL_LANG']['tl_accounting_bills']['fields_legend'] = 'Felder';
  */
 $GLOBALS['TL_LANG']['tl_accounting_bills']['new'] = array('Neue Rechnung', 'Eine neue Rechnung anlegen.');
 $GLOBALS['TL_LANG']['tl_accounting_bills']['show'] = array('Rechnungsdetails', 'Details der Rechnung ID %s anzeigen');
-$GLOBALS['TL_LANG']['tl_accounting_bills']['edit'] = array('Rechnung bearbeiten', 'Rechnung ID %s bearbeiten');
+$GLOBALS['TL_LANG']['tl_accounting_bills']['edit'] = array('Inhaltselemente bearbeiten', 'Inhaltselemente ID %s bearbeiten');
+$GLOBALS['TL_LANG']['tl_accounting_bills']['editheader'] = array('Rechnung bearbeiten', 'Rechnung ID %s bearbeiten');
 $GLOBALS['TL_LANG']['tl_accounting_bills']['copy'] = array('Rechnung duplizieren', 'Rechnung ID %s duplizieren');
-$GLOBALS['TL_LANG']['tl_accounting_bills']['print'] = array('Rechnung drucken', 'Rechnung ID %s drucken');
+$GLOBALS['TL_LANG']['tl_accounting_bills']['print'] = array('PDF erzeugen', 'PDF ID %s erzeugen');
 $GLOBALS['TL_LANG']['tl_accounting_bills']['delete'] = array('Rechnung löschen', 'Rechnung ID %s löschen');

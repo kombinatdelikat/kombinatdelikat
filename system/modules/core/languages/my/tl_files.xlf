@@ -17,6 +17,30 @@
         <source>Prevent accessing the folder via HTTP. The files can still be made available e.g. with the downloads element.</source>
         <target>ဟိပ်စ်တီတီပီမှဖို်င်တွဲဝင်ကြည့်ခြင်းကာကွယ်။ယခုဖိုင်များကိုလုပ်ရယူနိုင်ပြီး(ဥပမာဆွဲယူပြီးပစ္စည်းဖြင့်)။</target>
       </trans-unit>
+      <trans-unit id="tl_files.importantPartX.0">
+        <source>Important part x coordinate</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartX.1">
+        <source>Here you can enter the x coordinate of the important part.</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartY.0">
+        <source>Important part y coordinate</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartY.1">
+        <source>Here you can enter the y coordinate of the important part.</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartWidth.0">
+        <source>Important part width</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartWidth.1">
+        <source>Here you can enter the width of the important part.</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartHeight.0">
+        <source>Important part height</source>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartHeight.1">
+        <source>Here you can enter the height of the important part.</source>
+      </trans-unit>
       <trans-unit id="tl_files.meta.0">
         <source>Meta information</source>
         <target>ရှေ့ဆက်အချက်အလက်</target>
@@ -141,9 +165,11 @@
       </trans-unit>
       <trans-unit id="tl_files.edit.0">
         <source>Edit file or folder</source>
+        <target>ဖိုင်နှင့်ဖိုင်တွဲတည်းဖြတ်</target>
       </trans-unit>
       <trans-unit id="tl_files.edit.1">
         <source>Edit file or folder &quot;%s&quot;</source>
+        <target>ဖိုင်နှင့်ဖိုင်တွဲတည်းဖြတ် &quot;%s&quot;</target>
       </trans-unit>
       <trans-unit id="tl_files.delete.0">
         <source>Delete file or folder</source>
@@ -155,9 +181,11 @@
       </trans-unit>
       <trans-unit id="tl_files.show.0">
         <source>File or folder details</source>
+        <target>ဖိုင်နှင်ဖိုင်တွဲအချက်အလက်များ</target>
       </trans-unit>
       <trans-unit id="tl_files.show.1">
         <source>Show the details of file or folder &quot;%s&quot;</source>
+        <target>ဖိုင်နှင်ဖိုင်တွဲ &quot;%s&quot; အချက်အလက်များပြသ</target>
       </trans-unit>
       <trans-unit id="tl_files.source.0">
         <source>Edit file</source>
@@ -206,6 +234,9 @@
       <trans-unit id="tl_files.sync.1">
         <source>Synchronize the file system and the database</source>
         <target>ဖိုင်စနစ်နှင့်အချက်အလက်အစုထပ်တူကျရန်လုပ်</target>
+      </trans-unit>
+      <trans-unit id="tl_files.edit_preview_help">
+        <source>Mark the important part of the image with your mouse cursor.</source>
       </trans-unit>
     </body>
   </file>

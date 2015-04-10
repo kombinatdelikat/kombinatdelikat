@@ -75,7 +75,7 @@
       </trans-unit>
       <trans-unit id="tl_repository.releasedate.0">
         <source>Release date</source>
-        <target>Дата релиза</target>
+        <target>Дата выпуска</target>
       </trans-unit>
       <trans-unit id="tl_repository.releasedate.1">
         <source>Enter the publishing date of this release in format %s</source>
@@ -215,7 +215,7 @@
       </trans-unit>
       <trans-unit id="tl_repository.ratingfmt">
         <source>%.2f (%d votes)</source>
-        <target>%.2f (%d голосов)</target>
+        <target>%.2f (голосов: %d)</target>
       </trans-unit>
       <trans-unit id="tl_repository.reldownloads">
         <source>Release downloads</source>
@@ -599,7 +599,7 @@
       </trans-unit>
       <trans-unit id="tl_repository_order_options.reldate">
         <source>Releasedate</source>
-        <target>Дата релиза</target>
+        <target>Дата выпуска</target>
       </trans-unit>
       <trans-unit id="tl_repository_order_options.rating">
         <source>Rating</source>

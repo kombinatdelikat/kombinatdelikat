@@ -11,6 +11,8 @@
  * @copyright David Enke 2014
  */
 
+$GLOBALS['TL_LANG']['tl_content']['category'] = array('Kategorie', 'Wählen Sie eine optionale kategorie für die Position.');
+$GLOBALS['TL_LANG']['tl_content']['category_none'] = 'keine Kategorie';
 $GLOBALS['TL_LANG']['tl_content']['quantity'] = array('Menge und Einheit', 'Geben Sie die Menge und die zugehörige Einheit an.');
 $GLOBALS['TL_LANG']['tl_content']['price_unit'] = array('Einzelpreis', 'Geben Sie den Einzelpreis an.');
 $GLOBALS['TL_LANG']['tl_content']['tax'] = array('Steuersatz', 'Wählen Sie den Steuersatz aus.');
@@ -22,3 +24,4 @@ $GLOBALS['TL_LANG']['tl_content']['description'] = array('Beschreibung', 'Geben 
 $GLOBALS['TL_LANG']['tl_content']['price_legend'] = 'Preis';
 $GLOBALS['TL_LANG']['tl_content']['date_legend'] = 'Leistungszeitraum';
 $GLOBALS['TL_LANG']['tl_content']['content_legend'] = 'Inhalte';
+$GLOBALS['TL_LANG']['tl_content']['fields_legend'] = 'Felder';

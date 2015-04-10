@@ -25,14 +25,6 @@
         <source>Please enter a valid e-mail address.</source>
         <target>Prosím zadajte platnú e-mailovú adresu.</target>
       </trans-unit>
-      <trans-unit id="tl_user.google.0">
-        <source>Google+ profile ID</source>
-        <target>Google+ profile ID</target>
-      </trans-unit>
-      <trans-unit id="tl_user.google.1">
-        <source>Here you can enter your Google+ profile ID or vanity name.</source>
-        <target>Prosím zadajte číselné ID alebo vlastný názov (vanity) Google+!</target>
-      </trans-unit>
       <trans-unit id="tl_user.language.0">
         <source>Back end language</source>
         <target>Jazyk administrácie</target>
@@ -236,10 +228,6 @@
       <trans-unit id="tl_user.name_legend">
         <source>Name and e-mail</source>
         <target>Meno a e-mailová adresa</target>
-      </trans-unit>
-      <trans-unit id="tl_user.google_legend">
-        <source>Google+ settings</source>
-        <target>Nastavenia Google+</target>
       </trans-unit>
       <trans-unit id="tl_user.backend_legend">
         <source>Back end settings</source>

@@ -153,6 +153,14 @@
         <source>Page layouts</source>
         <target>Seitenlayouts</target>
       </trans-unit>
+      <trans-unit id="MOD.tl_image_size">
+        <source>Image sizes</source>
+        <target>Bildgrößen</target>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size_item">
+        <source>Image size media queries</source>
+        <target>Bildgrößen-Media-Queries</target>
+      </trans-unit>
       <trans-unit id="MOD.css">
         <source>Style sheets</source>
         <target>Stylesheets</target>
@@ -164,6 +172,10 @@
       <trans-unit id="MOD.layout">
         <source>Page layouts</source>
         <target>Seitenlayouts</target>
+      </trans-unit>
+      <trans-unit id="MOD.image_sizes">
+        <source>Image sizes</source>
+        <target>Bildgrößen</target>
       </trans-unit>
       <trans-unit id="MOD.theme_import">
         <source>Theme import</source>

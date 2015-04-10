@@ -25,6 +25,10 @@
         <source>Submit comment</source>
         <target>Envoyer le commentaire</target>
       </trans-unit>
+      <trans-unit id="MSC.com_login">
+        <source>You need to be logged in to add comments.</source>
+        <target>Vous devez être connecté pour ajouter des commentaires.</target>
+      </trans-unit>
       <trans-unit id="MSC.com_by">
         <source>Comment by</source>
         <target>Commentaire de</target>

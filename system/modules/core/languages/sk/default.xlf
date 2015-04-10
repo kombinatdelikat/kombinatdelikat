@@ -25,8 +25,20 @@
         <source>Field &quot;%s&quot; must not be longer than %d characters!</source>
         <target>Pole &quot;%s&quot; nesmie obsahovať viac ako %d znakov!</target>
       </trans-unit>
+      <trans-unit id="ERR.minval">
+        <source>Field &quot;%s&quot; has to be at least %d!</source>
+        <target>Pole &quot;%s&quot; musí obsahovať aspoň %d znakov!</target>
+      </trans-unit>
+      <trans-unit id="ERR.maxval">
+        <source>Field &quot;%s&quot; must not be greater than %d!</source>
+        <target>Pole &quot;%s&quot; nesmie obsahovať viac ako %d znakov!</target>
+      </trans-unit>
       <trans-unit id="ERR.digit">
         <source>Please enter digits only!</source>
+        <target>Zadajte iba číslice!</target>
+      </trans-unit>
+      <trans-unit id="ERR.natural">
+        <source>Please enter natural numbers only!</source>
         <target>Zadajte iba číslice!</target>
       </trans-unit>
       <trans-unit id="ERR.prcnt">
@@ -789,6 +801,10 @@
         <source>Open the link in a new browser window.</source>
         <target>Ak zvolíte túto možnosť, cieľová URL sa otvorí v novom okne prehliadača.</target>
       </trans-unit>
+      <trans-unit id="MSC.textDirection">
+        <source>ltr</source>
+        <target>ltr</target>
+      </trans-unit>
       <trans-unit id="MSC.decimalSeparator">
         <source>.</source>
         <target>.</target>
@@ -985,6 +1001,10 @@
         <source>Add language</source>
         <target>Pridať jazyk</target>
       </trans-unit>
+      <trans-unit id="MSC.image_sizes">
+        <source>Predefined dimensions</source>
+        <target>Prednastavené rozmery</target>
+      </trans-unit>
       <trans-unit id="MSC.relative">
         <source>Relative dimensions</source>
         <target>Relatívne rozmery</target>
@@ -1005,9 +1025,19 @@
         <source>The shorter side of the image is adjusted to the given dimensions and the image is resized proportionally.</source>
         <target>Kratšia strana obrázku bude prispôsobená zadaným rozmerom a obrázok bude zmenšený proporčne.</target>
       </trans-unit>
-      <trans-unit id="MSC.crop">
+      <trans-unit id="MSC.exact.0">
         <source>Exact dimensions</source>
         <target>Presné rozmery</target>
+      </trans-unit>
+      <trans-unit id="MSC.exact.1">
+        <source>The image will be resized to the given dimensions. If necessary, it will be cropped.</source>
+        <target>Veľkosť obrázku bude zmenená na zadané rozmery. Ak je to nevyhnutné, bude orezaný.</target>
+      </trans-unit>
+      <trans-unit id="MSC.crop.0">
+        <source>Important part</source>
+      </trans-unit>
+      <trans-unit id="MSC.crop.1">
+        <source>Preserves the important part of an image as specified in the file manager.</source>
       </trans-unit>
       <trans-unit id="MSC.left_top.0">
         <source>Left | Top</source>
@@ -1154,20 +1184,18 @@
         <target>Pridaný (dátum): %s</target>
       </trans-unit>
       <trans-unit id="MSC.lastLogin.0">
+        <source>Previous login</source>
+      </trans-unit>
+      <trans-unit id="MSC.lastLogin.1">
+        <source>Previous login: %s</source>
+      </trans-unit>
+      <trans-unit id="MSC.currentLogin.0">
         <source>Last login</source>
         <target>Posledné prihlásenie</target>
       </trans-unit>
-      <trans-unit id="MSC.lastLogin.1">
+      <trans-unit id="MSC.currentLogin.1">
         <source>Last login: %s</source>
         <target>Posledné prihlásenie: %s</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.0">
-        <source>Current login</source>
-        <target>Aktuálne prihlásenie</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.1">
-        <source>Current login: %s</source>
-        <target>Aktuálne prihlásenie: %s</target>
       </trans-unit>
       <trans-unit id="MSC.loginCount">
         <source>Login attempts</source>
@@ -1342,6 +1370,14 @@ Tento e-mail bol automatický vygenerovaný systémom Contao. Neodpovedajte naň
       <trans-unit id="MSC.delAllConfirm">
         <source>Do you really want to delete the selected records?</source>
         <target>Naozaj chcete odstrániť označené záznamy?</target>
+      </trans-unit>
+      <trans-unit id="MSC.deleteConfirmFile">
+        <source>Do you really want to delete file or folder %s?</source>
+        <target>Naozaj chcete odstrániť súbor alebo adresár %s?</target>
+      </trans-unit>
+      <trans-unit id="MSC.delAllConfirmFile">
+        <source>Do you really want to delete the selected resources?</source>
+        <target>Naozaj chcete odstrániť označené zdroje?</target>
       </trans-unit>
       <trans-unit id="MSC.filterRecords">
         <source>Records</source>
@@ -1646,6 +1682,14 @@ Tento e-mail bol automatický vygenerovaný systémom Contao. Neodpovedajte naň
       <trans-unit id="MSC.resetSelected">
         <source>Reset selection</source>
         <target>Zrušiť výber</target>
+      </trans-unit>
+      <trans-unit id="MSC.filePicker">
+        <source>Switch to file picker</source>
+        <target>Prepnúť na výber súboru</target>
+      </trans-unit>
+      <trans-unit id="MSC.pagePicker">
+        <source>Switch to page picker</source>
+        <target>Prepnúť na výber stránky</target>
       </trans-unit>
       <trans-unit id="MSC.fileManager">
         <source>Open the file manager</source>
@@ -2118,6 +2162,10 @@ Tento e-mail bol automatický vygenerovaný systémom Contao. Neodpovedajte naň
       <trans-unit id="MSC.location">
         <source>Location</source>
         <target>Umiestnenie</target>
+      </trans-unit>
+      <trans-unit id="MSC.download">
+        <source>Download %s</source>
+        <target>Stiahnuť %s</target>
       </trans-unit>
       <trans-unit id="UNITS.0">
         <source>Byte</source>

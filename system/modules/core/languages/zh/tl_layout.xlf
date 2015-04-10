@@ -146,12 +146,12 @@
         <target>请选择自定义布局区域位置。</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.0">
-        <source>Style sheets</source>
-        <target>样式表</target>
+        <source>Internal style sheets</source>
+        <target>内联样式表</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.1">
-        <source>Please select the style sheets you want to add to the layout.</source>
-        <target>请选择您要添加到布局中的样式表。</target>
+        <source>Here you can add internal style sheets to the layout.</source>
+        <target>在这里添加内联样式表到布局中.</target>
       </trans-unit>
       <trans-unit id="tl_layout.framework.0">
         <source>CSS framework</source>
@@ -210,12 +210,12 @@
         <target>包含您上传目录中的&lt;em&gt;tinymce.css&lt;/em&gt;样式表。</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.0">
-        <source>Additional style sheets</source>
-        <target>额外样式表</target>
+        <source>External style sheets</source>
+        <target>外联样式表</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.1">
-        <source>Here you can add additional CSS, SCSS or LESS files from the file system.</source>
-        <target>在这里添加来自文件系统的额外的CSS, SCSS 或 LESS 文件。</target>
+        <source>Here you can add external CSS, SCSS or LESS files from the file system.</source>
+        <target>在这里添加来自文件系统的外联的CSS, SCSS 或者 LESS 文件.</target>
       </trans-unit>
       <trans-unit id="tl_layout.orderExt.0">
         <source>Sort order</source>
@@ -224,6 +224,22 @@
       <trans-unit id="tl_layout.orderExt.1">
         <source>The sort order of the style sheets.</source>
         <target>样式表排序顺序。</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.0">
+        <source>Loading order</source>
+        <target>加载顺序</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.1">
+        <source>Here you can select the loading order of the style sheets.</source>
+        <target>在这里可以选择样式表的加载顺序.</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.external_first">
+        <source>Load external style sheets first</source>
+        <target>首先加载外联样式表</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.internal_first">
+        <source>Load internal style sheets first</source>
+        <target>首选加载内联样式表</target>
       </trans-unit>
       <trans-unit id="tl_layout.webfonts.0">
         <source>Google web fonts</source>
@@ -286,7 +302,8 @@
         <target>视口</target>
       </trans-unit>
       <trans-unit id="tl_layout.viewport.1">
-        <source>Here you can add a custom viewport (e.g. &lt;em&gt;initial-scale=1.0&lt;/em&gt;).</source>
+        <source>Here you can overwrite the viewport content (defaults to &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</source>
+        <target>在这里重写视口内容 (默认为 &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</target>
       </trans-unit>
       <trans-unit id="tl_layout.titleTag.0">
         <source>Title tag</source>
@@ -360,6 +377,14 @@
         <source>Here you can select one or more MooTools templates.</source>
         <target>您可以在这里选择一个或多个MooTools模板。</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill.0">
+        <source>Load the image polyfill</source>
+        <target>加载图片polyfill</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.picturefill.1">
+        <source>Include the image polyfill (&lt;em&gt;respimage.js&lt;/em&gt;) in the layout.</source>
+        <target>在布局中包含图片polyfill(&lt;em&gt;respimage.js&lt;/em&gt;) .</target>
+      </trans-unit>
       <trans-unit id="tl_layout.analytics.0">
         <source>Analytics templates</source>
         <target>Analytics模板</target>
@@ -424,6 +449,10 @@
         <source>Style sheets</source>
         <target>样式表</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill_legend">
+        <source>Responsive images</source>
+        <target>响应式图片</target>
+      </trans-unit>
       <trans-unit id="tl_layout.feed_legend">
         <source>RSS/Atom feeds</source>
         <target>RSS/Atom源</target>
@@ -437,8 +466,8 @@
         <target>专家设置</target>
       </trans-unit>
       <trans-unit id="tl_layout.script_legend">
-        <source>Script settings</source>
-        <target>脚本设置</target>
+        <source>JavaScript</source>
+        <target>JavaScript</target>
       </trans-unit>
       <trans-unit id="tl_layout.static_legend">
         <source>Static layout</source>

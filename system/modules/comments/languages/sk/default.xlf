@@ -25,6 +25,10 @@
         <source>Submit comment</source>
         <target>Odoslať komentár</target>
       </trans-unit>
+      <trans-unit id="MSC.com_login">
+        <source>You need to be logged in to add comments.</source>
+        <target>Ak chcete vložiť komentár, musíte byť prihlásený.</target>
+      </trans-unit>
       <trans-unit id="MSC.com_by">
         <source>Comment by</source>
         <target>Komentár od:</target>

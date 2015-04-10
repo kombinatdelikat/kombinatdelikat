@@ -138,10 +138,12 @@
         <target>Zadejte jméno XML souboru</target>
       </trans-unit>
       <trans-unit id="tl_page.useSSL.0">
-        <source>Use HTTPS</source>
+        <source>Use HTTPS in sitemaps</source>
+        <target>Použít HTTPS v mapě stránek</target>
       </trans-unit>
       <trans-unit id="tl_page.useSSL.1">
-        <source>Generate the URLs with &lt;em&gt;https://&lt;/em&gt; (e.g. in sitemaps).</source>
+        <source>Generate the sitemap URLs of this website with &lt;em&gt;https://&lt;/em&gt;.</source>
+        <target>Vytvoří mapu stránek s internetovými odkazy začínajícími na &lt;em&gt;https://&lt;/em&gt;</target>
       </trans-unit>
       <trans-unit id="tl_page.autoforward.0">
         <source>Forward to another page</source>

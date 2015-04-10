@@ -1,0 +1,34 @@
+<?php if (!\Input::get('key') || \Input::get('key') != 'print'): ?>
+<table style="width:100%;table-layout:fixed">
+<?php endif; ?>
+
+<tfoot>
+	<tr class="<?php echo $this->class; ?>">
+		<td colspan="<?php echo $this->indent; ?>">Summe</td>
+<?php foreach ($this->fields as $k=>$arrField): ?>
+		<td class="<?php echo $arrField['class']; ?>"<?php if ($arrField['first']): ?> colspan="2"<?php endif; ?>>
+<?php if ($k == 'description'): ?>
+			<h3><strong><?php echo $this->name; ?></strong></h3>
+			<p><?php echo $this->description; ?></p>
+<?php elseif ($k == 'quantity' && sizeof($this->quantities)): ?>
+<?php foreach ($this->quantities as $strUnit=>$strQuantity): ?>
+			<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
+<?php endforeach; ?>
+<?php elseif ($k == 'price_tax' && sizeof($this->taxes)): ?>
+<?php foreach ($this->taxes as $i=>$arrTax): ?>
+			<span class="label">(<?php echo $arrTax['label']; ?>)</span> <?php echo $arrTax['abbr']; ?> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+<?php endforeach; ?>
+<?php elseif (in_array($k, array('price', 'price_unit', 'price_total', 'price_subtotal'))): ?>
+			<?php echo $this->$k; ?> <span class="currency"><?php echo $this->currency; ?></span>
+<?php else: ?>
+			<?php echo $this->$k; ?>
+	
+<?php endif; ?>
+		</td>
+<?php endforeach; ?>
+	</tr>
+</tfoot>
+
+<?php if (!\Input::get('key') || \Input::get('key') != 'print'): ?>
+</table>
+<?php endif; ?>

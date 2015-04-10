@@ -25,9 +25,18 @@
         <source>Field &quot;%s&quot; must not be longer than %d characters!</source>
         <target>Innehållet i fältet &quot;%s&quot; får inte vara längre än %d tecken långt!</target>
       </trans-unit>
+      <trans-unit id="ERR.minval">
+        <source>Field &quot;%s&quot; has to be at least %d!</source>
+      </trans-unit>
+      <trans-unit id="ERR.maxval">
+        <source>Field &quot;%s&quot; must not be greater than %d!</source>
+      </trans-unit>
       <trans-unit id="ERR.digit">
         <source>Please enter digits only!</source>
         <target>Ange enbart siffror!</target>
+      </trans-unit>
+      <trans-unit id="ERR.natural">
+        <source>Please enter natural numbers only!</source>
       </trans-unit>
       <trans-unit id="ERR.prcnt">
         <source>Please enter a percentage between 0 and 100!</source>
@@ -784,6 +793,10 @@
         <source>Open the link in a new browser window.</source>
         <target>Om du väljer detta alternativ kommer mål-URL:en att öppnas ett nytt webbläsarfönster.</target>
       </trans-unit>
+      <trans-unit id="MSC.textDirection">
+        <source>ltr</source>
+        <target>ltr</target>
+      </trans-unit>
       <trans-unit id="MSC.decimalSeparator">
         <source>.</source>
         <target>.</target>
@@ -980,6 +993,9 @@
         <source>Add language</source>
         <target>Lägg till språk</target>
       </trans-unit>
+      <trans-unit id="MSC.image_sizes">
+        <source>Predefined dimensions</source>
+      </trans-unit>
       <trans-unit id="MSC.relative">
         <source>Relative dimensions</source>
         <target>Relativa dimensioner</target>
@@ -1000,9 +1016,18 @@
         <source>The shorter side of the image is adjusted to the given dimensions and the image is resized proportionally.</source>
         <target>Den kortare sidan av bilden är justerad till den angivna dimensionen och bilden har omskalats propertionellt.</target>
       </trans-unit>
-      <trans-unit id="MSC.crop">
+      <trans-unit id="MSC.exact.0">
         <source>Exact dimensions</source>
         <target>Exakta mått</target>
+      </trans-unit>
+      <trans-unit id="MSC.exact.1">
+        <source>The image will be resized to the given dimensions. If necessary, it will be cropped.</source>
+      </trans-unit>
+      <trans-unit id="MSC.crop.0">
+        <source>Important part</source>
+      </trans-unit>
+      <trans-unit id="MSC.crop.1">
+        <source>Preserves the important part of an image as specified in the file manager.</source>
       </trans-unit>
       <trans-unit id="MSC.left_top.0">
         <source>Left | Top</source>
@@ -1149,20 +1174,18 @@
         <target>Skapad: %s</target>
       </trans-unit>
       <trans-unit id="MSC.lastLogin.0">
+        <source>Previous login</source>
+      </trans-unit>
+      <trans-unit id="MSC.lastLogin.1">
+        <source>Previous login: %s</source>
+      </trans-unit>
+      <trans-unit id="MSC.currentLogin.0">
         <source>Last login</source>
         <target>Senaste inloggad</target>
       </trans-unit>
-      <trans-unit id="MSC.lastLogin.1">
+      <trans-unit id="MSC.currentLogin.1">
         <source>Last login: %s</source>
         <target>Senaste inloggad: %s</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.0">
-        <source>Current login</source>
-        <target>Nuvarande login</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.1">
-        <source>Current login: %s</source>
-        <target>Nuvarande login: %s</target>
       </trans-unit>
       <trans-unit id="MSC.loginCount">
         <source>Login attempts</source>
@@ -1337,6 +1360,12 @@ Detta e-postmeddelande har genererats av Contao. Du kan inte svara på det direk
       <trans-unit id="MSC.delAllConfirm">
         <source>Do you really want to delete the selected records?</source>
         <target>Vill du verkligen ta bort de markerade posterna?</target>
+      </trans-unit>
+      <trans-unit id="MSC.deleteConfirmFile">
+        <source>Do you really want to delete file or folder %s?</source>
+      </trans-unit>
+      <trans-unit id="MSC.delAllConfirmFile">
+        <source>Do you really want to delete the selected resources?</source>
       </trans-unit>
       <trans-unit id="MSC.filterRecords">
         <source>Records</source>
@@ -1639,6 +1668,12 @@ Detta e-postmeddelande har genererats av Contao. Du kan inte svara på det direk
       <trans-unit id="MSC.resetSelected">
         <source>Reset selection</source>
         <target>Nollställ valda</target>
+      </trans-unit>
+      <trans-unit id="MSC.filePicker">
+        <source>Switch to file picker</source>
+      </trans-unit>
+      <trans-unit id="MSC.pagePicker">
+        <source>Switch to page picker</source>
       </trans-unit>
       <trans-unit id="MSC.fileManager">
         <source>Open the file manager</source>
@@ -2108,6 +2143,9 @@ Detta e-postmeddelande har genererats av Contao. Du kan inte svara på det direk
       <trans-unit id="MSC.location">
         <source>Location</source>
         <target>Plats</target>
+      </trans-unit>
+      <trans-unit id="MSC.download">
+        <source>Download %s</source>
       </trans-unit>
       <trans-unit id="UNITS.0">
         <source>Byte</source>

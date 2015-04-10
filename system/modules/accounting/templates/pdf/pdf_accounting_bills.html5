@@ -7,7 +7,7 @@
 	</head>
 	<body<?php if ($this->debug): ?> class="debug"<?php endif; ?>>
 
-		<div class="sender"><?php if ($this->sender->company): ?><?php echo $this->sender->company; ?><?php else: ?><strong><?php echo $this->sender->firstname; ?> <?php echo $this->sender->lastname; ?></strong><?php endif; ?><br><?php echo $this->sender->street; ?>, <?php echo $this->sender->country ?: 'de'; ?>-<?php echo $this->sender->postal; ?> <?php echo $this->sender->city; ?></div>
+		<div class="sender"><?php if ($this->sender->company): ?><?php echo $this->sender->company; ?><?php else: ?><strong><?php echo $this->sender->firstname; ?> <?php echo $this->sender->lastname; ?></strong><?php endif; ?>, <?php echo $this->sender->street; ?>, <?php echo $this->sender->country ?: 'de'; ?>-<?php echo $this->sender->postal; ?> <?php echo $this->sender->city; ?></div>
 
 		<div class="recipient">
 <?php if ($this->recipient->company): ?>
@@ -31,21 +31,9 @@
 			</div>
 <?php endif; ?>
 
-			<pagebreak />
-
-			<table class="ce_table">
-				<thead>
-					<tr>
-<?php foreach ($this->fields as $arrField): ?>
-						<th class="<?php echo $arrField['class']; ?>"><?php echo $arrField['label']; ?></th>
+<?php foreach ($this->elements as $strElement): ?>
+<?php echo $strElement; ?>
 <?php endforeach; ?>
-					</tr>
-				</thead>
-<?php echo $this->accounting; ?>
-			</table>
-
-<?php echo $this->content; ?>
-
 		</div>
 	</body>
 </html>

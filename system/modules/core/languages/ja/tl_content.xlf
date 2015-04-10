@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>並べ替えの順序を選択してください。</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>メタデータのないファイルを無視</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>ページの言語に一致するメタデータのないファイルを表示しません。</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>ギャラリーのテンプレート</target>
@@ -756,11 +764,11 @@
       </trans-unit>
       <trans-unit id="tl_content.toggle.0">
         <source>Toggle visibility</source>
-        <target>表示状態を切り替え</target>
+        <target>表示と非表示を切り替え</target>
       </trans-unit>
       <trans-unit id="tl_content.toggle.1">
         <source>Toggle the visibility of element ID %s</source>
-        <target>ID %sのコンテント要素の表示状態を切り替え</target>
+        <target>ID %sのコンテント要素の表示と非表示を切り替え</target>
       </trans-unit>
       <trans-unit id="tl_content.editalias.0">
         <source>Edit source element</source>
@@ -777,6 +785,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>ID %sのアーティクルを編集</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>CSVファイルから箇条書きの項目をインポート</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>CSVファイルから表の項目をインポート</target>
       </trans-unit>
     </body>
   </file>

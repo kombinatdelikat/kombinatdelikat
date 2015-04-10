@@ -11,6 +11,8 @@
  * @copyright David Enke 2014
  */
 
+\System::loadLanguageFile('tl_accounting_settings_units');
+\System::loadLanguageFile('tl_accounting_settings_layouts');
 
 /**
  * Table tl_accounting_offers
@@ -22,10 +24,12 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
+		'ctable'                      => array('tl_content'),
 		'enableVersioning'            => true,
+		'switchToEdit'                => true,
 		'onload_callback'             => array
 		(
-//			array('KdHelper', 'showStockMessage')
+			array('tl_accounting_offers', 'onLoad')
 		),
 		'sql' => array
 		(
@@ -42,14 +46,13 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 		'sorting' => array
 		(
 			'mode'                    => 2,
-			'fields'                  => array('date'),
-			'flag'                    => 11,
+			'fields'                  => array('date', 'no DESC'),
 			'panelLayout'             => 'filter;sort,search,limit'
 		),
 		'label' => array
 		(
-			'fields'                  => array('no', 'date', 'tstamp'),
-			'format'                  => '<strong style="text-transform:uppercase">Angebot %s</strong> vom %s<br><em>Zuletzt bearbeitet am %s Uhr</em>',
+			'fields'                  => array('no', 'due', 'date', 'responsible', 'customer'),
+			'format'                  => '<strong>%s</strong>, ' . $GLOBALS['TL_LANG']['MSC']['validation'] . ' %s<span style="display:block;width:350px;margin:5px 3px;padding:5px;border:3px dashed #ddd;font-family:Monaco,Courier,serif">%s<span style="display:block;font-size:10px">%s</span><span style="display:block;font-size:13px">%s</span></span>',
 			'label_callback'          => array
 			(
 				'tl_accounting_offers', 'setLabel'
@@ -70,8 +73,15 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 			'edit' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_accounting_offers']['edit'],
+				'href'                => 'table=tl_content',
+				'icon'                => 'edit.gif',
+				'button_callback'     => array('tl_accounting_offers', 'edit')
+			),
+			'editheader' => array
+			(
+				'label'               => &$GLOBALS['TL_LANG']['tl_accounting_offers']['editheader'],
 				'href'                => 'act=edit',
-				'icon'                => 'edit.gif'
+				'icon'                => 'header.gif'
 			),
 			'copy' => array
 			(
@@ -96,7 +106,7 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_accounting_offers']['print'],
 				'href'                => 'key=print',
-				'icon'                => 'assets/contao/images/print.gif',
+				'icon'                => 'system/modules/accounting/assets/img/accounting_pdf.gif',
 				'button_callback'     => array('tl_accounting_offers', 'printBill')
 			)
 		)
@@ -105,7 +115,10 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 	// Select
 	'select' => array
 	(
-		'buttons_callback' => array()
+		'buttons_callback' => array
+		(
+			array('tl_accounting_offers', 'addPrintButton')
+		)
 	),
 
 	// Edit
@@ -118,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{date_legend},no,date;{content_legend},'
+		'default'                     => '{date_legend},no,locked,date,due;{content_legend},customer,responsible,salutation;{fields_legend:hide},fields,categories;{layout_legend},layout'
 	),
 
 	// Subpalettes
@@ -135,116 +148,285 @@ $GLOBALS['TL_DCA']['tl_accounting_offers'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-		'locked' => array
+		'tstamp_generated' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_labels']['locked'],
-			'exclude'                 => true,
-			'filter'                  => true,
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'eval'                    => array('doNotCopy'=>true, 'doNotShow'=>true)
+		),
+		'file_generated' => array
+		(
+			'sql'                     => "binary(16) NULL",
+			'eval'                    => array('doNotCopy'=>true, 'doNotShow'=>true)
+		),
+		'generated' => array
+		(
 			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'clr m12'),
-			'sql'                     => "char(1) NOT NULL default ''"
+			'default'                 => 0,
+			'eval'                    => array('doNotCopy'=>true, 'doNotShow'=>true, 'isBoolean'=>true),
+			'sql'                     => "char(1) NOT NULL default '0'"
 		),
 		'no' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_labels']['no'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['no'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'sorting'                 => true,
-			'flag'                    => 11,
+			'flag'                    => 12,
 			'inputType'               => 'text',
-			'default'                 => '201409A0001',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'disabled'=>true),
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'readonly'=>true, 'doNotCopy'=>true, 'doNotShow'=>true),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'locked' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['locked'],
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'filter'                  => true,
+			'default'                 => 0,
+			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12', 'doNotCopy'=>true, 'doNotShow'=>true, 'isBoolean'=>true),
+			'sql'                     => "char(1) NOT NULL default '0'"
 		),
 		'date' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['date'],
 			'exclude'                 => true,
 			'sorting'                 => true,
-			'flag'                    => 5,
+			'flag'                    => 8,
 			'inputType'               => 'text',
+			'default'                 => time(),
 			'eval'                    => array('mandatory'=>true, 'rgxp'=>'date', 'datepicker'=>true, 'tl_class'=>'clr w50 wizard'),
-			'sql'                     => "varchar(10) NOT NULL default ''"
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'due' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['due'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'rgxp'=>'digit', 'tl_class'=> 'w50'),
+			'load_callback'           => array(array('tl_accounting_offers', 'getDue')),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'customer' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['customer'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'select',
+			'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
+			'foreignKey'              => 'tl_address.id',
+			'relation'                => array('type'=>'hasOne', 'load'=>'lazy'),
+			'options_callback'        => array('\develab\accounting\Helper', 'getContacts'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'responsible' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['responsible'],
+			'exclude'                 => true,
+			'filter'                  => true,
+			'inputType'               => 'select',
+			'eval'                    => array('mandatory'=>true, 'chosen'=>true, 'includeBlankOption'=>false, 'tl_class'=>'w50'),
+			'foreignKey'              => 'tl_address.id',
+			'relation'                => array('type'=>'hasOne', 'load'=>'lazy'),
+			'options_callback'        => array('\develab\accounting\Helper', 'getContacts'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'salutation' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['salutation'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'textarea',
+			'eval'                    => array('rte'=>'tinyMCE', 'decodeEntities'=>true, 'tl_class'=>'clr'),
+			'explanation'             => 'insertTags',
+			'sql'                     => "mediumtext NULL"
+		),
+		'fields' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings_layouts']['fields'],
+			'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings_layouts']['fields_types'],
+			'load_callback'           => array(array('\develab\accounting\Helper', 'getDefaultFields')),
+			'inputType'               => 'checkboxWizard',
+			'eval' 			          => array('tl_class'=>'clr w50', 'multiple'=>true, 'alwaysSave'=>true),
+			'sql'                     => "blob NULL"
+		),
+		'categories' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings_units']['accounting_categories'],
+			'load_callback'           => array(array('\develab\accounting\Helper', 'getDefaultCategories')),
+			'inputType'               => 'listWizard',
+			'eval' 			          => array('tl_class'=>'clr long', 'alwaysSave'=>true),
+			'sql'                     => "blob NULL"
+		),
+		'layout' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_offers']['layout'],
+			'inputType'               => 'select',
+			'foreignKey'              => 'tl_accounting_settings_layouts.title',
+			'load_callback'           => array(array('tl_accounting_offers', 'getDefaultLayout')),
+			'eval'                    => array('chosen'=>true, 'tl_class'=>'w50', 'mandatory'=>true, 'alwaysSave'=>true),
+			'relation'                => array('type'=>'hasOne', 'load'=>'lazy'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		)
 	)
 );
 
 class tl_accounting_offers extends Backend
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->import('BackendUser', 'User');
+	}
+
+	public function onLoad(DataContainer $dc)
+	{
+		$arrSession = $this->Session->getData();
+
+		if ($arrSession['sorting'][$dc->table] == 'no DESC')
+		{
+			$GLOBALS['TL_DCA'][$dc->table]['list']['sorting']['disableGrouping'] = true;
+		}
+
+		$this->checkLocked();
+	}
+
+	protected function getLockStatus($objBillModel=null)
+	{
+		if (!$objBillModel)
+		{
+			if (!\Input::get('id'))
+			{
+				return;
+			}
+
+			$objBillModel = \develab\accounting\Models\OffersModel::findOneBy('id', \Input::get('id'));
+		}
+
+		if (is_null($objBillModel))
+		{
+			return;
+		}
+
+		return $objBillModel->locked; //\Config::get('edit_locked') ? $objBillModel->locked : ($objBillModel->generated ?: $objBillModel->locked);
+	}
+
+	protected function checkLocked()
+	{
+		$blnReadonly = $this->getLockStatus();
+
+		foreach ($GLOBALS['TL_DCA']['tl_accounting_offers']['fields'] as $k=>&$v)
+		{
+			if ($k != 'locked')
+			{
+				$v['eval']['readonly'] = $blnReadonly;
+			}
+		}
+	}
+
+	public function edit($row, $href, $label, $title, $icon, $attributes)
+	{
+		$objBillModel = develab\accounting\Models\OffersModel::findOneBy('id', $row['id']);
+
+		return !$this->getLockStatus($objBillModel) ? '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ' : Image::getHtml(preg_replace('/\.gif$/i', '_.gif', $icon)).' ';
+	}
+
 	public function setLabel($arrRow, $strLabel, DataContainer $dc, $args)
 	{
-		$args[2] = \Date::parse('l, j. F Y, H:i', $arrRow['tstamp']);
+		if (empty($args[0]))
+		{
+			$args[0] = "Angebotsnummer wird beim Drucken generiert";
+		}
+		$args[1] = \Date::parse(\Config::get('dateFormat'), $arrRow['date'] + (60 * 60 * 24 * $arrRow['due']));
+		$args[3] = '';
+		$args[4] = '';
 
-		return vsprintf($GLOBALS['TL_DCA']['tl_accounting_offers']['list']['label']['format'], $args);
+		$objResponsible = \MemberModel::findOneBy('id', $arrRow['responsible']);
+		if (!is_null($objResponsible))
+		{
+			$args[3].= $objResponsible->company ? '<strong>' . $objResponsible->company . '</strong>' : '';
+			$args[3].= (!$objResponsible->company ? '<strong>' : ', ') . $objResponsible->firstname . ' ' . $objResponsible->lastname . (!$objResponsible->company ? '</strong>' : '');
+			$args[3].= ', ' . $objResponsible->street;
+			$args[3].= ', ' . strtoupper($objResponsible->country ?: 'de') . '-' . $objResponsible->postal . ' ' . $objResponsible->city;
+		}
+
+		$objCustomer = \MemberModel::findOneBy('id', $arrRow['customer']);
+		if (!is_null($objCustomer))
+		{
+			$args[4].= $objCustomer->company ? '<br><strong>' . $objCustomer->company . '</strong>' : '';
+			$args[4].= '<br>' . (!$objCustomer->company ? '<strong>' : '') . $objCustomer->firstname . ' ' . $objCustomer->lastname . (!$objCustomer->company ? '</strong>' : '');
+			$args[4].= '<br>' . $objCustomer->street;
+			$args[4].= '<br>' . strtoupper($objCustomer->country ?: 'de') . '-' . $objCustomer->postal . ' ' . $objCustomer->city;
+		}
+
+		$strLocked = Image::getHtml('/system/modules/accounting/assets/img/accounting_' . ($arrRow['locked'] ? '' : 'un') . 'locked.png', 'lock') . ' ';
+
+		return $strLocked . vsprintf($GLOBALS['TL_DCA']['tl_accounting_offers']['list']['label']['format'], $args);
+	}
+
+	public function getDefaultLayout($varValue)
+	{
+		if (empty($varValue))
+		{
+			$varValue = \Contao\Config::get('layout_offers');
+		}
+
+		return $varValue;
+	}
+
+	public function getDue($varValue, DataContainer $dc)
+	{
+		if (empty($varValue))
+		{
+			$varValue = \Contao\Config::get('due_offers');
+		}
+
+		return $varValue;
 	}
 
 	public function printBill($arrRow, $strHref, $strLabel, $strTitle, $strIcon)
 	{
-		$strReturn = '<a href="'.$this->addToUrl($strHref.'&amp;id='.$arrRow['id']).'" target="_blank" title="'.specialchars($strTitle).'">'.Image::getHtml($strIcon, $strLabel).'</a> ';
+		$blnForce = false;
+		$strReturn = '<a href="'.$this->addToUrl($strHref.'&amp;id='.$arrRow['id']).'" target="_blank" title="'.specialchars($strTitle).'" onclick="window.setTimeout(function(){window.location.reload()},500)">'.Image::getHtml($strIcon, $strLabel).'</a> ';
 
 		if (\Input::get('key') == 'print' && \Input::get('id'))
 		{
-			$objCorrespondence = \KdCorrespondenceModel::findOneBy('id', \Input::get('id'));
-			if (is_null($objCorrespondence))
+			$objModel = \develab\accounting\Models\OffersModel::findOneBy('id', \Input::get('id'));
+			if (is_null($objModel))
 			{
 				return $strReturn;
 			}
-			$arrRow = $objCorrespondence->row();
 
-			require_once TL_ROOT . '/system/modules/kd/plugins/mpdf-5.7.3/mpdf.php';
-
-			\System::loadLanguageFile('tl_accounting_correspondence');
-
-			$blnDebug = false;
-			$strTitle = strip_tags($arrRow['title']);
-			$strCharset = \Config::get('characterSet') ?: 'utf-8';
-
-			// Create template object
-			$objTemplate = new \BackendTemplate('pdf_correspondence');
-			$objTemplate->setData($arrRow);
-			$objTemplate->debug = $blnDebug;
-			$objTemplate->charset = $strCharset;
-			$objTemplate->date = 'Dresden, den ' . \Date::parse('d. F Y', $arrRow['date']);
-			$objTemplate->customer = (object) \MemberModel::findOneBy('id', $arrRow['customer']);
-
-			// Prepare elements
-			$strElements = '';
-			$objElements = \ContentModel::findPublishedByPidAndTable($arrRow['id'], 'tl_accounting_correspondence');
-			if (!is_null($objElements))
-			{
-				while ($objElements->next())
-				{
-					$strElements.= $this->getContentElement($objElements->id);
-				}
-			}
-			$objTemplate->content = preg_replace_callback(
-				'/(<h2)+( class=")*/i',
-				function($arrResults) {
-					return $arrResults[1] . ' class="first-of-type' . ($arrResults[2] ? ' ' : '"');
-				},
-				$strElements,
-				1
-			);
-
-			// Render template
-			$strTemplate = $this->replaceInsertTags($objTemplate->parse());
-			$strTemplate = html_entity_decode($strTemplate, ENT_QUOTES, $strCharset);
-			//exit($strTemplate);
-
-			// Create new PDF document
-			$objMpdf = new \mPDF('', strtoupper($arrRow['format']), 12, 'opensanscondensed', 25, 25, 50, 70, 0, 0, 'P');
-			$objMpdf->allow_charset_conversion = true;
-			$objMpdf->list_indent_first_level = true;
-			$objMpdf->charset_in = $strCharset;
-			$objMpdf->SetDisplayMode('fullpage');
-			$objMpdf->SetImportUse();
-			$objMpdf->SetDocTemplate(TL_ROOT . '/system/modules/kd/assets/pdf/' . $arrRow['format'] . ($blnDebug ? '_debug' : '') . '.pdf', true);
-			$objMpdf->WriteHTML($strTemplate);
-			$objMpdf->Output();
-
-			exit;
+			$objModule = new \develab\accounting\Modules\ModuleOffers($objModel);
+			$objModule->generatePDF();
 		}
 
 		return $strReturn;
+	}
+
+	public function addPrintButton($arrButtons)
+	{
+		if (Input::post('FORM_SUBMIT') == 'tl_select' && isset($_POST['print']))
+		{
+			$session = $this->Session->getData();
+			$ids = $session['CURRENT']['IDS'];
+			$objModels = \develab\accounting\Models\OffersModel::findBy(array("id IN('" . implode("','", $ids) . "')"), null, array('order'=>'date ASC'));
+
+			if (!is_null($objModels))
+			{
+				foreach ($objModels as $objModel)
+				{
+					$objModule = new \develab\accounting\Modules\ModuleOffers($objModel);
+					$objModule->generatePDF(true, true);
+				}
+			}
+
+			$this->redirect($this->getReferer());
+		}
+
+		// Add the button
+		$arrButtons['print'] = '<input type="submit" name="print" id="print" class="tl_submit" accesskey="p" value="'.specialchars($GLOBALS['TL_LANG']['MSC']['printSelected']).'"> ';
+
+		return $arrButtons;
 	}
 }

@@ -3,11 +3,11 @@
     <body>
       <trans-unit id="tl_page.title.0">
         <source>Page name</source>
-        <target>Tytuł strony</target>
+        <target>Nazwa strony</target>
       </trans-unit>
       <trans-unit id="tl_page.title.1">
         <source>Please enter the page name.</source>
-        <target>Tytuł strony wyświetla się w nawigacji. Nie powinien zawierać więcej niż 65 znaków.</target>
+        <target>Nazwa strony wyświetla się w nawigacji. Nie powinien zawierać więcej niż 65 znaków.</target>
       </trans-unit>
       <trans-unit id="tl_page.alias.0">
         <source>Page alias</source>
@@ -138,10 +138,12 @@
         <target>Wprowadź nazwę dla pliku XML.</target>
       </trans-unit>
       <trans-unit id="tl_page.useSSL.0">
-        <source>Use HTTPS</source>
+        <source>Use HTTPS in sitemaps</source>
+        <target>Użyj HTTPS w mapie strony</target>
       </trans-unit>
       <trans-unit id="tl_page.useSSL.1">
-        <source>Generate the URLs with &lt;em&gt;https://&lt;/em&gt; (e.g. in sitemaps).</source>
+        <source>Generate the sitemap URLs of this website with &lt;em&gt;https://&lt;/em&gt;.</source>
+        <target>Generuj URLe w mapie strony z &lt;em&gt;https://&lt;/em&gt;.</target>
       </trans-unit>
       <trans-unit id="tl_page.autoforward.0">
         <source>Forward to another page</source>

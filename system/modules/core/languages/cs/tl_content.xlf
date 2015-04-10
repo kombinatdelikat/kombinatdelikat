@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Zvolte prosím pořadí třídění.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Ignorovat soubory bez meta údajů</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>Nezobrazovat soubory bez meta údajů odpovídajících jazyku stránky.</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Šablona obrázkové galerie</target>
@@ -776,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Upravit článek ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Import seznam položek ze souboru CSV.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Import tabulku položek ze souboru CSV.</target>
       </trans-unit>
     </body>
   </file>

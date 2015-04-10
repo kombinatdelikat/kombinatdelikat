@@ -25,13 +25,6 @@
         <source>Please enter a valid e-mail address.</source>
         <target>Introduceţi o adresă validă de email.</target>
       </trans-unit>
-      <trans-unit id="tl_user.google.0">
-        <source>Google+ profile ID</source>
-        <target>Profil Google+</target>
-      </trans-unit>
-      <trans-unit id="tl_user.google.1">
-        <source>Here you can enter your Google+ profile ID or vanity name.</source>
-      </trans-unit>
       <trans-unit id="tl_user.language.0">
         <source>Back end language</source>
         <target>Limbă back-end</target>
@@ -235,10 +228,6 @@
       <trans-unit id="tl_user.name_legend">
         <source>Name and e-mail</source>
         <target>Nume şi email</target>
-      </trans-unit>
-      <trans-unit id="tl_user.google_legend">
-        <source>Google+ settings</source>
-        <target>Setări Google+</target>
       </trans-unit>
       <trans-unit id="tl_user.backend_legend">
         <source>Back end settings</source>

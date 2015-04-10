@@ -146,12 +146,12 @@
         <target>Vyberte pozíciu ďalších sekcií layoutu</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.0">
-        <source>Style sheets</source>
-        <target>Kaskádové štýly - CSS</target>
+        <source>Internal style sheets</source>
+        <target>Interný kaskádový štýl</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.1">
-        <source>Please select the style sheets you want to add to the layout.</source>
-        <target>Prosím zvoľte kaskádové štýly, ktoré chcete pripojiť k tomuto layoutu.</target>
+        <source>Here you can add internal style sheets to the layout.</source>
+        <target>Tu môžete pridať interný kaskádový štýl do layoutu.</target>
       </trans-unit>
       <trans-unit id="tl_layout.framework.0">
         <source>CSS framework</source>
@@ -210,12 +210,12 @@
         <target>Zahrnúť kaskádové štýly &lt;em&gt;tinymce.css&lt;/em&gt; z daného adresára.</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.0">
-        <source>Additional style sheets</source>
-        <target>Dodatočné kaskádové štýly</target>
+        <source>External style sheets</source>
+        <target>Externý kaskádový štýl</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.1">
-        <source>Here you can add additional CSS, SCSS or LESS files from the file system.</source>
-        <target>Tu môžete zahrnúť ďalšie CSS, SCSS alebo LESS súbory.</target>
+        <source>Here you can add external CSS, SCSS or LESS files from the file system.</source>
+        <target>Tu môžete zahrnúť externé CSS, SCSS alebo LESS súbory.</target>
       </trans-unit>
       <trans-unit id="tl_layout.orderExt.0">
         <source>Sort order</source>
@@ -224,6 +224,22 @@
       <trans-unit id="tl_layout.orderExt.1">
         <source>The sort order of the style sheets.</source>
         <target>Poradie vkladania kaskádových štýlov.</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.0">
+        <source>Loading order</source>
+        <target>Poradie načítavania</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.1">
+        <source>Here you can select the loading order of the style sheets.</source>
+        <target>Tu môžete zvoliť poradie načítavania kaskádových štýlov.</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.external_first">
+        <source>Load external style sheets first</source>
+        <target>Najprv načítať externé kaskádové štýly</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.internal_first">
+        <source>Load internal style sheets first</source>
+        <target>Najprv načítať interné kaskádové štýly</target>
       </trans-unit>
       <trans-unit id="tl_layout.webfonts.0">
         <source>Google web fonts</source>
@@ -286,7 +302,8 @@
         <target>Viewport</target>
       </trans-unit>
       <trans-unit id="tl_layout.viewport.1">
-        <source>Here you can add a custom viewport (e.g. &lt;em&gt;initial-scale=1.0&lt;/em&gt;).</source>
+        <source>Here you can overwrite the viewport content (defaults to &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</source>
+        <target>Tu môžete prepísať obsah viewport-u (prednastavené: &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</target>
       </trans-unit>
       <trans-unit id="tl_layout.titleTag.0">
         <source>Title tag</source>
@@ -360,6 +377,14 @@
         <source>Here you can select one or more MooTools templates.</source>
         <target>Tu si môžete vybrať jednu alebo viac MooTools šablón.</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill.0">
+        <source>Load the image polyfill</source>
+        <target>Načítať polyfill pre obrázky</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.picturefill.1">
+        <source>Include the image polyfill (&lt;em&gt;respimage.js&lt;/em&gt;) in the layout.</source>
+        <target>Zahrnúť do layoutu polyfill knižnicu (&lt;em&gt;respimage.js&lt;/em&gt;).</target>
+      </trans-unit>
       <trans-unit id="tl_layout.analytics.0">
         <source>Analytics templates</source>
         <target>Šablóny analytických nástrojov</target>
@@ -424,6 +449,10 @@
         <source>Style sheets</source>
         <target>CSS - Kaskádové štýly</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill_legend">
+        <source>Responsive images</source>
+        <target>Responsive obrázky</target>
+      </trans-unit>
       <trans-unit id="tl_layout.feed_legend">
         <source>RSS/Atom feeds</source>
         <target>RSS/Atom kanály (feeds)</target>
@@ -437,8 +466,8 @@
         <target>Rozšírené nastavenia</target>
       </trans-unit>
       <trans-unit id="tl_layout.script_legend">
-        <source>Script settings</source>
-        <target>Nastavenia scriptu</target>
+        <source>JavaScript</source>
+        <target>JavaScript</target>
       </trans-unit>
       <trans-unit id="tl_layout.static_legend">
         <source>Static layout</source>

@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Valitse lajittelujärjestys.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Älä huomioi tiedostoja, joiden metatiedot puuttuvat</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>Älä näytä tiedostoja, joista puuttuu sivun kieltä vastaava metatieto</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Gallerian mallipohja</target>
@@ -776,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Muokkaa artikkelia ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Tuo lista CSV-tiedostosta</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Tuo taulurivejä CSV-tiedostosta</target>
       </trans-unit>
     </body>
   </file>

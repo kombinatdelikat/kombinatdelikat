@@ -138,10 +138,12 @@
         <target>Введіть назву XML файлу без розширення &lt;em&gt;.xml&lt;/em&gt;.</target>
       </trans-unit>
       <trans-unit id="tl_page.useSSL.0">
-        <source>Use HTTPS</source>
+        <source>Use HTTPS in sitemaps</source>
+        <target>Використовувати HTTPS в XML карті сайту</target>
       </trans-unit>
       <trans-unit id="tl_page.useSSL.1">
-        <source>Generate the URLs with &lt;em&gt;https://&lt;/em&gt; (e.g. in sitemaps).</source>
+        <source>Generate the sitemap URLs of this website with &lt;em&gt;https://&lt;/em&gt;.</source>
+        <target>Генерувати гіперпосилання на сторінки сайту використовуючи протокол &lt;em&gt;https://&lt;/em&gt;.</target>
       </trans-unit>
       <trans-unit id="tl_page.autoforward.0">
         <source>Forward to another page</source>

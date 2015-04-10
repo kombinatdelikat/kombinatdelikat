@@ -307,7 +307,8 @@ class tl_kd_labels extends Backend
 			}
 			$arrRow = $objLabels->row();
 
-			require_once TL_ROOT . '/system/modules/kd/plugins/mpdf-5.7.3/mpdf.php';
+			//require_once TL_ROOT . '/system/modules/kd/plugins/mpdf-5.7.3/mpdf.php';
+			require_once TL_ROOT . '/vendor/mpdf-5.7.3/mpdf.php';
 
 			\System::loadLanguageFile('tl_kd_labels');
 

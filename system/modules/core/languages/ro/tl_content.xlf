@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Selectaţi ordinea sortării.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Ignoră fişiere fără metadate</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>Nu arăta fişiere fără metadate care se potriveasc cu limba paginii.</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Şablon de galerie</target>
@@ -379,9 +387,11 @@
       </trans-unit>
       <trans-unit id="tl_content.customTpl.0">
         <source>Custom element template</source>
+        <target>Şablon pentru elemente</target>
       </trans-unit>
       <trans-unit id="tl_content.customTpl.1">
         <source>Here you can overwrite the default element template.</source>
+        <target>Alegeţi şablonul implicit pentru elemente.</target>
       </trans-unit>
       <trans-unit id="tl_content.playerSRC.0">
         <source>Video/audio files</source>
@@ -774,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Editează articolul ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Importă o lista dintr-un fişier CSV</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Importă elemente pentru tabel dintr-un fişier CSV</target>
       </trans-unit>
     </body>
   </file>

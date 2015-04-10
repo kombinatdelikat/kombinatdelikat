@@ -177,6 +177,14 @@
         <source>Edit the page layouts of theme ID %s</source>
         <target>Изменить макет страницы темы ID %s</target>
       </trans-unit>
+      <trans-unit id="tl_theme.imageSizes.0">
+        <source>Image sizes</source>
+        <target>Размеры изображения</target>
+      </trans-unit>
+      <trans-unit id="tl_theme.imageSizes.1">
+        <source>Edit the image sizes of theme ID %s</source>
+        <target>Редактировать размеры изображения темы ID %s</target>
+      </trans-unit>
       <trans-unit id="tl_theme.importTheme.0">
         <source>Theme import</source>
         <target>Импорт темы</target>

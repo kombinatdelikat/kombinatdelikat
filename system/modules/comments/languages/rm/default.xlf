@@ -25,6 +25,10 @@
         <source>Submit comment</source>
         <target>Trametter il commentari</target>
       </trans-unit>
+      <trans-unit id="MSC.com_login">
+        <source>You need to be logged in to add comments.</source>
+        <target>Ti stos t'annunziar per pudair agiuntar commentaris.</target>
+      </trans-unit>
       <trans-unit id="MSC.com_by">
         <source>Comment by</source>
         <target>Commentari da</target>

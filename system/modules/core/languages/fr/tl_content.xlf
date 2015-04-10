@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Choisir un ordre de tri.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Ignorer les fichiers sans méta-données</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>Ne pas afficher les fichiers sans méta données correspondant à la langue de la page.</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Modèle de galerie</target>
@@ -776,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Éditer l'article ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Import des éléments de liste à partir d'un fichier CSV</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Import des éléments de tableau à partir d'un fichier CSV</target>
       </trans-unit>
     </body>
   </file>

@@ -15,4 +15,6 @@
 /**
  * Miscellaneous
  */
-$GLOBALS['TL_LANG']['MSC'][''] = '';
+$GLOBALS['TL_LANG']['MSC']['validation'] = 'gültig bis';
+$GLOBALS['TL_LANG']['MSC']['due'] = 'fällig am';
+$GLOBALS['TL_LANG']['MSC']['printSelected'] = 'PDFs generieren';

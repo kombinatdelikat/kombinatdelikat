@@ -20,6 +20,7 @@ $GLOBALS['TL_LANG']['tl_member']['toggle'] = array('Kontakt aktivieren/deaktivie
 
 $GLOBALS['TL_LANG']['tl_member']['groups_legend'] = 'Kontaktgruppen';
 
+$GLOBALS['TL_LANG']['tl_member']['no'] = array('Kundennummer', 'Wird beim Speichern automatisch erstellt, wenn das Feld leer gelassen wurde.');
 $GLOBALS['TL_LANG']['tl_member']['groups'] = array('Kontaktgruppen', 'Hier können Sie den Kontakt einer oder mehreren Gruppen zuweisen.');
 $GLOBALS['TL_LANG']['tl_member']['comment'] = array('Kommentar', 'Fügen Sie ggf. einen Kommentar hinzu.');
 $GLOBALS['TL_LANG']['tl_member']['tax_number'] = array('Steuernummer / USt-IdNr.', 'Geben Sie eine Steuernummer, oder Umsatzsteuer-Identifikationsnummer an.');

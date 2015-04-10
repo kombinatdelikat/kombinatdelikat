@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta charset="<?php echo $this->charset; ?>">
+<?php if ($this->stylesheet): ?>
+		<link rel="stylesheet" href="<?php echo $this->stylesheet; ?>">
+<?php endif; ?>
+	</head>
+	<body<?php if ($this->debug): ?> class="debug"<?php endif; ?>>
+
+		<div class="sender"><?php if ($this->sender->company): ?><?php echo $this->sender->company; ?><?php else: ?><strong><?php echo $this->sender->firstname; ?> <?php echo $this->sender->lastname; ?></strong><?php endif; ?>, <?php echo $this->sender->street; ?>, <?php echo $this->sender->country ?: 'de'; ?>-<?php echo $this->sender->postal; ?> <?php echo $this->sender->city; ?></div>
+
+		<div class="recipient">
+<?php if ($this->recipient->company): ?>
+			<strong><?php echo $this->recipient->company; ?></strong><br>
+			<?php echo $this->recipient->firstname; ?> <?php echo $this->recipient->lastname; ?><br>
+<?php else: ?>
+			<strong><?php echo $this->recipient->firstname; ?> <?php echo $this->recipient->lastname; ?></strong><br>
+<?php endif; ?>
+			<?php echo $this->recipient->street; ?><br>
+			<?php echo $this->recipient->country ?: 'de'; ?>-<?php echo $this->recipient->postal; ?> <?php echo $this->recipient->city; ?>
+		</div>
+
+		<div class="date"><?php echo $this->date; ?></div>
+
+		<div class="content">
+			<h1><strong>Angebot</strong> <?php echo $this->no; ?></h1>
+
+<?php if ($this->salutation): ?>
+			<div class="ce_text">
+<?php echo $this->salutation; ?>
+			</div>
+<?php endif; ?>
+
+<?php foreach ($this->elements as $strElement): ?>
+<?php echo $strElement; ?>
+<?php endforeach; ?>
+		</div>
+	</body>
+</html>

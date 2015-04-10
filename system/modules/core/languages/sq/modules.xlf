@@ -153,6 +153,12 @@
         <source>Page layouts</source>
         <target>Struktura faqes</target>
       </trans-unit>
+      <trans-unit id="MOD.tl_image_size">
+        <source>Image sizes</source>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size_item">
+        <source>Image size media queries</source>
+      </trans-unit>
       <trans-unit id="MOD.css">
         <source>Style sheets</source>
         <target>Llojet e fletëve</target>
@@ -164,6 +170,9 @@
       <trans-unit id="MOD.layout">
         <source>Page layouts</source>
         <target>Struktura faqes</target>
+      </trans-unit>
+      <trans-unit id="MOD.image_sizes">
+        <source>Image sizes</source>
       </trans-unit>
       <trans-unit id="MOD.theme_import">
         <source>Theme import</source>

@@ -25,6 +25,10 @@
         <source>Submit comment</source>
         <target>Lähetä kommentti</target>
       </trans-unit>
+      <trans-unit id="MSC.com_login">
+        <source>You need to be logged in to add comments.</source>
+        <target>Sinun on kirjauduttava sisään voidaksesi  kommentoida.</target>
+      </trans-unit>
       <trans-unit id="MSC.com_by">
         <source>Comment by</source>
         <target>Kommentoinut</target>

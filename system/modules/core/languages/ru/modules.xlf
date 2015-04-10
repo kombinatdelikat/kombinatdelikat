@@ -153,6 +153,14 @@
         <source>Page layouts</source>
         <target>Макеты страниц</target>
       </trans-unit>
+      <trans-unit id="MOD.tl_image_size">
+        <source>Image sizes</source>
+        <target>Размеры изображения</target>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size_item">
+        <source>Image size media queries</source>
+        <target>Размер изображения медиа-запросов</target>
+      </trans-unit>
       <trans-unit id="MOD.css">
         <source>Style sheets</source>
         <target>Таблицы стилей</target>
@@ -164,6 +172,10 @@
       <trans-unit id="MOD.layout">
         <source>Page layouts</source>
         <target>Макеты страниц</target>
+      </trans-unit>
+      <trans-unit id="MOD.image_sizes">
+        <source>Image sizes</source>
+        <target>Размеры изображения</target>
       </trans-unit>
       <trans-unit id="MOD.theme_import">
         <source>Theme import</source>

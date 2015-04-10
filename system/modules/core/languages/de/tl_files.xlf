@@ -17,6 +17,38 @@
         <source>Prevent accessing the folder via HTTP. The files can still be made available e.g. with the downloads element.</source>
         <target>Verhindert den Zugriff via HTTP. Die Dateien sind weiterhin z.B. über das Downloads-Element verfügbar.</target>
       </trans-unit>
+      <trans-unit id="tl_files.importantPartX.0">
+        <source>Important part x coordinate</source>
+        <target>x-Koordinate des wichtigen Teils</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartX.1">
+        <source>Here you can enter the x coordinate of the important part.</source>
+        <target>Hier können Sie die x-Koordinate des wichtigen Teils eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartY.0">
+        <source>Important part y coordinate</source>
+        <target>y-Koordinate des wichtigen Teils</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartY.1">
+        <source>Here you can enter the y coordinate of the important part.</source>
+        <target>Hier können Sie die y-Koordinate des wichtigen Teils eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartWidth.0">
+        <source>Important part width</source>
+        <target>Breite des wichtigen Teils</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartWidth.1">
+        <source>Here you can enter the width of the important part.</source>
+        <target>Hier können Sie die Breite des wichtigen Teils eingeben.</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartHeight.0">
+        <source>Important part height</source>
+        <target>Höhe des wichtigen Teils</target>
+      </trans-unit>
+      <trans-unit id="tl_files.importantPartHeight.1">
+        <source>Here you can enter the height of the important part.</source>
+        <target>Hier können Sie die Höhe des wichtigen Teils eingeben.</target>
+      </trans-unit>
       <trans-unit id="tl_files.meta.0">
         <source>Meta information</source>
         <target>Meta-Informationen</target>
@@ -212,6 +244,10 @@
       <trans-unit id="tl_files.sync.1">
         <source>Synchronize the file system and the database</source>
         <target>Dateisystem und Datenbank synchronisieren</target>
+      </trans-unit>
+      <trans-unit id="tl_files.edit_preview_help">
+        <source>Mark the important part of the image with your mouse cursor.</source>
+        <target>Markieren Sie den wichtigen Teil des Bildes mit Ihrem Mauszeiger.</target>
       </trans-unit>
     </body>
   </file>

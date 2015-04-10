@@ -161,6 +161,14 @@
         <source>Import existing CSS files</source>
         <target>Importa un file CSS esistente</target>
       </trans-unit>
+      <trans-unit id="tl_style_sheet.export.0">
+        <source>Export style sheet</source>
+        <target>Esporta foglio di stile</target>
+      </trans-unit>
+      <trans-unit id="tl_style_sheet.export.1">
+        <source>Export style sheet ID %s</source>
+        <target>Esporta il foglio di stile ID %s</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

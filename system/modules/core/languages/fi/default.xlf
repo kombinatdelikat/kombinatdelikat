@@ -25,9 +25,21 @@
         <source>Field &quot;%s&quot; must not be longer than %d characters!</source>
         <target>Kenttä &quot;%s&quot; ei saa olla yli %d merkkiä!</target>
       </trans-unit>
+      <trans-unit id="ERR.minval">
+        <source>Field &quot;%s&quot; has to be at least %d!</source>
+        <target>Kentän &quot;%s&quot; on oltava vähintään %d!</target>
+      </trans-unit>
+      <trans-unit id="ERR.maxval">
+        <source>Field &quot;%s&quot; must not be greater than %d!</source>
+        <target>Kenttä &quot;%s&quot; ei saa olla yli %d!</target>
+      </trans-unit>
       <trans-unit id="ERR.digit">
         <source>Please enter digits only!</source>
         <target>Kirjoita pelkkiä numeroita!</target>
+      </trans-unit>
+      <trans-unit id="ERR.natural">
+        <source>Please enter natural numbers only!</source>
+        <target>Ole hyvä ja anna vain luonnollisia lukuja!</target>
       </trans-unit>
       <trans-unit id="ERR.prcnt">
         <source>Please enter a percentage between 0 and 100!</source>
@@ -635,31 +647,31 @@
       </trans-unit>
       <trans-unit id="DAYS_SHORT.0">
         <source>Sun</source>
-        <target>Sunnuntai</target>
+        <target>Su</target>
       </trans-unit>
       <trans-unit id="DAYS_SHORT.1">
         <source>Mon</source>
-        <target>Maanantai</target>
+        <target>Ma</target>
       </trans-unit>
       <trans-unit id="DAYS_SHORT.2">
         <source>Tue</source>
-        <target>Tiistai</target>
+        <target>Ti</target>
       </trans-unit>
       <trans-unit id="DAYS_SHORT.3">
         <source>Wed</source>
-        <target>Keskiviikko</target>
+        <target>Ke</target>
       </trans-unit>
       <trans-unit id="DAYS_SHORT.4">
         <source>Thu</source>
-        <target>Torstai</target>
+        <target>To</target>
       </trans-unit>
       <trans-unit id="DAYS_SHORT.5">
         <source>Fri</source>
-        <target>Perjantai</target>
+        <target>Pe</target>
       </trans-unit>
       <trans-unit id="DAYS_SHORT.6">
         <source>Sat</source>
-        <target>Lauantai</target>
+        <target>La</target>
       </trans-unit>
       <trans-unit id="MONTHS.0">
         <source>January</source>
@@ -711,51 +723,51 @@
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.0">
         <source>Jan</source>
-        <target>Tammikuu</target>
+        <target>Tammi</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.1">
         <source>Feb</source>
-        <target>Helmikuu</target>
+        <target>Helmi</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.2">
         <source>Mar</source>
-        <target>Maaliskuu</target>
+        <target>Maalis</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.3">
         <source>Apr</source>
-        <target>Huhtikuu</target>
+        <target>Huhti</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.4">
         <source>May</source>
-        <target>Toukokuu</target>
+        <target>Touko</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.5">
         <source>Jun</source>
-        <target>Kesäkuu</target>
+        <target>Kesä</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.6">
         <source>Jul</source>
-        <target>Heinäkuu</target>
+        <target>Heinä</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.7">
         <source>Aug</source>
-        <target>Elokuu</target>
+        <target>Elo</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.8">
         <source>Sep</source>
-        <target>Syyskuu</target>
+        <target>Syys</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.9">
         <source>Oct</source>
-        <target>Lokakuu</target>
+        <target>Loka</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.10">
         <source>Nov</source>
-        <target>Marraskuu</target>
+        <target>Marras</target>
       </trans-unit>
       <trans-unit id="MONTHS_SHORT.11">
         <source>Dec</source>
-        <target>Joulukuu</target>
+        <target>Joulu</target>
       </trans-unit>
       <trans-unit id="MSC.dayShortLength">
         <source>3</source>
@@ -788,6 +800,10 @@
       <trans-unit id="MSC.target.1">
         <source>Open the link in a new browser window.</source>
         <target>Avaa linkki uudessa selainikkunassa.</target>
+      </trans-unit>
+      <trans-unit id="MSC.textDirection">
+        <source>ltr</source>
+        <target>ltr</target>
       </trans-unit>
       <trans-unit id="MSC.decimalSeparator">
         <source>.</source>
@@ -985,6 +1001,10 @@
         <source>Add language</source>
         <target>Lisää kieli</target>
       </trans-unit>
+      <trans-unit id="MSC.image_sizes">
+        <source>Predefined dimensions</source>
+        <target>Esimääritellyt mitat</target>
+      </trans-unit>
       <trans-unit id="MSC.relative">
         <source>Relative dimensions</source>
         <target>Suhteelliset mitat</target>
@@ -1005,9 +1025,21 @@
         <source>The shorter side of the image is adjusted to the given dimensions and the image is resized proportionally.</source>
         <target>Kuvan lyhyempi sivu pienennetään tai suurennetaan annettuihin mittoihin ja kuvakoko muutetaan suhteellisesti.</target>
       </trans-unit>
-      <trans-unit id="MSC.crop">
+      <trans-unit id="MSC.exact.0">
         <source>Exact dimensions</source>
         <target>Tarkat mittasuhteet</target>
+      </trans-unit>
+      <trans-unit id="MSC.exact.1">
+        <source>The image will be resized to the given dimensions. If necessary, it will be cropped.</source>
+        <target>Kuva skaalataan annettuihin mittoihin. Ylimenevä leikataan tarvittaessa pois.</target>
+      </trans-unit>
+      <trans-unit id="MSC.crop.0">
+        <source>Important part</source>
+        <target>Tärkeä osa</target>
+      </trans-unit>
+      <trans-unit id="MSC.crop.1">
+        <source>Preserves the important part of an image as specified in the file manager.</source>
+        <target>Säilyttää kuvan tärkeän osan siltä osin, kuin se on määritelty tiedostonhallinnassa.</target>
       </trans-unit>
       <trans-unit id="MSC.left_top.0">
         <source>Left | Top</source>
@@ -1154,20 +1186,18 @@
         <target>Lisäyspäivävämäärä: %s</target>
       </trans-unit>
       <trans-unit id="MSC.lastLogin.0">
+        <source>Previous login</source>
+      </trans-unit>
+      <trans-unit id="MSC.lastLogin.1">
+        <source>Previous login: %s</source>
+      </trans-unit>
+      <trans-unit id="MSC.currentLogin.0">
         <source>Last login</source>
         <target>Edellinen kirjautuminen</target>
       </trans-unit>
-      <trans-unit id="MSC.lastLogin.1">
+      <trans-unit id="MSC.currentLogin.1">
         <source>Last login: %s</source>
         <target>Edellinen kirjautuminen: %s</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.0">
-        <source>Current login</source>
-        <target>Nykyinen kirjautuminen</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.1">
-        <source>Current login: %s</source>
-        <target>Nykyinen kirjautuminen: %s</target>
       </trans-unit>
       <trans-unit id="MSC.loginCount">
         <source>Login attempts</source>
@@ -1342,6 +1372,14 @@ Tämä viesti on Contaon generoima, eikä siihen voi vastata.
       <trans-unit id="MSC.delAllConfirm">
         <source>Do you really want to delete the selected records?</source>
         <target>Oletko varma, että haluat poistaa valitut kohteet?</target>
+      </trans-unit>
+      <trans-unit id="MSC.deleteConfirmFile">
+        <source>Do you really want to delete file or folder %s?</source>
+        <target>Haluatko varmasti poistaa tiedoston tai kansion %s?</target>
+      </trans-unit>
+      <trans-unit id="MSC.delAllConfirmFile">
+        <source>Do you really want to delete the selected resources?</source>
+        <target>Haluatko varmasti poistaa valitut kohteet?</target>
       </trans-unit>
       <trans-unit id="MSC.filterRecords">
         <source>Records</source>
@@ -1646,6 +1684,14 @@ Tämä viesti on Contaon generoima, eikä siihen voi vastata.
       <trans-unit id="MSC.resetSelected">
         <source>Reset selection</source>
         <target>Tyhjennä valinnat</target>
+      </trans-unit>
+      <trans-unit id="MSC.filePicker">
+        <source>Switch to file picker</source>
+        <target>Siirry tiedostovalitsimeen</target>
+      </trans-unit>
+      <trans-unit id="MSC.pagePicker">
+        <source>Switch to page picker</source>
+        <target>Siirry sivunvalitsimeen</target>
       </trans-unit>
       <trans-unit id="MSC.fileManager">
         <source>Open the file manager</source>
@@ -2118,6 +2164,10 @@ Tämä viesti on Contaon generoima, eikä siihen voi vastata.
       <trans-unit id="MSC.location">
         <source>Location</source>
         <target>Sijainti</target>
+      </trans-unit>
+      <trans-unit id="MSC.download">
+        <source>Download %s</source>
+        <target>Lataa %s</target>
       </trans-unit>
       <trans-unit id="UNITS.0">
         <source>Byte</source>

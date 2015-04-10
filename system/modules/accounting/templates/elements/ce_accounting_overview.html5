@@ -1,0 +1,28 @@
+<?php echo $this->start; ?>
+<?php foreach ($this->elements as $arrElement)://print_r($arrElement); ?>
+	<tr class="<?php echo $this->class; ?>">
+<?php foreach ($this->fields as $k=>$arrField): ?>
+		<td class="<?php echo $arrField['class']; ?>">
+<?php if ($k == 'quantity' && sizeof($arrElement['quantities'])): ?>
+<?php foreach ($arrElement['quantities'] as $strUnit=>$strQuantity): ?>
+			<?php echo $strQuantity; ?> <span class="unit"><?php echo $strUnit; ?></span><br>
+<?php endforeach; ?>
+<?php elseif ($k == 'price_tax' && sizeof($arrElement['taxes'])): ?>
+<?php foreach ($arrElement['taxes'] as $i=>$arrTax): ?>
+			<span class="label">(<?php echo $arrTax['label']; ?>)</span> <?php echo $arrTax['abbr']; ?> <?php echo $arrTax['price']; ?> <span class="currency"><?php echo $this->currency; ?></span><br>
+<?php endforeach; ?>
+<?php elseif (in_array($k, array('price', 'price_unit', 'price_total', 'price_subtotal'))): ?>
+			<?php echo $arrElement[$k]; ?> <span class="currency"><?php echo $this->currency; ?></span>
+<?php elseif ($k == 'category'): ?>
+			<?php echo $arrElement[$k]; ?>
+<?php elseif (!$arrElement[$k]): ?>
+			<?php echo $arrField['label']; ?>
+<?php else: ?>
+			<?php echo $arrElement[$k]; ?>
+<?php endif; ?>
+		</td>
+<?php endforeach; ?>
+	</tr>
+<?php endforeach; ?>
+<?php echo $this->tfoot; ?>
+<?php echo $this->stop; ?>

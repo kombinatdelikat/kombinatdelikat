@@ -25,14 +25,6 @@
         <source>Please enter a valid e-mail address.</source>
         <target>Saisir une adresse e-mail valide.</target>
       </trans-unit>
-      <trans-unit id="tl_user.google.0">
-        <source>Google+ profile ID</source>
-        <target>ID du profil Google+</target>
-      </trans-unit>
-      <trans-unit id="tl_user.google.1">
-        <source>Here you can enter your Google+ profile ID or vanity name.</source>
-        <target>Veuillez saisir un ID numérique Google+ ou un nom personnalisé (vanity name).</target>
-      </trans-unit>
       <trans-unit id="tl_user.language.0">
         <source>Back end language</source>
         <target>Langue du back office</target>
@@ -236,10 +228,6 @@
       <trans-unit id="tl_user.name_legend">
         <source>Name and e-mail</source>
         <target>Nom et e-mail</target>
-      </trans-unit>
-      <trans-unit id="tl_user.google_legend">
-        <source>Google+ settings</source>
-        <target>Paramètres Google+</target>
       </trans-unit>
       <trans-unit id="tl_user.backend_legend">
         <source>Back end settings</source>

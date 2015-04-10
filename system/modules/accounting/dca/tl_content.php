@@ -11,6 +11,7 @@
  * @copyright David Enke 2014
  */
 
+\System::loadLanguageFile('tl_accounting_settings');
 
 /**
  * Dynamically add the permission check and parent table
@@ -21,6 +22,7 @@ if (Input::get('do') == 'accounting_correspondence')
 	$GLOBALS['TL_CTE'] = $GLOBALS['TL_CTE_CORRESPONDENCE'];
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_correspondence';
+	$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_accounting', 'checkPermissions');
 }
 if (Input::get('do') == 'accounting_bills')
 {
@@ -28,7 +30,7 @@ if (Input::get('do') == 'accounting_bills')
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_bills';
 	$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_accounting', 'checkPermissions');
-	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date');
+	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date', 'no');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = array('tl_content_accounting', 'getBillContentElements');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'accounting_item';
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['helpwizard'] = false;
@@ -39,17 +41,29 @@ if (Input::get('do') == 'accounting_offers')
 
 	$GLOBALS['TL_DCA']['tl_content']['config']['ptable'] = 'tl_accounting_offers';
 	$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = array('tl_content_accounting', 'checkPermissions');
-	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date');
+	$GLOBALS['TL_DCA']['tl_content']['list']['sorting']['headerFields'] = array('date', 'no');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['options_callback'] = array('tl_content_accounting', 'getOfferContentElements');
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['default'] = 'accounting_item';
 	$GLOBALS['TL_DCA']['tl_content']['fields']['type']['eval']['helpwizard'] = false;
 }
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_pdf_pb'] = '{type_legend},type';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_item'] = '{type_legend},type;{price_legend},quantity,price_unit,tax;{date_legend:hide},date_from,date_to;{content_legend},name,description';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_item'] = '{type_legend},type,category;{price_legend},quantity,price_unit,tax;{date_legend:hide},date_from,date_to;{content_legend},name,description';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_overview'] = '{type_legend},type;{fields_legend},fields';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_scopesubtotal'] = '{type_legend},type';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_scopetotal'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_subtotal'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['accounting_total'] = '{type_legend},type';
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['category'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['category'],
+	'exclude'                 => true,
+	'inputType'               => 'select',
+	'options_callback'        => array('tl_content_accounting', 'getCategories'),
+	'eval'                    => array('tl_class'=>'w50', 'includeBlankOption'=>true, 'blankOptionLabel'=>&$GLOBALS['TL_LANG']['tl_content']['category_none']),
+	'sql'                     => "varchar(32) NOT NULL default ''"
+);
 $GLOBALS['TL_DCA']['tl_content']['fields']['quantity'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_content']['quantity'],
@@ -118,6 +132,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['description'] = array
 	'explanation'             => 'insertTags',
 	'sql'                     => "mediumtext NULL"
 );
+$GLOBALS['TL_DCA']['tl_content']['fields']['fields'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_overview'],
+	'options'                 => &$GLOBALS['TL_LANG']['tl_accounting_settings']['fields_types'],
+	'inputType'               => 'checkboxWizard',
+	'eval' 			          => array('mandatory'=>true, 'tl_class'=>'clr w50', 'multiple'=>true),
+	'sql'                     => "blob NULL"
+);
 
 class tl_content_accounting extends \develab\accounting\Helper
 {
@@ -129,27 +151,27 @@ class tl_content_accounting extends \develab\accounting\Helper
 
 	public function checkPermissions(DataContainer $dc)
 	{
-		if ($this->User->isAdmin)
-		{
-			return;
-		}
-
-		$objParent = null;
-		switch ($dc->parentTable)
-		{
-			case 'tl_accounting_bills':
-				$objParent = \develab\accounting\Models\Bills::findOneBy('id', $dc->id);
-				break;
-			case 'tl_accounting_offers':
-				$objParent = \develab\accounting\Models\Bills::findOneBy('id', $dc->id);
-				break;
-		}
+		$objParent = $this->getParentModel($dc->parentTable, $dc->id);
 
 		if (is_null($objParent) || $objParent->locked)
 		{
-			$this->log('The parent entry is locked or not existant.', __METHOD__, TL_ERROR);
+			$this->log('The parent entry is locked or not existent.', __METHOD__, TL_ERROR);
 			$this->redirect('contao/main.php?act=error');
 		}
+	}
+
+	protected function getParentModel($strParentTable, $intId)
+	{
+		if (\Contao\Input::get('act') == 'edit')
+		{
+			$objElement = \Contao\ContentModel::findOneBy('id', $intId);
+			$intId = $objElement->pid;
+		}
+
+		$objParentClass = $GLOBALS['TL_MODELS'][$strParentTable];
+		$objParentModel = $objParentClass::findOneBy('id', $intId);
+
+		return $objParentModel;
 	}
 
 	public function getBillContentElements()
@@ -169,6 +191,23 @@ class tl_content_accounting extends \develab\accounting\Helper
 		if (\Config::get('accounting_units'))
 		{
 			$arrReturn = deserialize(\Config::get('accounting_units'));
+		}
+
+		return $arrReturn;
+	}
+
+	public function getCategories(DataContainer $dc)
+	{
+		$arrReturn = deserialize(\Config::get('accounting_categories'), true);
+
+		if ($dc->activeRecord)
+		{
+			$objParent = $this->getParentModel($dc->activeRecord->ptable, $dc->activeRecord->pid);
+
+			if (!is_null($objParent) && $objParent->categories)
+			{
+				$arrReturn = deserialize($objParent->categories, true);
+			}
 		}
 
 		return $arrReturn;

@@ -275,7 +275,7 @@
       </trans-unit>
       <trans-unit id="tl_install.repositoryDefault">
         <source>You are using the default extension repository.</source>
-        <target>Вы используете хранилище расширений по умолчанию.</target>
+        <target>Вы используете модуль 'хранилище расширений', установленный по умолчанию.</target>
       </trans-unit>
       <trans-unit id="tl_install.repositoryComposer">
         <source>You are using the Composer based extension repository.</source>

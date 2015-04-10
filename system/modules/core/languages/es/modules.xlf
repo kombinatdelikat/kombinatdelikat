@@ -153,6 +153,14 @@
         <source>Page layouts</source>
         <target>Diseño de página</target>
       </trans-unit>
+      <trans-unit id="MOD.tl_image_size">
+        <source>Image sizes</source>
+        <target>Tamaños de imágen</target>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size_item">
+        <source>Image size media queries</source>
+        <target>Tamaño de imagen tras consultas de medios</target>
+      </trans-unit>
       <trans-unit id="MOD.css">
         <source>Style sheets</source>
         <target>Hojas de estilo</target>
@@ -165,12 +173,17 @@
         <source>Page layouts</source>
         <target>Diseño de página</target>
       </trans-unit>
+      <trans-unit id="MOD.image_sizes">
+        <source>Image sizes</source>
+        <target>Tamaños de imágen</target>
+      </trans-unit>
       <trans-unit id="MOD.theme_import">
         <source>Theme import</source>
         <target>Importar tema</target>
       </trans-unit>
       <trans-unit id="MOD.theme_export">
         <source>Theme export</source>
+        <target>Exportar tema</target>
       </trans-unit>
       <trans-unit id="FMD.navigationMenu">
         <source>Navigation</source>

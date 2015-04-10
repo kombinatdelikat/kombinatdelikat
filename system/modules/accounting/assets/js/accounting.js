@@ -7,7 +7,6 @@ AjaxRequest.updateContentElements = function(el, pid) {
 		onRequest: AjaxRequest.displayBox(Contao.lang.loading + ' …'),
 		onSuccess:function(txt) {
 			var id = el.get('id');
-			console.log(id, el)
 
 			new Element('div', { 'html':txt }).getElement('.tl_listing_container > ul#' + id).replaces(el);
 			Backend.limitPreviewHeight();

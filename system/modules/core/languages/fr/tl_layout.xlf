@@ -146,12 +146,12 @@
         <target>Sélectionner la position des zones de présentation personnalisées.</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.0">
-        <source>Style sheets</source>
-        <target>Feuilles de style</target>
+        <source>Internal style sheets</source>
+        <target>Feuilles de style internes</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.1">
-        <source>Please select the style sheets you want to add to the layout.</source>
-        <target>Sélectionner les feuilles de style à inclure dans cette présentation .</target>
+        <source>Here you can add internal style sheets to the layout.</source>
+        <target>Ici, vous pouvez ajouter des feuilles de style internes à la présentation de page.</target>
       </trans-unit>
       <trans-unit id="tl_layout.framework.0">
         <source>CSS framework</source>
@@ -210,12 +210,12 @@
         <target>Inclut la feuille de style &lt;em&gt;tinymce.css&lt;/em&gt;.</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.0">
-        <source>Additional style sheets</source>
-        <target>Feuilles de style additionnelles</target>
+        <source>External style sheets</source>
+        <target>Feuilles de style externes</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.1">
-        <source>Here you can add additional CSS, SCSS or LESS files from the file system.</source>
-        <target>Ici, vous pouvez ajouter des fichiers CSS, SCSS ou LESS supplémentaires à partir du système de fichiers.</target>
+        <source>Here you can add external CSS, SCSS or LESS files from the file system.</source>
+        <target>Ici, vous pouvez ajouter des fichiers CSS, SCSS ou LESS externes à partir du système de fichiers.</target>
       </trans-unit>
       <trans-unit id="tl_layout.orderExt.0">
         <source>Sort order</source>
@@ -224,6 +224,22 @@
       <trans-unit id="tl_layout.orderExt.1">
         <source>The sort order of the style sheets.</source>
         <target>L'ordre de tri des feuilles de style</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.0">
+        <source>Loading order</source>
+        <target>Ordre de chargement</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.1">
+        <source>Here you can select the loading order of the style sheets.</source>
+        <target>Ici, vous pouvez choisir l'ordre de chargement des feuilles de style.</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.external_first">
+        <source>Load external style sheets first</source>
+        <target>Charger les feuilles de style externes en premier</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.internal_first">
+        <source>Load internal style sheets first</source>
+        <target>Charger les feuilles de style internes en premier</target>
       </trans-unit>
       <trans-unit id="tl_layout.webfonts.0">
         <source>Google web fonts</source>
@@ -286,7 +302,8 @@
         <target>Viewport</target>
       </trans-unit>
       <trans-unit id="tl_layout.viewport.1">
-        <source>Here you can add a custom viewport (e.g. &lt;em&gt;initial-scale=1.0&lt;/em&gt;).</source>
+        <source>Here you can overwrite the viewport content (defaults to &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</source>
+        <target>Ici, vous pouvez remplacer le contenu de la balise meta viewport (par défaut &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</target>
       </trans-unit>
       <trans-unit id="tl_layout.titleTag.0">
         <source>Title tag</source>
@@ -360,6 +377,14 @@
         <source>Here you can select one or more MooTools templates.</source>
         <target>Sélectionner un ou plusieurs modèles MooTools.</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill.0">
+        <source>Load the image polyfill</source>
+        <target>Charger le polyfill pour les images</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.picturefill.1">
+        <source>Include the image polyfill (&lt;em&gt;respimage.js&lt;/em&gt;) in the layout.</source>
+        <target>Inclure le polyfill pour les images (&lt;em&gt;respimage.js&lt;/em&gt;) dans la présentation.</target>
+      </trans-unit>
       <trans-unit id="tl_layout.analytics.0">
         <source>Analytics templates</source>
         <target>Modèles Analytics</target>
@@ -424,6 +449,10 @@
         <source>Style sheets</source>
         <target>Feuilles de style</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill_legend">
+        <source>Responsive images</source>
+        <target>Images responsive</target>
+      </trans-unit>
       <trans-unit id="tl_layout.feed_legend">
         <source>RSS/Atom feeds</source>
         <target>Flux RSS/Atom</target>
@@ -437,8 +466,8 @@
         <target>Paramètres avancés</target>
       </trans-unit>
       <trans-unit id="tl_layout.script_legend">
-        <source>Script settings</source>
-        <target>Paramètres des scripts</target>
+        <source>JavaScript</source>
+        <target>JavaScript</target>
       </trans-unit>
       <trans-unit id="tl_layout.static_legend">
         <source>Static layout</source>

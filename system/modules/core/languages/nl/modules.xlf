@@ -151,7 +151,15 @@
       </trans-unit>
       <trans-unit id="MOD.tl_layout">
         <source>Page layouts</source>
-        <target>Pagina layouts</target>
+        <target>Pagina-lay-outs</target>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size">
+        <source>Image sizes</source>
+        <target>Beeldformaten</target>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size_item">
+        <source>Image size media queries</source>
+        <target>Beeldformaten query's</target>
       </trans-unit>
       <trans-unit id="MOD.css">
         <source>Style sheets</source>
@@ -163,7 +171,11 @@
       </trans-unit>
       <trans-unit id="MOD.layout">
         <source>Page layouts</source>
-        <target>Pagina layouts</target>
+        <target>Pagina-lay-outs</target>
+      </trans-unit>
+      <trans-unit id="MOD.image_sizes">
+        <source>Image sizes</source>
+        <target>Beeldformaten</target>
       </trans-unit>
       <trans-unit id="MOD.theme_import">
         <source>Theme import</source>

@@ -267,9 +267,11 @@
       </trans-unit>
       <trans-unit id="tl_form_field.minlength.0">
         <source>Minimum length</source>
+        <target>Longitud mínima</target>
       </trans-unit>
       <trans-unit id="tl_form_field.minlength.1">
         <source>Require the field value to be a certain number of characters long.</source>
+        <target>Requiere el valor del campo para tener algún número de carácteres de longitud.</target>
       </trans-unit>
       <trans-unit id="tl_form_field.maxlength.0">
         <source>Maximum length</source>
@@ -409,9 +411,11 @@
       </trans-unit>
       <trans-unit id="tl_form_field.customTpl.0">
         <source>Custom form field template</source>
+        <target>Personalizar plantilla del campo del formulario</target>
       </trans-unit>
       <trans-unit id="tl_form_field.customTpl.1">
         <source>Here you can overwrite the default form field template.</source>
+        <target>Aquí puedes sobreescribir la plantilla por defecto del campo del formulario</target>
       </trans-unit>
       <trans-unit id="tl_form_field.addSubmit.0">
         <source>Add a submit button</source>

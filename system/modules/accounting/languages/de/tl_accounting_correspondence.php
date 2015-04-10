@@ -18,14 +18,18 @@
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['title'] = array('Titel', 'Bitte geben Sie einen Titel an.');
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['format'] = array('Format', 'Wählen Sie ein Format.');
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['date'] = array('Datum', 'Bitte geben Sie dem Anschreiben ein Datum.');
+$GLOBALS['TL_LANG']['tl_accounting_correspondence']['locked'] = array('Geschützt', 'Wird nach dem Drucken geschützt, um die Bearbeitung zu verhindern.');
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['customer'] = array('Empfänger', 'Wählen Sie einen Empfänger aus.');
+$GLOBALS['TL_LANG']['tl_accounting_correspondence']['responsible'] = array('Verantwortlicher', 'Der verantwortliche Kundebetreuer.');
+$GLOBALS['TL_LANG']['tl_accounting_correspondence']['layout'] = array('Layout', 'Wählen Sie ein Layout für aus.');
 
 
 /**
  * Legends
  */
-$GLOBALS['TL_LANG']['tl_accounting_correspondence']['title_legend'] = 'Titel';
+$GLOBALS['TL_LANG']['tl_accounting_correspondence']['date_legend'] = 'Datum';
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['content_legend'] = 'Inhalte';
+$GLOBALS['TL_LANG']['tl_accounting_correspondence']['layout_legend'] = 'Layout';
 
 
 /**
@@ -36,5 +40,5 @@ $GLOBALS['TL_LANG']['tl_accounting_correspondence']['show'] = array('Anschreiben
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['edit'] = array('Inhaltselemente bearbeiten', 'Inhaltselemente des Anschreibens ID %s bearbeiten');
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['editheader'] = array('Anschreiben bearbeiten', 'Anschreiben ID %s bearbeiten');
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['copy'] = array('Anschreiben duplizieren', 'Anschreiben ID %s duplizieren');
-$GLOBALS['TL_LANG']['tl_accounting_correspondence']['print'] = array('Anschreiben drucken', 'Anschreiben ID %s drucken');
+$GLOBALS['TL_LANG']['tl_accounting_correspondence']['print'] = array('PDF erzeugen', 'PDF ID %s erzeugen');
 $GLOBALS['TL_LANG']['tl_accounting_correspondence']['delete'] = array('Anschreiben löschen', 'Anschreiben ID %s löschen');

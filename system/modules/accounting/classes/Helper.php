@@ -105,12 +105,9 @@ class Helper extends \Contao\Controller
 
 		switch ($arrTags[1])
 		{
-		}
-
-		switch ($arrTags[1])
-		{
 			case 'no_bills_current':
 			case 'no_offers_current':
+			case 'no_customers_current':
 				$strReturn = \Contao\Config::get($arrTags[1]);
 
 				if ($arrTags[2])
@@ -147,7 +144,7 @@ class Helper extends \Contao\Controller
 
 				if ($arrTags[2] || \Input::get('id'))
 				{
-					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					$objBillModel = Models\BillsModel::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
 					if (is_null($objBillModel))
 					{
 						return false;
@@ -167,7 +164,7 @@ class Helper extends \Contao\Controller
 
 				if ($arrTags[2] || \Input::get('id'))
 				{
-					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					$objBillModel = Models\BillsModel::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
 					if (is_null($objBillModel))
 					{
 						return false;
@@ -187,7 +184,7 @@ class Helper extends \Contao\Controller
 
 				if (($arrTags[2] || \Input::get('id')) && $arrTags[3])
 				{
-					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					$objBillModel = Models\BillsModel::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
 					if (is_null($objBillModel))
 					{
 						return false;
@@ -216,7 +213,7 @@ class Helper extends \Contao\Controller
 
 				if (($arrTags[2] || \Input::get('id')) && $arrTags[3])
 				{
-					$objBillModel = \develab\accounting\Models\Bills::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
+					$objBillModel = Models\BillsModel::findOneBy('id', $arrTags[2] ?: \Input::get('id'));
 					if (is_null($objBillModel))
 					{
 						return false;
@@ -256,54 +253,48 @@ class Helper extends \Contao\Controller
 
 		while ($objContacts->next())
 		{
-			$strGroups = '';
-			$arrGroups = array();
-			$objGroups = \MemberGroupModel::findMultipleByIds(deserialize($objContacts->groups, true));
-
-			if (!is_null($objGroups))
-			{
-				while ($objGroups->next())
-				{
-					$arrGroups[$objGroups->name] = $objGroups->name;
-				}
-				ksort($arrGroups);
-				$strGroups = ' (' . implode(', ', $arrGroups) . ')';
-			}
-
-			$arrContacts[$objContacts->id] = $objContacts->firstname . ' ' . $objContacts->lastname . ', ' . $objContacts->company . $strGroups;
+			$arrContacts[$objContacts->id] = $objContacts->firstname . ' ' . $objContacts->lastname . ($objContacts->company ? ', ' . $objContacts->company : ($objContacts->isPrivateAddress ? ', privat' : ''));
 		}
 
 		return $arrContacts;
 	}
 
-	public static function getFields($objModel, $blnSkip=0)
+	public function getDefaultFields($varValue, $dc)
 	{
-		\System::loadLanguageFile('tl_accounting_settings');
-
-		$arrFieldsAvailable = deserialize($objModel->fields, true);
-		$arrFields = array();
-
-		for ($i=$blnSkip, $l=sizeof($arrFieldsAvailable); $i < $l; ++$i)
+		if (isset($varValue))
 		{
-			$strHeader = $arrFieldsAvailable[$i];
-			$arrFields[$strHeader] = array();
-			$arrClass = explode('_', $strHeader);
-			if (!$i)
-			{
-				$arrClass[] = 'col_first';
-				$arrFields[$strHeader]['first'] = true;
-			}
-			if ($i == $l-1)
-			{
-				$arrClass[] = 'col_last';
-				$arrFields[$strHeader]['last'] = true;
-			}
-
-			$arrFields[$strHeader]['class'] = implode(' ', $arrClass);
-			$arrFields[$strHeader]['label'] = $GLOBALS['TL_LANG']['tl_accounting_settings']['fields_types'][$strHeader];
+			return $varValue;
 		}
 
-		return $arrFields;
+		$strFieldsDefault = \Config::get('fields_' . str_replace('tl_accounting_', '', $dc->table));
+
+		if (!strlen($strFieldsDefault))
+		{
+			$this->loadDataContainer('tl_accounting_settings_layouts');
+			$strFieldsDefault = $GLOBALS['TL_DCA']['tl_accounting_settings_layouts']['fields']['fields']['default'];
+		}
+		$dc->activeRecord->fields = $strFieldsDefault;
+
+		return $strFieldsDefault;
+	}
+
+	public function getDefaultCategories($varValue, $dc)
+	{
+		if (isset($varValue))
+		{
+			return $varValue;
+		}
+
+		$strCategoriesDefault = \Config::get('accounting_categories');
+
+		if (!strlen($strCategoriesDefault))
+		{
+			$this->loadDataContainer('tl_accounting_settings_layouts');
+			$strCategoriesDefault = $GLOBALS['TL_DCA']['tl_accounting_settings_layouts']['fields']['categories']['default'];
+		}
+		$dc->activeRecord->categories = $strFieldsDefault;
+
+		return $strCategoriesDefault;	
 	}
 
 	public function getAccountingContentElements($type='TL_CTE')
@@ -320,6 +311,30 @@ class Helper extends \Contao\Controller
 		}
 
 		return $groups;
+	}
+
+	public function setDefaultValues($dc)
+	{
+		if ($dc->table)
+		{
+			$arrModified = array();
+			foreach ($GLOBALS['TL_DCA'][$dc->table]['fields'] as $strName => $arrField)
+			{
+				if ($arrField['default'] && !\Contao\Config::get($strName))
+				{
+					$arrModified[] = $strName;
+					$objConfig = \Contao\Config::getInstance();
+					$objConfig->persist($strName, $arrField['default']);
+					$objConfig->save();
+					$objConfig->preload();
+				}
+			}
+			if (sizeof($arrModified))
+			{
+				\System::log('Added default accounting settings ('.implode(', ', $arrModified).') from "' . $dc->table . '"', __METHOD__, TL_CONFIGURATION);
+				$this->reload();
+			}
+		}
 	}
 
 	public static function formatPrice($varValue, $intLength=2, $strSep=',', $strThousands='.')
@@ -373,7 +388,7 @@ class Helper extends \Contao\Controller
 		if ($strAction == 'updateContentElements')
 		{
 			$intPid = \Input::post('pid');
-			$strPtable = 'tl_accounting_bills';
+			$strPtable = 'tl_accounting_' . str_replace('accounting_', '', \Input::post('do'));
 	
 			if (!$intPid)
 			{

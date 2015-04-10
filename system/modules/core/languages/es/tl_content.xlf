@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Por favor selecciona el tipo de orden.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Ignorar ficheros sin metadatos</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>No mostrar ficheros sin metadatos coincidiendo con el lenguaje de la página.</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Plantilla de galería</target>
@@ -379,9 +387,11 @@
       </trans-unit>
       <trans-unit id="tl_content.customTpl.0">
         <source>Custom element template</source>
+        <target>Personalizar plantilla del elemento</target>
       </trans-unit>
       <trans-unit id="tl_content.customTpl.1">
         <source>Here you can overwrite the default element template.</source>
+        <target>Aquí puede sobreescribir la plantilla por defecto del elemento.</target>
       </trans-unit>
       <trans-unit id="tl_content.playerSRC.0">
         <source>Video/audio files</source>
@@ -413,6 +423,7 @@
       </trans-unit>
       <trans-unit id="tl_content.playerSize.1">
         <source>Width and height of the media player in pixels (e.g. 640x480).</source>
+        <target>Ancho y alto del reproductor de medios en pixeles (ejemplo 640x480)</target>
       </trans-unit>
       <trans-unit id="tl_content.autoplay.0">
         <source>Autoplay</source>
@@ -773,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Editar artículo con ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Importar una lista de elementos desde un archivo CSV</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Importar elementos de la tabla desde un archivo CSV</target>
       </trans-unit>
     </body>
   </file>

@@ -1,0 +1,8 @@
+			<table class="ce_table"<?php if (!\Input::get('key') || \Input::get('key') != 'print'): ?> style="width:100%;table-layout:fixed"<?php endif; ?>>
+				<thead>
+					<tr>
+<?php foreach ($this->fields as $arrField): ?>
+						<th class="<?php echo $arrField['class']; ?>"><?php echo $arrField['label']; ?></th>
+<?php endforeach; ?>
+					</tr>
+				</thead>

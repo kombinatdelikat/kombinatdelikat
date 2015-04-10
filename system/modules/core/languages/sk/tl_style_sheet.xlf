@@ -161,6 +161,14 @@
         <source>Import existing CSS files</source>
         <target>Importovať existujúci CSS súbor</target>
       </trans-unit>
+      <trans-unit id="tl_style_sheet.export.0">
+        <source>Export style sheet</source>
+        <target>Exportovať kaskádové štýly</target>
+      </trans-unit>
+      <trans-unit id="tl_style_sheet.export.1">
+        <source>Export style sheet ID %s</source>
+        <target>Exportovať kaskádové štýly ID %s</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

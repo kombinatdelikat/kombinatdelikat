@@ -7,7 +7,7 @@
       </trans-unit>
       <trans-unit id="tl_article.title.1">
         <source>Please enter the article title.</source>
-        <target>لطفا عنوان نوشته را وارد نمائید.</target>
+        <target>لطفا عنوان نوشته را وارد نمایید.</target>
       </trans-unit>
       <trans-unit id="tl_article.alias.0">
         <source>Article alias</source>
@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="tl_article.author.1">
         <source>Here you can change the author of the article.</source>
-        <target>می‌توانید نویسنده این نوشته را تغییر دهید.</target>
+        <target>اینجا می‌توانید نویسنده این نوشته را تغییر دهید.</target>
       </trans-unit>
       <trans-unit id="tl_article.inColumn.0">
         <source>Display in</source>
@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="tl_article.inColumn.1">
         <source>Please choose the layout section you want the article to be displayed in.</source>
-        <target>لطفا محل قرارگیری این نوشته را در چیدمان مشخص نمائید.</target>
+        <target>لطفا محل قرارگیری این نوشته را در چیدمان مشخص نمایید.</target>
       </trans-unit>
       <trans-unit id="tl_article.keywords.0">
         <source>Meta keywords</source>
@@ -39,15 +39,15 @@
       </trans-unit>
       <trans-unit id="tl_article.keywords.1">
         <source>Here you can enter a list of comma separated keywords. Keywords, however, are no longer relevant to most search engines (including Google).</source>
-        <target>در این بخش می‌توانید کلمات کلیدی که با کاما از هم جدا شده‌اند را وارد نمایید. با این حال، کلمات کلیدی دیگر مربوط به موتورهای جستجو (شامل گوگل) نیستند.</target>
+        <target>در این بخش اینجا می‌توانید کلمات کلیدی که با کاما از هم جدا شده‌اند را وارد نمایید. با این حال، کلمات کلیدی دیگر مربوط به موتورهای جستجو (شامل گوگل) نیستند.</target>
       </trans-unit>
       <trans-unit id="tl_article.teaserCssID.0">
         <source>Teaser CSS ID/class</source>
-        <target>شناسه/کلاس CSS تیزر</target>
+        <target>شناسه/کلاس سی‌اس‌اس تیزر</target>
       </trans-unit>
       <trans-unit id="tl_article.teaserCssID.1">
         <source>Here you can set an ID and one or more classes for the teaser element.</source>
-        <target>می‌توانید یک شناسه و یک و چند کلاس برای عنصر تیزر انتخاب نمایید.</target>
+        <target>اینجا می‌توانید یک شناسه و یک و چند کلاس برای عنصر تیزر انتخاب نمایید.</target>
       </trans-unit>
       <trans-unit id="tl_article.showTeaser.0">
         <source>Show teaser</source>
@@ -63,7 +63,7 @@
       </trans-unit>
       <trans-unit id="tl_article.teaser.1">
         <source>The article teaser can also be displayed with the content element &quot;article teaser&quot;.</source>
-        <target>خلاصه متن می‌تواند به صورت خودکار و یا توسط امکان «خلاصه محتوا» نمایش داده شود.</target>
+        <target>تیزر متن می‌تواند به صورت خودکار و یا توسط امکان «تیزر محتوا» نمایش داده شود.</target>
       </trans-unit>
       <trans-unit id="tl_article.printable.0">
         <source>Syndication</source>
@@ -71,7 +71,7 @@
       </trans-unit>
       <trans-unit id="tl_article.printable.1">
         <source>Here you can choose which options are available.</source>
-        <target>می‌توانید گزینه‌های که موجود هستند را انتخاب نمایید.</target>
+        <target>اینجا می‌توانید گزینه‌های که موجود هستند را انتخاب نمایید.</target>
       </trans-unit>
       <trans-unit id="tl_article.guests.0">
         <source>Show to guests only</source>
@@ -79,7 +79,7 @@
       </trans-unit>
       <trans-unit id="tl_article.guests.1">
         <source>Hide the article if a member is logged in.</source>
-        <target>مخفی کردن مقاله اگر یک عضو وارد شده باشد.</target>
+        <target>مخفی کردن نوشته اگر یک عضو وارد شده باشد.</target>
       </trans-unit>
       <trans-unit id="tl_article.customTpl.0">
         <source>Custom article template</source>
@@ -95,7 +95,7 @@
       </trans-unit>
       <trans-unit id="tl_article.protected.1">
         <source>Show the article to certain member groups only.</source>
-        <target>نمایش مقاله تنها برای گروه‌های خاصی از اعضاء.</target>
+        <target>نمایش نوشته تنها برای گروه‌های خاصی از اعضاء.</target>
       </trans-unit>
       <trans-unit id="tl_article.groups.0">
         <source>Allowed member groups</source>
@@ -103,15 +103,15 @@
       </trans-unit>
       <trans-unit id="tl_article.groups.1">
         <source>These groups will be able to see the article.</source>
-        <target>این گروه‌ها قادر به دیدن این مقاله خواهند بود.</target>
+        <target>این گروه‌ها قادر به دیدن این نوشته خواهند بود.</target>
       </trans-unit>
       <trans-unit id="tl_article.cssID.0">
         <source>CSS ID/class</source>
-        <target>شناسه/کلاس CSS</target>
+        <target>شناسه/کلاس سی‌اس‌اس</target>
       </trans-unit>
       <trans-unit id="tl_article.cssID.1">
         <source>Here you can set an ID and one or more classes.</source>
-        <target>می‌توانید یک شناسه و یا چند کلاس را انتخاب نمایید</target>
+        <target>اینجا می‌توانید یک شناسه و یا چند کلاس را انتخاب نمایید</target>
       </trans-unit>
       <trans-unit id="tl_article.space.0">
         <source>Space in front and after</source>
@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="tl_article.space.1">
         <source>Here you can enter the spacing in front of and after the article in pixel. You should try to avoid inline styles and define the spacing in a style sheet, though.</source>
-        <target>لطفا مقدار فاصله‌ای که می‌خواهید در ابتدا و انتهای نوشته‌ باشد را به پیکسل وارد نمائید.</target>
+        <target>اینجا می‌توانید مقدار فاصله‌ای که می‌خواهید در ابتدا و انتهای نوشته‌ باشد را به پیکسل وارد نمایید.</target>
       </trans-unit>
       <trans-unit id="tl_article.published.0">
         <source>Publish article</source>
@@ -135,7 +135,7 @@
       </trans-unit>
       <trans-unit id="tl_article.start.1">
         <source>Do not show the article on the website before this day.</source>
-        <target>اگر شما در این بخش تاریخی را انتخاب نمائید، محتوا قبل از آن تاریخ نمایش داده نخواهد شد.</target>
+        <target>اگر شما در این بخش تاریخی را انتخاب نمایید، محتوا قبل از آن تاریخ نمایش داده نخواهد شد.</target>
       </trans-unit>
       <trans-unit id="tl_article.stop.0">
         <source>Show until</source>
@@ -143,7 +143,7 @@
       </trans-unit>
       <trans-unit id="tl_article.stop.1">
         <source>Do not show the article on the website on and after this day.</source>
-        <target>نمایش ندادن نوشته در وب‌سایت در این روز و بعد از آن.</target>
+        <target>نمایش ندادن نوشته در تارنما در این روز و بعد از آن.</target>
       </trans-unit>
       <trans-unit id="tl_article.tstamp.0">
         <source>Revision date</source>
@@ -187,7 +187,7 @@
       </trans-unit>
       <trans-unit id="tl_article.print">
         <source>Print the page</source>
-        <target>چاپ صفحه</target>
+        <target>چاپ برگه</target>
       </trans-unit>
       <trans-unit id="tl_article.pdf">
         <source>Export as PDF</source>
@@ -303,7 +303,7 @@
       </trans-unit>
       <trans-unit id="tl_article.pasteinto.1">
         <source>Paste into page ID %s</source>
-        <target>افزودن در صفحه شناسه %s</target>
+        <target>افزودن در برگه شناسه %s</target>
       </trans-unit>
     </body>
   </file>

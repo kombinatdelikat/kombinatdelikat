@@ -146,12 +146,12 @@
         <target>Alegeţi poziţia secţiunilor proprii în ansamblu.</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.0">
-        <source>Style sheets</source>
-        <target>Stiluri</target>
+        <source>Internal style sheets</source>
+        <target>Stiluri CSS interne</target>
       </trans-unit>
       <trans-unit id="tl_layout.stylesheet.1">
-        <source>Please select the style sheets you want to add to the layout.</source>
-        <target>Selectaţi stilurile pe care doriţi să le includeţi în ansamblul curent.</target>
+        <source>Here you can add internal style sheets to the layout.</source>
+        <target>Selectaţi stilurile CSS interne pe care doriţi să le includeţi în ansamblul curent.</target>
       </trans-unit>
       <trans-unit id="tl_layout.framework.0">
         <source>CSS framework</source>
@@ -171,9 +171,11 @@
       </trans-unit>
       <trans-unit id="tl_layout.responsive.css.0">
         <source>Responsive layout</source>
+        <target>Ansamblu sensibil</target>
       </trans-unit>
       <trans-unit id="tl_layout.responsive.css.1">
         <source>Adds a meta viewport tag to the page header and scales the CSS layout based on the device width.</source>
+        <target>Adaugă un tag meta viewport în header şi scalează stilul CSS în funcţie de lăţimea dispozitivului.</target>
       </trans-unit>
       <trans-unit id="tl_layout.grid.css.0">
         <source>12-column grid</source>
@@ -208,11 +210,12 @@
         <target>Include fişierul de stil &lt;em&gt;tinymce.css&lt;/em&gt; din directorul de upload.</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.0">
-        <source>Additional style sheets</source>
-        <target>Fişiere de stil adiţionale</target>
+        <source>External style sheets</source>
+        <target>Stiluri CSS externe</target>
       </trans-unit>
       <trans-unit id="tl_layout.external.1">
-        <source>Here you can add additional CSS, SCSS or LESS files from the file system.</source>
+        <source>Here you can add external CSS, SCSS or LESS files from the file system.</source>
+        <target>Aici puteţi să adăugaţi fişiere externe CSS, SCSS sau LESS din sistemul de fişiere.</target>
       </trans-unit>
       <trans-unit id="tl_layout.orderExt.0">
         <source>Sort order</source>
@@ -221,6 +224,22 @@
       <trans-unit id="tl_layout.orderExt.1">
         <source>The sort order of the style sheets.</source>
         <target>Ordinea de sortare pentru fişierele de stil.</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.0">
+        <source>Loading order</source>
+        <target>Ordinea de încărcare</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.loadingOrder.1">
+        <source>Here you can select the loading order of the style sheets.</source>
+        <target>Selectați ordinea de încărcare pentru stilurile CSS</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.external_first">
+        <source>Load external style sheets first</source>
+        <target>Încarcă stilurile CSS externe înainte</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.internal_first">
+        <source>Load internal style sheets first</source>
+        <target>Încarcă stilurile CSS interne înainte</target>
       </trans-unit>
       <trans-unit id="tl_layout.webfonts.0">
         <source>Google web fonts</source>
@@ -280,15 +299,19 @@
       </trans-unit>
       <trans-unit id="tl_layout.viewport.0">
         <source>Viewport</source>
+        <target>Viewport</target>
       </trans-unit>
       <trans-unit id="tl_layout.viewport.1">
-        <source>Here you can add a custom viewport (e.g. &lt;em&gt;initial-scale=1.0&lt;/em&gt;).</source>
+        <source>Here you can overwrite the viewport content (defaults to &lt;em&gt;width=device-width,initial-scale=1.0&lt;/em&gt;).</source>
+        <target>Aici puteţi să modificați conținutul pentru viewport (de ex. &lt;em&gt;initial-scale=1.0&lt;/em&gt;).</target>
       </trans-unit>
       <trans-unit id="tl_layout.titleTag.0">
         <source>Title tag</source>
+        <target>Format de titlu</target>
       </trans-unit>
       <trans-unit id="tl_layout.titleTag.1">
         <source>Here you can overwrite the title tag (defaults to &lt;em&gt;{{page::pageTitle}} - {{page::rootTitle}}&lt;/em&gt;).</source>
+        <target>Aici puteţi alege formatul de titlu (implicit este &lt;em&gt;{{page::pageTitle}} - {{page::rootTitle}}&lt;/em&gt;).</target>
       </trans-unit>
       <trans-unit id="tl_layout.onload.0">
         <source>Body onload</source>
@@ -354,6 +377,14 @@
         <source>Here you can select one or more MooTools templates.</source>
         <target>Dacă vreţi să executaţi un efect acordeon mootools pe pagină, trebuie să adăugaţi un şablon cu scripturi care iniţiază efectul. Şabloanele mootools încep cu &lt;em&gt;moo_&lt;/em&gt; (extensie fişier &lt;em&gt;.tpl&lt;/em&gt;).</target>
       </trans-unit>
+      <trans-unit id="tl_layout.picturefill.0">
+        <source>Load the image polyfill</source>
+        <target>Încarcă imagine din bucăți</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.picturefill.1">
+        <source>Include the image polyfill (&lt;em&gt;respimage.js&lt;/em&gt;) in the layout.</source>
+        <target>Include imagini din bucăți (&lt;em&gt;respimage.js&lt;/em&gt;) în ansamblu.</target>
+      </trans-unit>
       <trans-unit id="tl_layout.analytics.0">
         <source>Analytics templates</source>
         <target>Şabloane analytics</target>
@@ -412,10 +443,15 @@
       </trans-unit>
       <trans-unit id="tl_layout.webfonts_legend">
         <source>Web fonts</source>
+        <target>Fonturi web</target>
       </trans-unit>
       <trans-unit id="tl_layout.style_legend">
         <source>Style sheets</source>
         <target>Stiluri CSS</target>
+      </trans-unit>
+      <trans-unit id="tl_layout.picturefill_legend">
+        <source>Responsive images</source>
+        <target>Imagini sensibile</target>
       </trans-unit>
       <trans-unit id="tl_layout.feed_legend">
         <source>RSS/Atom feeds</source>
@@ -430,8 +466,8 @@
         <target>Setări avansate</target>
       </trans-unit>
       <trans-unit id="tl_layout.script_legend">
-        <source>Script settings</source>
-        <target>Setări de script</target>
+        <source>JavaScript</source>
+        <target>JavaScript</target>
       </trans-unit>
       <trans-unit id="tl_layout.static_legend">
         <source>Static layout</source>
@@ -443,12 +479,15 @@
       </trans-unit>
       <trans-unit id="tl_layout.j_local">
         <source>Local file</source>
+        <target>Fişier local</target>
       </trans-unit>
       <trans-unit id="tl_layout.j_googleapis">
         <source>CDN (code.jquery.com)</source>
+        <target>CDN (code.jquery.com)</target>
       </trans-unit>
       <trans-unit id="tl_layout.j_fallback">
         <source>CDN with local fallback</source>
+        <target>CDN cu rezervă locală</target>
       </trans-unit>
       <trans-unit id="tl_layout.mootools_legend">
         <source>MooTools</source>
@@ -456,12 +495,15 @@
       </trans-unit>
       <trans-unit id="tl_layout.moo_local">
         <source>Local file</source>
+        <target>Fişier local</target>
       </trans-unit>
       <trans-unit id="tl_layout.moo_googleapis">
         <source>CDN (googleapis.com)</source>
+        <target>CDN (googleapis.com)</target>
       </trans-unit>
       <trans-unit id="tl_layout.moo_fallback">
         <source>CDN with local fallback</source>
+        <target>CDN cu rezervă locală</target>
       </trans-unit>
       <trans-unit id="tl_layout.html5">
         <source>HTML</source>

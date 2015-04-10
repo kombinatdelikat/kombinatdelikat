@@ -25,9 +25,21 @@
         <source>Field &quot;%s&quot; must not be longer than %d characters!</source>
         <target>Il campo &quot;%s&quot; non deve essere più lungo di %d caratteri!</target>
       </trans-unit>
+      <trans-unit id="ERR.minval">
+        <source>Field &quot;%s&quot; has to be at least %d!</source>
+        <target>Il campo &quot;%s&quot; deve essere di almeno %d!</target>
+      </trans-unit>
+      <trans-unit id="ERR.maxval">
+        <source>Field &quot;%s&quot; must not be greater than %d!</source>
+        <target>Il campo &quot;%s&quot; non deve essere maggiore di %d!</target>
+      </trans-unit>
       <trans-unit id="ERR.digit">
         <source>Please enter digits only!</source>
         <target>Inserisci solo numeri!</target>
+      </trans-unit>
+      <trans-unit id="ERR.natural">
+        <source>Please enter natural numbers only!</source>
+        <target>Si prega di inserire solo numeri!</target>
       </trans-unit>
       <trans-unit id="ERR.prcnt">
         <source>Please enter a percentage between 0 and 100!</source>
@@ -789,6 +801,10 @@
         <source>Open the link in a new browser window.</source>
         <target>Se scegli questa opzione, l'URL di destinazione si aprirà in una nuova finestra del browser.</target>
       </trans-unit>
+      <trans-unit id="MSC.textDirection">
+        <source>ltr</source>
+        <target>ltr</target>
+      </trans-unit>
       <trans-unit id="MSC.decimalSeparator">
         <source>.</source>
         <target>.</target>
@@ -985,6 +1001,10 @@
         <source>Add language</source>
         <target>Aggiungi una lingua</target>
       </trans-unit>
+      <trans-unit id="MSC.image_sizes">
+        <source>Predefined dimensions</source>
+        <target>Dimensioni predefinite</target>
+      </trans-unit>
       <trans-unit id="MSC.relative">
         <source>Relative dimensions</source>
         <target>Dimensioni relative</target>
@@ -1005,9 +1025,21 @@
         <source>The shorter side of the image is adjusted to the given dimensions and the image is resized proportionally.</source>
         <target>Il lato più corto dell'immagine viene variato in base alle dimensioni indicate e l'immagine viene ridimensionata in modo proporzionale.</target>
       </trans-unit>
-      <trans-unit id="MSC.crop">
+      <trans-unit id="MSC.exact.0">
         <source>Exact dimensions</source>
         <target>Dimensioni esatte</target>
+      </trans-unit>
+      <trans-unit id="MSC.exact.1">
+        <source>The image will be resized to the given dimensions. If necessary, it will be cropped.</source>
+        <target>L'immagine verrà ridimensionata alle dimensioni indicate. Se necessario, verrà ritagliata.</target>
+      </trans-unit>
+      <trans-unit id="MSC.crop.0">
+        <source>Important part</source>
+        <target>Parte importante</target>
+      </trans-unit>
+      <trans-unit id="MSC.crop.1">
+        <source>Preserves the important part of an image as specified in the file manager.</source>
+        <target>Preserva la parte importante di un'immagine come specificato nel file manager.</target>
       </trans-unit>
       <trans-unit id="MSC.left_top.0">
         <source>Left | Top</source>
@@ -1154,20 +1186,20 @@
         <target>Data inserimento: %s</target>
       </trans-unit>
       <trans-unit id="MSC.lastLogin.0">
+        <source>Previous login</source>
+        <target>Precedente login</target>
+      </trans-unit>
+      <trans-unit id="MSC.lastLogin.1">
+        <source>Previous login: %s</source>
+        <target>Precedente login: %s</target>
+      </trans-unit>
+      <trans-unit id="MSC.currentLogin.0">
         <source>Last login</source>
         <target>Ultimo login</target>
       </trans-unit>
-      <trans-unit id="MSC.lastLogin.1">
+      <trans-unit id="MSC.currentLogin.1">
         <source>Last login: %s</source>
         <target>Ultimo login: %s</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.0">
-        <source>Current login</source>
-        <target>Login corrente</target>
-      </trans-unit>
-      <trans-unit id="MSC.currentLogin.1">
-        <source>Current login: %s</source>
-        <target>Login corrente: %s</target>
       </trans-unit>
       <trans-unit id="MSC.loginCount">
         <source>Login attempts</source>
@@ -1342,6 +1374,14 @@ Questa e-mail è stata generata dal sistema in modo automatico. Non rispondere a
       <trans-unit id="MSC.delAllConfirm">
         <source>Do you really want to delete the selected records?</source>
         <target>Sicuro di voler cancellare i records selezionati?</target>
+      </trans-unit>
+      <trans-unit id="MSC.deleteConfirmFile">
+        <source>Do you really want to delete file or folder %s?</source>
+        <target>Si desidera realmente eliminare il file o la cartella %s?</target>
+      </trans-unit>
+      <trans-unit id="MSC.delAllConfirmFile">
+        <source>Do you really want to delete the selected resources?</source>
+        <target>Si desidera realmente eliminare la risorsa selezionata?</target>
       </trans-unit>
       <trans-unit id="MSC.filterRecords">
         <source>Records</source>
@@ -1646,6 +1686,14 @@ Questa e-mail è stata generata dal sistema in modo automatico. Non rispondere a
       <trans-unit id="MSC.resetSelected">
         <source>Reset selection</source>
         <target>Annulla selezione</target>
+      </trans-unit>
+      <trans-unit id="MSC.filePicker">
+        <source>Switch to file picker</source>
+        <target>Utilizza la selezione file</target>
+      </trans-unit>
+      <trans-unit id="MSC.pagePicker">
+        <source>Switch to page picker</source>
+        <target>Utilizza il selettore pagina</target>
       </trans-unit>
       <trans-unit id="MSC.fileManager">
         <source>Open the file manager</source>
@@ -2118,6 +2166,10 @@ Questa e-mail è stata generata dal sistema in modo automatico. Non rispondere a
       <trans-unit id="MSC.location">
         <source>Location</source>
         <target>Posizione</target>
+      </trans-unit>
+      <trans-unit id="MSC.download">
+        <source>Download %s</source>
+        <target>Download %s</target>
       </trans-unit>
       <trans-unit id="UNITS.0">
         <source>Byte</source>

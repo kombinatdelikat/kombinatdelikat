@@ -161,6 +161,14 @@
         <source>Import existing CSS files</source>
         <target>导入现有CSS文件</target>
       </trans-unit>
+      <trans-unit id="tl_style_sheet.export.0">
+        <source>Export style sheet</source>
+        <target>导出样式表</target>
+      </trans-unit>
+      <trans-unit id="tl_style_sheet.export.1">
+        <source>Export style sheet ID %s</source>
+        <target>导出ID为%s的样式表</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

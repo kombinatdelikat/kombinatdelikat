@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Kies de sorteervolgorde.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Negeer bestanden zonder meta data</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>Bestanden zonder meta data die overeenkomen met de pagina taal niet weergeven.</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Galerij template</target>
@@ -379,11 +387,11 @@
       </trans-unit>
       <trans-unit id="tl_content.customTpl.0">
         <source>Custom element template</source>
-        <target>Aangepaste template</target>
+        <target>Aangepaste elementtemplate</target>
       </trans-unit>
       <trans-unit id="tl_content.customTpl.1">
         <source>Here you can overwrite the default element template.</source>
-        <target>Hier kunt u de standaard template overschrijven.</target>
+        <target>Hier kunt u de standaard template van het element overschrijven.</target>
       </trans-unit>
       <trans-unit id="tl_content.playerSRC.0">
         <source>Video/audio files</source>
@@ -623,11 +631,11 @@
       </trans-unit>
       <trans-unit id="tl_content.expert_legend">
         <source>Expert settings</source>
-        <target>Expert instellingen</target>
+        <target>Expert-instellingen</target>
       </trans-unit>
       <trans-unit id="tl_content.template_legend">
         <source>Template settings</source>
-        <target>Template instellingen</target>
+        <target>Template-instellingen</target>
       </trans-unit>
       <trans-unit id="tl_content.player_legend">
         <source>Player settings</source>
@@ -675,11 +683,11 @@
       </trans-unit>
       <trans-unit id="tl_content.includeTemplate">
         <source>The &lt;em&gt;%s&lt;/em&gt; template needs to be included in the page layout.</source>
-        <target>De &lt;em&gt;%s&lt;/em&gt; template dient te worden opgenomen in de  pagina layout.</target>
+        <target>De &lt;em&gt;%s&lt;/em&gt; template dient te worden opgenomen in de  pagina-lay-out.</target>
       </trans-unit>
       <trans-unit id="tl_content.includeTemplates">
         <source>The &lt;em&gt;%s&lt;/em&gt; or &lt;em&gt;%s&lt;/em&gt; template needs to be included in the page layout.</source>
-        <target>De &lt;em&gt;%s&lt;/em&gt; of &lt;em&gt;%s&lt;/em&gt; template dient te worden opgenomen in de  pagina layout.</target>
+        <target>De &lt;em&gt;%s&lt;/em&gt; of &lt;em&gt;%s&lt;/em&gt; template dient te worden opgenomen in de  pagina-lay-out.</target>
       </trans-unit>
       <trans-unit id="tl_content.new.0">
         <source>New element</source>
@@ -776,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Bewerk artikel ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Importeer lijst items vanuit een CSV bestand</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Importeer tabel items van een CSV bestand</target>
       </trans-unit>
     </body>
   </file>

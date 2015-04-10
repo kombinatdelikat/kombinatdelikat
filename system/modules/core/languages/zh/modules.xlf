@@ -153,6 +153,14 @@
         <source>Page layouts</source>
         <target>页面布局</target>
       </trans-unit>
+      <trans-unit id="MOD.tl_image_size">
+        <source>Image sizes</source>
+        <target>图片尺寸</target>
+      </trans-unit>
+      <trans-unit id="MOD.tl_image_size_item">
+        <source>Image size media queries</source>
+        <target>图片尺寸media queries</target>
+      </trans-unit>
       <trans-unit id="MOD.css">
         <source>Style sheets</source>
         <target>样式表</target>
@@ -164,6 +172,10 @@
       <trans-unit id="MOD.layout">
         <source>Page layouts</source>
         <target>页面布局</target>
+      </trans-unit>
+      <trans-unit id="MOD.image_sizes">
+        <source>Image sizes</source>
+        <target>图片尺寸</target>
       </trans-unit>
       <trans-unit id="MOD.theme_import">
         <source>Theme import</source>

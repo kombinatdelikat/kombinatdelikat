@@ -369,6 +369,14 @@
         <source>Please choose the sort order.</source>
         <target>Tscherna la successiun da zavrar.</target>
       </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.0">
+        <source>Ignore files without meta data</source>
+        <target>Ignorar datotecas senza datas da meta</target>
+      </trans-unit>
+      <trans-unit id="tl_content.metaIgnore.1">
+        <source>Do not show files without meta data matching the page language.</source>
+        <target>Na betg mussar datotecas senza datas da meta che correspundan la lingua da la pagina.</target>
+      </trans-unit>
       <trans-unit id="tl_content.galleryTpl.0">
         <source>Gallery template</source>
         <target>Template da galaria</target>
@@ -776,6 +784,14 @@
       <trans-unit id="tl_content.editarticle.1">
         <source>Edit article ID %s</source>
         <target>Modifitgar l'artitgel cun l'ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_content.list.1">
+        <source>Import list items from a CSV file</source>
+        <target>Importar elements da glista d'ina datoteca CSV.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.table.1">
+        <source>Import table items from a CSV file</source>
+        <target>Importar endataziun da tabella d'ina datoteca CSV</target>
       </trans-unit>
     </body>
   </file>

@@ -19,11 +19,11 @@
       </trans-unit>
       <trans-unit id="tl_log.action.0">
         <source>Category</source>
-        <target>دسته</target>
+        <target>دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_log.action.1">
         <source>Category of the action</source>
-        <target>دسته عمل</target>
+        <target>دسته‌بندی عمل</target>
       </trans-unit>
       <trans-unit id="tl_log.username.0">
         <source>User</source>
@@ -51,11 +51,11 @@
       </trans-unit>
       <trans-unit id="tl_log.ip.0">
         <source>IP address</source>
-        <target>آدرس IP</target>
+        <target>نشانی IP</target>
       </trans-unit>
       <trans-unit id="tl_log.ip.1">
         <source>IP address of the user</source>
-        <target>آدرس IP کاربر</target>
+        <target>نشانی IP کاربر</target>
       </trans-unit>
       <trans-unit id="tl_log.browser.0">
         <source>Browser</source>

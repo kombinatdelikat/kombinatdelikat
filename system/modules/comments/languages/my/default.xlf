@@ -25,6 +25,9 @@
         <source>Submit comment</source>
         <target>မှတ်ချက်တင်သွင်း</target>
       </trans-unit>
+      <trans-unit id="MSC.com_login">
+        <source>You need to be logged in to add comments.</source>
+      </trans-unit>
       <trans-unit id="MSC.com_by">
         <source>Comment by</source>
         <target>မှမှတ်ချက်ချ</target>

@@ -25,6 +25,10 @@
         <source>Submit comment</source>
         <target>提交评论</target>
       </trans-unit>
+      <trans-unit id="MSC.com_login">
+        <source>You need to be logged in to add comments.</source>
+        <target>请登录后添加您的评论.</target>
+      </trans-unit>
       <trans-unit id="MSC.com_by">
         <source>Comment by</source>
         <target>评论</target>

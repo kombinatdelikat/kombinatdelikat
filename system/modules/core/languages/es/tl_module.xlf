@@ -83,9 +83,11 @@
       </trans-unit>
       <trans-unit id="tl_module.customTpl.0">
         <source>Custom module template</source>
+        <target>Personalizar plantilla de módulo</target>
       </trans-unit>
       <trans-unit id="tl_module.customTpl.1">
         <source>Here you can overwrite the default module template.</source>
+        <target>Aquí puede sobreescribir la plantilla por defecto de módulo.</target>
       </trans-unit>
       <trans-unit id="tl_module.pages.0">
         <source>Pages</source>
