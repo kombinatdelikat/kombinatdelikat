@@ -27,7 +27,7 @@ $GLOBALS['TL_DCA']['tl_kd_products'] = array
 		'enableVersioning'            => true,
 		'onload_callback'             => array
 		(
-			array('KdHelper', 'showStockMessage')
+			array('\KombinatDelikat\Classes\Helper', 'showStockMessage')
 		),
 		'sql' => array
 		(
@@ -180,7 +180,7 @@ $GLOBALS['TL_DCA']['tl_kd_products'] = array
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'digit', 'mandatory'=>true, 'maxlength'=>255, 'tl_class' => 'w50'),
-			'save_callback'           => array(array('KdHelper', 'formatPrice')),
+			'save_callback'           => array(array('\KombinatDelikat\Classes\Helper', 'formatPrice')),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'price_tiers' => array
@@ -232,7 +232,7 @@ class tl_kd_products extends Backend
 
 	public function setLabel($arrRow, $strLabel, \DataContainer $dc, $args)
 	{
-		$objKdHelper = new \KdHelper();
+		$objKdHelper = new \KombinatDelikat\Classes\Helper();
 
 		if ($arrRow['price_type'] == 'fix')
 		{
@@ -267,7 +267,7 @@ class tl_kd_products extends Backend
 			return $arrValues;
 		}
 
-		$objKdHelper = new \KdHelper();
+		$objKdHelper = new \KombinatDelikat\Classes\Helper();
 		foreach ($arrValues as $i=>$arrValue)
 		{
 			$arrValues[$i]['range_from'] = number_format($arrValue['range_from'], 0, '.', '');

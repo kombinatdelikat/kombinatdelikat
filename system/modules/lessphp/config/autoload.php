@@ -2,37 +2,18 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2013 Leo Feyer
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (c) 2005-2015 Leo Feyer
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  David Enke 2013 
- * @author     David Enke (post@davidenke.de) 
- * @package    lessphp 
- * @license    LGPL 
- * @filesource
+ * @license LGPL-3.0+
  */
 
 
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array(
+ClassLoader::addClasses(array
+(
 	// Classes
-	'Contao\LessHelper'             => 'system/modules/lessphp/classes/LessHelper.php'
+	'Contao\LessHelper' => 'system/modules/lessphp/classes/LessHelper.php',
 ));

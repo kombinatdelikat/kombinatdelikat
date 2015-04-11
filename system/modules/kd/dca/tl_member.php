@@ -16,7 +16,7 @@
  */
 
 unset($GLOBALS['TL_DCA']['tl_member']['list']['operations']['su']);
-//$GLOBALS['TL_DCA']['tl_member']['config']['onload_callback'] = array(array('KdHelper', 'showStockMessage'));
+//$GLOBALS['TL_DCA']['tl_member']['config']['onload_callback'] = array(array('\KombinatDelikat\Classes\Helper', 'showStockMessage'));
 $GLOBALS['TL_DCA']['tl_member']['list']['label']['fields'] = array('icon', 'firstname', 'lastname', 'groups', 'company');
 $GLOBALS['TL_DCA']['tl_member']['list']['label']['label_callback'] = array('kd_member', 'renderLabel');
 

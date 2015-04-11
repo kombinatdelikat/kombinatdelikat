@@ -25,7 +25,7 @@ $GLOBALS['TL_DCA']['tl_kd_receipts'] = array
 		'enableVersioning'            => true,
 		'onload_callback'             => array
 		(
-			array('KdHelper', 'showStockMessage')
+			array('\KombinatDelikat\Classes\Helper', 'showStockMessage')
 		),
 		'sql' => array
 		(

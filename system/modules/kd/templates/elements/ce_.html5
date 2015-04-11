@@ -1,0 +1,17 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<script>
+	$.ajaxSetup({ cache: true });
+	$.getScript('//connect.facebook.net/de_DE/all.js', function() {
+		FB.init({
+			appId: '<?php echo $this->fb_app_id; ?>',
+		});
+		FB.api('/<?php echo $this->fb_page_id; ?>', function(res) {
+			console.log(res);
+		});
+	});
+</script>
+
+<?php $this->endblock(); ?>

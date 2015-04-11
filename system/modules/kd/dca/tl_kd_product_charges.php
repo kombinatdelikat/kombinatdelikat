@@ -26,7 +26,7 @@ $GLOBALS['TL_DCA']['tl_kd_product_charges'] = array
 		'ptable'                      => 'tl_kd_products',
 		'onload_callback'             => array
 		(
-			array('KdHelper', 'showStockMessage')
+			array('\KombinatDelikat\Classes\Helper', 'showStockMessage')
 		),
 		'sql' => array
 		(

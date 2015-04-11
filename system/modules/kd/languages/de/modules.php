@@ -28,13 +28,6 @@ $GLOBALS['TL_LANG']['MOD']['kd_labels'] = array('Etikettierer', 'Etiketten vorbe
 
 
 /**
- * Front end modules
- */
-//$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
-
-
-/**
  * Content Elements
  */
-//$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
-$GLOBALS['TL_LANG']['CTE']['kd_pdf_pb'] = array('PDF Seitenumbruch', 'Fügt einen Seitenumbruch in ine PDF-Datei ein.');
+$GLOBALS['TL_LANG']['FMD']['facebook_page'] = array('Facebook Seite', 'Fügt den Feed der angegebenen Seite ein.');

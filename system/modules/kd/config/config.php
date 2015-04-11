@@ -13,19 +13,24 @@
 
 
 /**
- * BACK END MODULES
+ * Back end modules
  */
-array_insert($GLOBALS['BE_MOD'], 0, array(
-	'kd' => array(
-		'kd_stock' => array(
+array_insert($GLOBALS['BE_MOD'], 0, array
+(
+	'kd' => array
+	(
+		'kd_stock' => array
+		(
 			'tables'		=> array('tl_kd_stock'),
 			'icon'			=> 'system/modules/kd/assets/img/kd_stock.png'
 		),
-		'kd_products' => array(
+		'kd_products' => array
+		(
 			'tables'		=> array('tl_kd_products', 'tl_kd_product_charges'),
 			'icon'			=> 'system/modules/kd/assets/img/kd_products.png'
 		),
-		'kd_formulas' => array(
+		'kd_formulas' => array
+		(
 			'tables'		=> array('tl_kd_formulas'),
 			'icon'			=> 'system/modules/kd/assets/img/kd_formulas.png'
 		),
@@ -47,7 +52,8 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 			'icon'			=> 'system/modules/kd/assets/img/kd_correspondence.png'
 		),
 */
-		'kd_labels' => array(
+		'kd_labels' => array
+		(
 			'tables'		=> array('tl_kd_labels'),
 			'icon'			=> 'system/modules/kd/assets/img/kd_labels.png'
 		)
@@ -56,14 +62,27 @@ array_insert($GLOBALS['BE_MOD'], 0, array(
 
 
 /**
- * HOOKS
+ * Content elements
  */
-$GLOBALS['TL_HOOKS']['getContentElement'][] = array('KdHelper', 'wrapHeadlines');
+
+
+/**
+ * Front end modules
+ */
+array_insert($GLOBALS['FE_MOD']['miscellaneous'], 99, array
+(
+	'facebook_page'			=> 'KombinatDelikat\Modules\ModuleFacebookPage'
+));
+
+
+/**
+ * Hooks
+ */
+//$GLOBALS['TL_HOOKS']['getContentElement'][] = array('KombinatDelikat\Classes\Helper', 'wrapHeadlines');
+$GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('KombinatDelikat\Classes\Helper', 'addLabelAssets');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('KombinatDelikat\Classes\Helper', 'addInsertTags');
 
 if (!\Input::get('do'))
 {
-	//$GLOBALS['TL_HOOKS']['getSystemMessages'][] = array('KdHelper', 'showStockMessage');
+	//$GLOBALS['TL_HOOKS']['getSystemMessages'][] = array('\KombinatDelikat\Classes\Helper', 'showStockMessage');
 }
-
-$GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('KdHelper', 'addLabelAssets');
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('KdHelper', 'addInsertTags');

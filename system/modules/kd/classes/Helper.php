@@ -3,9 +3,9 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace Contao;
+namespace KombinatDelikat\Classes;
 
-class KdHelper extends \Controller
+class Helper extends \Controller
 {
 
 	public function wrapHeadlines(ContentModel $objElementModel, $strBuffer, $objElement)
