@@ -14,6 +14,10 @@
 
 $GLOBALS['TL_DCA']['tl_module']['palettes']['facebook_page'] = '{title_legend},name,type;{fb_legend},fb_app_id,fb_app_secret,fb_page_id;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
+$GLOBALS['TL_DCA']['tl_module']['fields']['fb_cache'] = array
+(
+	'sql'                     => "blob NULL"
+);
 $GLOBALS['TL_DCA']['tl_module']['fields']['fb_app_id'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['fb_app_id'],

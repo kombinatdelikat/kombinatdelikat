@@ -76,9 +76,16 @@ array_insert($GLOBALS['FE_MOD']['miscellaneous'], 99, array
 
 
 /**
+ * Cron jobs
+ */
+$GLOBALS['TL_CRON']['daily'][] = array('KombinatDelikat\Classes\Helper', 'rebuildFacebookCaches');
+
+
+/**
  * Hooks
  */
 //$GLOBALS['TL_HOOKS']['getContentElement'][] = array('KombinatDelikat\Classes\Helper', 'wrapHeadlines');
+$GLOBALS['TL_HOOKS']['getContentElement'][] = array('KombinatDelikat\Classes\Helper', 'addGridHeight');
 $GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('KombinatDelikat\Classes\Helper', 'addLabelAssets');
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('KombinatDelikat\Classes\Helper', 'addInsertTags');
 

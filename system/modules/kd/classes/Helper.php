@@ -7,6 +7,51 @@ namespace KombinatDelikat\Classes;
 
 class Helper extends \Controller
 {
+	public function rebuildFacebookCaches()
+	{
+		$objModuleModels = \ModuleModel::findBy('type', 'facebook_page');
+
+		if (is_null($objModuleModels))
+		{
+			return;
+		}
+
+		foreach ($objModuleModels as $objModuleModel)
+		{
+			$objModule = new \KombinatDelikat\Modules\ModuleFacebookPage($objModuleModel);
+			$objModule->getFacebookData(true);
+		}
+	}
+
+	public function addGridHeight($objElementModel, $strBuffer, $objElementController)
+	{
+		if ($objElementController->ptable != 'tl_article')
+		{
+			return $strBuffer;
+		}
+
+		$objArticle = \Contao\ArticleModel::findByPk($objElementController->pid);
+
+		if (!is_null($objArticle) && $objArticle->isGrid)
+		{
+			if (strpos($strBuffer, 'single') || strpos($strBuffer, 'double'))
+			{
+				return $strBuffer;
+			}
+
+			$strClass = implode(' ', (array) $objElementController->classes);
+			$strHeight = $objElementModel->gridHeight ?: 'single';
+
+			return preg_replace
+			(
+				'/(class=")(.*)(grid-.*)(")/siU',
+				'$1$2$3 ' . $strHeight . '$4',
+				$strBuffer
+			);
+		}
+
+		return $strBuffer;
+	}
 
 	public function wrapHeadlines(ContentModel $objElementModel, $strBuffer, $objElement)
 	{
@@ -204,7 +249,7 @@ class Helper extends \Controller
 		$strMessage.= '<td class="stock">' . $intDiffTotal . '</td>';
 		$strMessage.= '</tr></tfoot></table>';
 
-		Message::addRaw($strMessage);
+		\Message::addRaw($strMessage);
 	}
 
 	public function addLabelAssets($strContent, $strTemplate)
@@ -229,6 +274,11 @@ class Helper extends \Controller
 		elseif ($strTag == 'strong_close')
 		{
 			return '</strong>';
+		}
+		elseif ($strTag == 'logoColor')
+		{
+			global $objPage;
+			return $objPage->logo_color;
 		}
 		
 		return false;
