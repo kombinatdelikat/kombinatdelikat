@@ -25,14 +25,19 @@ angular
                 controller: 'NewsCtrl'
             })
             .state('locations', {
-                url: '/orte',
+                url: '/probieren',
                 templateUrl: 'views/locations.html',
                 controller: 'LocationsCtrl'
             })
             .state('about', {
-                url: '/ueber',
+                url: '/praedikat',
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
+            })
+            .state('order', {
+                url: '/bestellung',
+                templateUrl: 'views/order.html',
+                controller: 'OrderCtrl'
             })
             .state('contact', {
                 url: '/kontakt',
@@ -43,5 +48,10 @@ angular
                 url: '/impressum',
                 templateUrl: 'views/imprint.html',
                 controller: 'ImprintCtrl'
+            })
+            .state('privacy', {
+                url: '/datenschutz',
+                templateUrl: 'views/privacy.html',
+                controller: 'PrivacyCtrl'
             });
     });

@@ -10,7 +10,7 @@
 angular.module('dekombinatdelikatwww')
   .controller('AboutCtrl', function ($scope) {
       $scope.$parent.meta = {
-          title: 'Über - Kombinat Delikat',
+          title: 'Prädikat - Kombinat Delikat',
           description: ''
       };
   });
