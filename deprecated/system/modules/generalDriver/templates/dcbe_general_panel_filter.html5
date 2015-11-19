@@ -1,8 +1,0 @@
-<div class="tl_filter tl_subpanel">
-	<strong><?php echo $GLOBALS['TL_LANG']['MSC']['filter']; ?>:</strong>
-	<select name="<?php echo $this->name; ?>" id="<?php echo $this->id; ?>" class="<?php echo $this->class; ?>">
-		<?php foreach ($this->options as $arrOption): ?>
-			<option value="<?php echo $arrOption['value']; ?>"<?php echo $arrOption['attributes']; ?>><?php echo $arrOption['content']; ?></option>
-		<?php endforeach; ?>
-	</select>
-</div>
