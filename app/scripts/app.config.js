@@ -2,12 +2,16 @@
 
 /**
  * @ngdoc overview
- * @name dekombinatdelikatwww
+ * @name de.kombinatdelikat.www
  * @description
- * # dekombinatdelikatwww
+ * # de.kombinatdelikat.www
  *
  * Config of the application.
  */
 angular
-    .module('dekombinatdelikatwww')
-    .constant('config', {});
+    .module('de.kombinatdelikat.www')
+    .constant('config', {
+        facebook: {
+            url: 'http://facebook.kombinatdelikat.de'
+        }
+    });

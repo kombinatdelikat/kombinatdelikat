@@ -2,18 +2,19 @@
 
 /**
  * @ngdoc overview
- * @name dekombinatdelikatwww
+ * @name de.kombinatdelikat.www
  * @description
- * # dekombinatdelikatwww
+ * # de.kombinatdelikat.www
  *
  * Main module of the application.
  */
 angular
-    .module('dekombinatdelikatwww', [
+    .module('de.kombinatdelikat.www', [
         'ui.router',
         'ngAnimate',
         'ngMessages',
         'ngSanitize',
         'ngTouch',
-        'uiGmapgoogle-maps'
+        'uiGmapgoogle-maps',
+        'angular-parallax'
     ]);

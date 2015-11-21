@@ -3,7 +3,7 @@
 describe('Controller: NewsCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('dekombinatdelikatwww'));
+  beforeEach(module('de.kombinatdelikat.www'));
 
   var NewsCtrl,
     scope;

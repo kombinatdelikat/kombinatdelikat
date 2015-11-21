@@ -39,6 +39,7 @@ nav li {
     display: inline-block;
     padding: 0 20px;
 }
+
 nav li a {
     color: #fff;
     font-size: 18px;
@@ -54,6 +55,7 @@ header nav li:first-child {
     display: block;
     padding: 0;
 }
+
 header nav li:first-child a {
     display: block;
     width: 133px;
@@ -68,8 +70,119 @@ section {
     padding-top: 40px;
     background-color: aquamarine;
 }
+
 section.news {
     background-color: #4d4d4d;
+}
+
+section.news ul[timeline] {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+section.news ul[timeline]:before,
+section.news ul[timeline]:after {
+    content: '';
+}
+
+section.news ul[timeline]:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: 4px;
+    height: 100%;
+    margin-left: -2px;
+    background: #f15a24;
+}
+
+section.news ul[timeline]:after {
+    clear: both;
+    display: table;
+}
+
+section.news ul[timeline] li {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 30px;
+    font-size: 14px;
+    color: #fff;
+}
+
+section.news ul[timeline] li:first-child + li {
+    padding-top: 120px;
+}
+
+section.news ul[timeline] li.left {
+    float: left;
+    clear: left;
+    text-align: right;
+}
+
+section.news ul[timeline] li.right {
+    float: right;
+    clear: right;
+    text-align: left;
+}
+
+section.news ul[timeline] li time {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    padding: 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #fff;
+    background-color: #f15a24;
+}
+
+section.news ul[timeline] li time:before,
+section.news ul[timeline] li time:after {
+    content: '';
+    position: absolute;
+    display: block;
+}
+section.news ul[timeline] li time:before {
+    top: 0;
+    border: 15px solid transparent;
+}
+
+section.news ul[timeline] li.left time:before {
+    right: -30px;
+    border-left-color: #f15a24;
+}
+
+section.news ul[timeline] li.right time:before {
+    left: -30px;
+    border-right-color: #f15a24;
+}
+
+section.news ul[timeline] li time:after {
+    top: 9px;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+section.news ul[timeline] li.left time:after {
+    right: -36px;
+}
+
+section.news ul[timeline] li.right time:after {
+    left: -37px;
+}
+
+section.news ul[timeline] li img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
 }
 
 section.locations {
@@ -80,4 +193,10 @@ section.locations {
 .angular-google-map-container {
     width: 100%;
     height: 100%;
+    background-color: transparent !important;
+}
+
+.angular-google-map a img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
 }

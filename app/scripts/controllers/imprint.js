@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dekombinatdelikatwww.controller:ImprintCtrl
+ * @name de.kombinatdelikat.www.controller:ImprintCtrl
  * @description
  * # ImprintCtrl
- * Controller of the dekombinatdelikatwww
+ * Controller of the de.kombinatdelikat.www
  */
-angular.module('dekombinatdelikatwww')
+angular.module('de.kombinatdelikat.www')
   .controller('ImprintCtrl', function ($scope) {
       $scope.$parent.meta = {
           title: 'Impressum - Kombinat Delikat',

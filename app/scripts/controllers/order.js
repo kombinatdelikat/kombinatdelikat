@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dekombinatdelikatwww.controller:OrderCtrl
+ * @name de.kombinatdelikat.www.controller:OrderCtrl
  * @description
  * # OrderCtrl
- * Controller of the dekombinatdelikatwww
+ * Controller of the de.kombinatdelikat.www
  */
-angular.module('dekombinatdelikatwww')
+angular.module('de.kombinatdelikat.www')
   .controller('OrderCtrl', function ($scope) {
       $scope.$parent.meta = {
           title: 'Bestellen - Kombinat Delikat',

@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="dekombinatdelikatwww">
+<html ng-app="de.kombinatdelikat.www">
 <head>
     <base href="/">
     <title>{{meta.title}}</title>
@@ -27,11 +27,11 @@
     <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="assets/icons/favicon.ico">
 
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build:css(.) assets/styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
+    <!-- build:css(.tmp) assets/styles/main.css -->
     <link rel="stylesheet" href="assets/styles/reset.css">
     <link rel="stylesheet" href="assets/styles/main.css">
     <!-- endbuild -->
@@ -52,7 +52,7 @@
     <header>
         <nav role="navigation">
             <ul>
-                <li><a ui-sref-active="active" ui-sref="news" ng-include="'assets/svg/logo.svg'" aria-label="Neuigkeiten"></a></li>
+                <li><a ui-sref-active="active" ui-sref="news" aria-label="Neuigkeiten" ng-include="'assets/svg/logo.svg'">Neuigkeiten</a></li>
                 <li><a ui-sref-active="active" ui-sref="locations" aria-label="Probieren">Probieren</a></li>
                 <li><a ui-sref-active="active" ui-sref="about" aria-label="Prädikat">Prädikat</a></li>
                 <li><a ui-sref-active="active" ui-sref="order" aria-label="Bestellen">Bestellen</a></li>
@@ -75,7 +75,7 @@
 </div>
 
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<!-- Google Analytics: change UA-XXXXX-X to be your sites ID -->
 <script>
     !function (A, n, g, u, l, a, r) {
         A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
@@ -101,13 +101,21 @@
 <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
 <script src="bower_components/lodash/lodash.js"></script>
 <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+<script src="bower_components/angular-parallax/scripts/angular-parallax.js"></script>
+<script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/app.config.js"></script>
 <script src="scripts/app.modules.js"></script>
+<script src="scripts/app.config.js"></script>
 <script src="scripts/app.route.js"></script>
+
+<script src="scripts/directives/kdFacebookPost.directive.js"></script>
+<script src="scripts/directives/timeline.directive.js"></script>
+
+<script src="scripts/services/facebook.service.js"></script>
+
 <script src="scripts/controllers/about.js"></script>
 <script src="scripts/controllers/contact.js"></script>
 <script src="scripts/controllers/imprint.js"></script>

@@ -3,7 +3,7 @@
 describe('Controller: ImprintCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('dekombinatdelikatwww'));
+  beforeEach(module('de.kombinatdelikat.www'));
 
   var ImprintCtrl,
     scope;

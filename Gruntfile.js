@@ -75,7 +75,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9000,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname: '0.0.0.0',
                 livereload: 35729
             },
             livereload: {
@@ -262,13 +262,14 @@ module.exports = function (grunt) {
         // Performs rewrites based on filerev and the useminPrepare configuration
         usemin: {
             html: ['<%= yeoman.dist %>/{,*/}*.html'],
-            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            css: ['<%= yeoman.dist %>/assets/styles/{,*/}*.css'],
             js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
             options: {
                 assetsDirs: [
                     '<%= yeoman.dist %>',
                     '<%= yeoman.dist %>/images',
-                    '<%= yeoman.dist %>/styles'
+                    '<%= yeoman.dist %>/svg',
+                    '<%= yeoman.dist %>/assets/styles'
                 ],
                 patterns: {
                     js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
@@ -306,9 +307,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>/images',
+                    cwd: '<%= yeoman.app %>/assets/images',
                     src: '{,*/}*.{png,jpg,jpeg,gif}',
-                    dest: '<%= yeoman.dist %>/images'
+                    dest: '<%= yeoman.dist %>/assets/images'
                 }]
             }
         },
@@ -317,9 +318,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>/images',
+                    cwd: '<%= yeoman.app %>/assets/svg',
                     src: '{,*/}*.svg',
-                    dest: '<%= yeoman.dist %>/images'
+                    dest: '<%= yeoman.dist %>/assets/svg'
                 }]
             }
         },
@@ -344,7 +345,7 @@ module.exports = function (grunt) {
         ngtemplates: {
             dist: {
                 options: {
-                    module: 'dekombinatdelikatwww',
+                    module: 'de.kombinatdelikat.www',
                     htmlmin: '<%= htmlmin.dist.options %>',
                     usemin: 'scripts/scripts.js'
                 },
@@ -385,20 +386,22 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '*.html',
-                        'images/{,*/}*.{webp}',
-                        'styles/fonts/{,*/}*.*'
+                        '.htaccess',
+                        'assets/images/{,*/}*.{webp}',
+                        'assets/svg/{,*/}*.{webp}',
+                        'assets/fonts/{,*/}*.*'
                     ]
                 }, {
                     expand: true,
-                    cwd: '.tmp/images',
-                    dest: '<%= yeoman.dist %>/images',
+                    cwd: '.tmp/assets/images',
+                    dest: '<%= yeoman.dist %>/assets/images',
                     src: ['generated/*']
                 }]
             },
             styles: {
                 expand: true,
-                cwd: '<%= yeoman.app %>/styles',
-                dest: '.tmp/styles/',
+                cwd: '<%= yeoman.app %>/assets/styles',
+                dest: '.tmp/assets/styles/',
                 src: '{,*/}*.css'
             }
         },

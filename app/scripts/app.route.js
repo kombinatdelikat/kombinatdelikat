@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name dekombinatdelikatwww
+ * @name de.kombinatdelikat.www
  * @description
- * # dekombinatdelikatwww
+ * # de.kombinatdelikat.www
  *
  * Route of the application.
  */
 angular
-    .module('dekombinatdelikatwww')
+    .module('de.kombinatdelikat.www')
     .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
         // Disable hash in url
         $locationProvider.html5Mode(true);
@@ -22,7 +22,12 @@ angular
             .state('news', {
                 url: '/aktuelles',
                 templateUrl: 'views/news.html',
-                controller: 'NewsCtrl'
+                controller: 'NewsCtrl',
+                resolve: {
+                    Posts: function (FacebookService) {
+                        return FacebookService.getPosts();
+                    }
+                }
             })
             .state('locations', {
                 url: '/probieren',

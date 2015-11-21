@@ -2,15 +2,18 @@
 
 /**
  * @ngdoc function
- * @name dekombinatdelikatwww.controller:NewsCtrl
+ * @name de.kombinatdelikat.www.controller:NewsCtrl
  * @description
  * # NewsCtrl
- * Controller of the dekombinatdelikatwww
+ * Controller of the de.kombinatdelikat.www
  */
-angular.module('dekombinatdelikatwww')
-  .controller('NewsCtrl', function ($scope) {
-      $scope.$parent.meta = {
-          title: 'Aktuelles - Kombinat Delikat',
-          description: ''
-      };
-  });
+angular.module('de.kombinatdelikat.www')
+    .controller('NewsCtrl', function ($scope, Posts) {
+
+        $scope.$parent.meta = {
+            title: 'Aktuelles - Kombinat Delikat',
+            description: ''
+        };
+
+        $scope.posts = Posts;
+    });

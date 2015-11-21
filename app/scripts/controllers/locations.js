@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name dekombinatdelikatwww.controller:LocationsCtrl
+ * @name de.kombinatdelikat.www.controller:LocationsCtrl
  * @description
  * # LocationsCtrl
- * Controller of the dekombinatdelikatwww
+ * Controller of the de.kombinatdelikat.www
  */
-angular.module('dekombinatdelikatwww')
+angular.module('de.kombinatdelikat.www')
     .controller('LocationsCtrl', function ($scope) {
         $scope.$parent.meta = {
             title: 'Orte - Kombinat Delikat',
@@ -23,7 +23,52 @@ angular.module('dekombinatdelikatwww')
                 disableDefaultUI: true,
                 disableDoubleClickZoom: true,
                 draggable: false,
-                scrollwheel: false
+                scrollwheel: false,
+                backgroundColor: 'none',
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "color": "#000000"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#000000"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "lightness": -20
+                            }
+                        ]
+                    }
+                ]
             }
         };
     });
