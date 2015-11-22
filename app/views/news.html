@@ -1,7 +1,7 @@
 <section class="news">
     <ul timeline>
         <li ng-repeat="post in posts = posts"
-            ng-if="post.type=='photo' || post.type=='status'"
+            ng-if="post.type=='photo' || post.type=='status' || post.type=='link'"
             kd-facebook-post
             kd-post-time="{{post.created_time}}"
             kd-post-image="{{post.full_picture}}"
