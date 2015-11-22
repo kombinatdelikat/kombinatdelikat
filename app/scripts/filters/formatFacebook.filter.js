@@ -13,8 +13,23 @@ angular
         return function(text) {
             if (angular.isDefined(text)) {
                 return text
+                    // asterisks mark list items
                     .replace(/\*+\s*(.*)[\r?\n|\r]*/gm, "<li>$1</li>")
-                    .replace(/\r?\n|\r/g, "\r<br>");
+
+                    // line breaks to break tags
+                    .replace(/\r?\n|\r/g, "\r<br>")
+
+                    // first line to dot or colon (up to 90 signs) as headline
+                    .replace(/^(.{0,90})(\.+|\:+)\s+/gi, "<h3>$1$2</h3>")
+
+                    // remove leading breaks after headlines
+                    .replace(/<\/h3>\s*<br>/gim, "</h3>")
+
+                    // prevent single headlines
+                    .replace(/^<h3>(.*)<\/h3>$/gim, '$1')
+
+                    // wrap list items with ul
+                    .replace(/^(.*?)(<li>.*<\/li>)(.*?)$/gim, "$1<ul>$2</ul>$3");
             }
         };
     });

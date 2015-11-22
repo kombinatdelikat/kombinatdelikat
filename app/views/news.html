@@ -1,6 +1,7 @@
 <section class="news">
     <ul timeline>
         <li ng-repeat="post in posts"
+            class="{{post.type}}"
             ng-class="{'has-likes': post.likes.data.length}"
             kd-facebook-post
             kd-post="post"></li>
