@@ -15,7 +15,7 @@ angular
                 var deferred = $q.defer();
 
                 $http
-                    .get(config.facebook.url + '/posts')
+                    .get(config.facebook.url + '/facebook/posts')
                     .then(
                         function (res) {
                             deferred.resolve(res.data.data);

@@ -190,15 +190,25 @@ section.news ul[timeline] > li img {
     margin-bottom: 10px;
 }
 
-section.news ul[timeline] > li .likes {
+section.news ul[timeline] > li .likes,
+section.news ul[timeline] > li .likes:before {
     position: absolute;
-    top: 0;
     display: block;
     width: 40px;
     height: 40px;
     line-height: 40px;
     text-align: center;
+    color: #fff;
     background-color: #000;
+}
+
+section.news ul[timeline] > li .likes:before {
+    content: '';
+    top: -50px;
+}
+
+section.news ul[timeline] > li .likes {
+    top: 120px;
 }
 
 section.news ul[timeline] > li.left .likes {

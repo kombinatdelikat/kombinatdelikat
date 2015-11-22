@@ -1,4 +1,4 @@
-<time datetime="{{kdPostTime}}">{{kdPostTime | date: 'd. MMMM yyyy' }}</time>
-<img ng-if="kdPostImage" ng-src="{{kdPostImage}}">
-<div ng-bind-html="kdPostMessage | formatFacebook"></div>
-<div ng-if="kdPostShowLikes" class="likes">{{kdPostLikes}}</div>
+<time datetime="{{kdPost.created_time}}">{{kdPost.created_time | date: 'd. MMMM yyyy' }}</time>
+<img ng-if="kdPost.full_picture" ng-src="{{kdPost.full_picture}}">
+<div ng-bind-html="kdPost.message | formatFacebook"></div>
+<div ng-if="showLikes" class="likes">{{kdPost.likes.data.length}}</div>

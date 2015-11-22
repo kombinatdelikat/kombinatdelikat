@@ -16,7 +16,7 @@ angular
                 var alignItems = function () {
                         // http://stackoverflow.com/a/8191333/1146207
                         var left_column_height = 0;
-                        var right_column_height = 0;
+                        var right_column_height = 90;
                         var items = element.children();
                         for (var i = 0; i < items.length; ++i) {
                             var item = angular

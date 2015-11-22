@@ -11,8 +11,10 @@ angular
     .module('de.kombinatdelikat.www')
     .filter('formatFacebook', function () {
         return function(text) {
-            return text
-                .replace(/\*+\s*(.*)[\r?\n|\r]*/gm, "<li>$1</li>")
-                .replace(/\r?\n|\r/g, "\r<br>");
+            if (angular.isDefined(text)) {
+                return text
+                    .replace(/\*+\s*(.*)[\r?\n|\r]*/gm, "<li>$1</li>")
+                    .replace(/\r?\n|\r/g, "\r<br>");
+            }
         };
     });

@@ -8,16 +8,17 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .directive('kdFacebookPost', function () {
+    .directive('kdFacebookPost', function ($log) {
         return {
             templateUrl: 'scripts/views/kdFacebookPost.directive.html',
             restrict: 'EA',
             scope: {
-                kdPostTime: '@',
-                kdPostMessage: '@',
-                kdPostImage: '@',
-                kdPostLikes: '@',
-                kdPostType: '@'
+                kdPost: '='
+            },
+            link: function (scope, elem, attrs) {
+                if (scope.kdPost.full_picture) {
+                    scope.showLikes = true;
+                }
             }
         };
     });
