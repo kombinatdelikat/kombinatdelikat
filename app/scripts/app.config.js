@@ -12,6 +12,6 @@ angular
     .module('de.kombinatdelikat.www')
     .constant('config', {
         facebook: {
-            url: 'http://facebook.kombinatdelikat.de'
+            url: 'http://api.kombinatdelikat.de'
         }
     });
