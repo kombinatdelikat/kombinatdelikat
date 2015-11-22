@@ -52,7 +52,7 @@ module.exports = function (grunt) {
                 tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
             },
             styles: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+                files: ['<%= yeoman.app %>/assets/styles/{,*/}*.css'],
                 tasks: ['newer:copy:styles', 'postcss']
             },
             gruntfile: {
@@ -64,8 +64,8 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= yeoman.app %>/{,*/}*.html',
-                    '.tmp/styles/{,*/}*.css',
-                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    '.tmp/assets/styles/{,*/}*.css',
+                    '<%= yeoman.app %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
         },
@@ -92,8 +92,8 @@ module.exports = function (grunt) {
                                 connect.static('./bower_components')
                             ),
                             connect().use(
-                                '/app/styles',
-                                connect.static('./app/styles')
+                                '/app/assets/styles',
+                                connect.static('./app/assets/styles')
                             ),
                             connect.static(appConfig.app)
                         ];
@@ -189,17 +189,17 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '.tmp/styles/',
+                    cwd: '.tmp/assets/styles/',
                     src: '{,*/}*.css',
-                    dest: '.tmp/styles/'
+                    dest: '.tmp/assets/styles/'
                 }]
             },
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '.tmp/styles/',
+                    cwd: '.tmp/assets/styles/',
                     src: '{,*/}*.css',
-                    dest: '.tmp/styles/'
+                    dest: '.tmp/assets/styles/'
                 }]
             }
         },
@@ -233,9 +233,9 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     '<%= yeoman.dist %>/scripts/{,*/}*.js',
-                    '<%= yeoman.dist %>/styles/{,*/}*.css',
-                    '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-                    '<%= yeoman.dist %>/styles/fonts/*'
+                    '<%= yeoman.dist %>/assets/styles/{,*/}*.css',
+                    '<%= yeoman.dist %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    '<%= yeoman.dist %>/assets/styles/fonts/*'
                 ]
             }
         },
@@ -267,8 +267,8 @@ module.exports = function (grunt) {
             options: {
                 assetsDirs: [
                     '<%= yeoman.dist %>',
-                    '<%= yeoman.dist %>/images',
-                    '<%= yeoman.dist %>/svg',
+                    '<%= yeoman.dist %>/assets/images',
+                    '<%= yeoman.dist %>/assets/svg',
                     '<%= yeoman.dist %>/assets/styles'
                 ],
                 patterns: {
@@ -284,8 +284,8 @@ module.exports = function (grunt) {
         // cssmin: {
         //   dist: {
         //     files: {
-        //       '<%= yeoman.dist %>/styles/main.css': [
-        //         '.tmp/styles/{,*/}*.css'
+        //       '<%= yeoman.dist %>/assets/styles/main.css': [
+        //         '.tmp/assets/styles/{,*/}*.css'
         //       ]
         //     }
         //   }
@@ -387,9 +387,10 @@ module.exports = function (grunt) {
                         '*.{ico,png,txt}',
                         '*.html',
                         '.htaccess',
+                        'assets/fonts/{,*/}*.*',
+                        'assets/icons/{,*/}*.*',
                         'assets/images/{,*/}*.{webp}',
-                        'assets/svg/{,*/}*.{webp}',
-                        'assets/fonts/{,*/}*.*'
+                        'assets/svg/{,*/}*.{webp}'
                     ]
                 }, {
                     expand: true,
