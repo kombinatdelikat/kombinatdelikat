@@ -16,10 +16,8 @@ angular
                 kdPostTime: '@',
                 kdPostMessage: '@',
                 kdPostImage: '@',
-                kdPostLikes: '@'
-            },
-            link: function (scope, element, attrs) {
-
+                kdPostLikes: '@',
+                kdPostType: '@'
             }
         };
     });

@@ -78,6 +78,7 @@ section.news {
 section.news ul[timeline] {
     position: relative;
     width: 80%;
+    max-width: 940px;
     margin: 0 auto;
     font-size: 0;
 }
@@ -89,11 +90,11 @@ section.news ul[timeline]:after {
 
 section.news ul[timeline]:before {
     position: absolute;
-    top: 0;
+    top: -40px;
     left: 50%;
     display: block;
     width: 4px;
-    height: 100%;
+    height: calc(100% + 40px);
     margin-left: -2px;
     background: #f15a24;
 }
@@ -103,34 +104,38 @@ section.news ul[timeline]:after {
     display: table;
 }
 
-section.news ul[timeline] li {
+section.news ul[timeline] > li {
+    position: relative;
     box-sizing: border-box;
     width: 50%;
     padding: 30px;
-    font-size: 14px;
+    font-size: 15px;
     color: #fff;
 }
 
-section.news ul[timeline] li:first-child + li {
+section.news ul[timeline] > li:first-child + li {
     padding-top: 120px;
 }
 
-section.news ul[timeline] li.left {
+section.news ul[timeline] > li.left {
     float: left;
     clear: left;
+    padding-left: 80px;
     text-align: right;
 }
 
-section.news ul[timeline] li.right {
+section.news ul[timeline] > li.right {
     float: right;
     clear: right;
+    padding-right: 80px;
     text-align: left;
 }
 
-section.news ul[timeline] li time {
+section.news ul[timeline] > li time {
     position: relative;
     display: inline-block;
     height: 30px;
+    margin-bottom: 10px;
     padding: 0 10px;
     font-size: 17px;
     font-weight: 700;
@@ -139,28 +144,28 @@ section.news ul[timeline] li time {
     background-color: #f15a24;
 }
 
-section.news ul[timeline] li time:before,
-section.news ul[timeline] li time:after {
+section.news ul[timeline] > li time:before,
+section.news ul[timeline] > li time:after {
     content: '';
     position: absolute;
     display: block;
 }
-section.news ul[timeline] li time:before {
+section.news ul[timeline] > li time:before {
     top: 0;
     border: 15px solid transparent;
 }
 
-section.news ul[timeline] li.left time:before {
+section.news ul[timeline] > li.left time:before {
     right: -30px;
     border-left-color: #f15a24;
 }
 
-section.news ul[timeline] li.right time:before {
+section.news ul[timeline] > li.right time:before {
     left: -30px;
     border-right-color: #f15a24;
 }
 
-section.news ul[timeline] li time:after {
+section.news ul[timeline] > li time:after {
     top: 9px;
     width: 12px;
     height: 12px;
@@ -170,19 +175,38 @@ section.news ul[timeline] li time:after {
     border-radius: 50%;
 }
 
-section.news ul[timeline] li.left time:after {
+section.news ul[timeline] > li.left time:after {
     right: -36px;
 }
 
-section.news ul[timeline] li.right time:after {
-    left: -37px;
+section.news ul[timeline] > li.right time:after {
+    left: -36px;
 }
 
-section.news ul[timeline] li img {
+section.news ul[timeline] > li img {
     display: block;
     width: 100%;
     height: auto;
-    margin: 10px 0;
+    margin-bottom: 10px;
+}
+
+section.news ul[timeline] > li .likes {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #000;
+}
+
+section.news ul[timeline] > li.left .likes {
+    left: 30px;
+}
+
+section.news ul[timeline] > li.right .likes {
+    right: 30px;
 }
 
 section.locations {

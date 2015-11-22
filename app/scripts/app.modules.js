@@ -15,6 +15,7 @@ angular
         'ngMessages',
         'ngSanitize',
         'ngTouch',
+        'btford.markdown',
         'uiGmapgoogle-maps',
         'angular-parallax'
     ]);
