@@ -8,14 +8,14 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .directive('kdFacebookPost', function ($log) {
+    .directive('kdFacebookPost', function () {
         return {
             templateUrl: 'scripts/views/kdFacebookPost.directive.html',
             restrict: 'EA',
             scope: {
                 kdPost: '='
             },
-            link: function (scope, elem, attrs) {
+            link: function (scope) {
                 if (scope.kdPost.full_picture) {
                     scope.showLikes = true;
                 }

@@ -120,15 +120,21 @@ section.news ul[timeline] > li:first-child + li {
 section.news ul[timeline] > li.left {
     float: left;
     clear: left;
-    padding-left: 80px;
     text-align: right;
+}
+
+section.news ul[timeline] > li.has-likes.left {
+    padding-left: 80px;
 }
 
 section.news ul[timeline] > li.right {
     float: right;
     clear: right;
-    padding-right: 80px;
     text-align: left;
+}
+
+section.news ul[timeline] > li.has-likes.right {
+    padding-right: 80px;
 }
 
 section.news ul[timeline] > li time {
@@ -204,11 +210,11 @@ section.news ul[timeline] > li .likes:before {
 
 section.news ul[timeline] > li .likes:before {
     content: '';
-    top: -50px;
+    top: -41px;
 }
 
 section.news ul[timeline] > li .likes {
-    top: 120px;
+    top: 111px;
 }
 
 section.news ul[timeline] > li.left .likes {
