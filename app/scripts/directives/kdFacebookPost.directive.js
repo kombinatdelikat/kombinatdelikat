@@ -21,14 +21,20 @@ angular
                 };
                 scope.toggleVideo = function (ev) {
                     var button = ev.currentTarget,
-                        video = button.previousElementSibling;
+                        video = button.previousElementSibling || button.previousSibling;
 
                     if (video.paused) {
                         video.play();
-                        angular.element(button).removeClass('play').addClass('pause');
+                        angular
+                            .element(button)
+                            .removeClass('play')
+                            .addClass('pause');
                     } else {
                         video.pause();
-                        angular.element(button).removeClass('pause').addClass('play');
+                        angular
+                            .element(button)
+                            .removeClass('pause')
+                            .addClass('play');
                     }
                 };
 
