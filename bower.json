@@ -8,7 +8,6 @@
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
     "angular-ui-router": "~0.2.15",
-    "angular-markdown-directive": "~0.3.1",
     "angular-google-maps": "~2.2.1",
     "angular-parallax": "~0.0.2",
     "angular-scroll": "~1.0.0",
