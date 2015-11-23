@@ -50,11 +50,11 @@ angular
                     // wrapper function
                     link = function () {
                         alignItems();
-                        checkImageLoad();
                         checkResize();
+                        $timeout(checkImageLoad, 50);
                     };
 
-                $timeout(link);
+                $timeout(link, 50);
             }
         };
     });
