@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%= yeoman.app %>/{,*/}*.html',
+                    '<%= yeoman.app %>/{,*/,*/*/}*.html',
                     '.tmp/assets/styles/{,*/}*.css',
                     '<%= yeoman.app %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
@@ -133,14 +133,14 @@ module.exports = function (grunt) {
             all: {
                 src: [
                     'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/}*.js'
+                    '<%= yeoman.app %>/scripts/{,*/,*/*/}*.js'
                 ]
             },
             test: {
                 options: {
                     jshintrc: 'test/.jshintrc'
                 },
-                src: ['test/spec/{,*/}*.js']
+                src: ['test/spec/{,*/,*/*/}*.js']
             }
         },
 
@@ -153,11 +153,11 @@ module.exports = function (grunt) {
             all: {
                 src: [
                     'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/}*.js'
+                    '<%= yeoman.app %>/scripts/{,*/,*/*/}*.js'
                 ]
             },
             test: {
-                src: ['test/spec/{,*/}*.js']
+                src: ['test/spec/{,*/,*/*/}*.js']
             }
         },
 
@@ -232,7 +232,7 @@ module.exports = function (grunt) {
         filerev: {
             dist: {
                 src: [
-                    '<%= yeoman.dist %>/scripts/{,*/}*.js',
+                    '<%= yeoman.dist %>/scripts/{,*/,*/*/}*.js',
                     '<%= yeoman.dist %>/assets/styles/{,*/}*.css',
                     '<%= yeoman.dist %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
                     '<%= yeoman.dist %>/assets/styles/fonts/*'
@@ -261,9 +261,9 @@ module.exports = function (grunt) {
 
         // Performs rewrites based on filerev and the useminPrepare configuration
         usemin: {
-            html: ['<%= yeoman.dist %>/{,*/}*.html'],
+            html: ['<%= yeoman.dist %>/{,*/,*/*/}*.html'],
             css: ['<%= yeoman.dist %>/assets/styles/{,*/}*.css'],
-            js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+            js: ['<%= yeoman.dist %>/scripts/{,*/,*/*/}*.js'],
             options: {
                 assetsDirs: [
                     '<%= yeoman.dist %>',
