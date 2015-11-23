@@ -1,12 +1,19 @@
 <time datetime="{{kdPost.created_time}}">{{kdPost.created_time | date: 'd. MMMM yyyy' }}</time>
-<img ng-if="kdPost.full_picture" ng-src="{{kdPost.full_picture}}">
+<img ng-if="kdPost.type != 'video' && kdPost.full_picture" ng-src="{{kdPost.full_picture}}">
+<div ng-if="kdPost.type == 'video'" class="video-wrapper">
+    <video>
+        <source type="video/mp4" src="{{trustSrc(kdPost.source)}}">
+    </video>
+    <button class="play" ng-click="toggleVideo($event)">Abspielen</button>
+</div>
 <blockquote ng-if="kdPost.type == 'link'">
-    <p ng-if="kdPost.description" ng-bind-html="kdPost.description"></p>
+    <p ng-if="kdPost.description" ng-bind-html="kdPost.description | formatFacebook"></p>
     <cite ng-if="kdPost.caption && kdPost.link"><a href="{{kdPost.link}}">{{kdPost.caption}}</a></cite>
     <cite ng-if="kdPost.caption && !kdPost.link">{{kdPost.caption}}</cite>
 </blockquote>
 <figcaption ng-if="(kdPost.type == 'photo' || kdPost.type == 'video') && kdPost.caption">
-    <p>{{kdPost.caption}}</p>
+    <p ng-bind-html="kdPost.caption | formatFacebook"></p>
 </figcaption>
-<div ng-if="(kdPost.type != 'photo' && kdPost.type != 'video') || !kdPost.caption" ng-bind-html="kdPost.message | formatFacebook"></div>
+<div ng-if="(kdPost.type != 'photo' && kdPost.type != 'video') || !kdPost.caption"
+     ng-bind-html="kdPost.message | formatFacebook:true"></div>
 <div ng-if="showLikes && kdPost.likes.data.length" class="likes">{{kdPost.likes.data.length}}</div>
