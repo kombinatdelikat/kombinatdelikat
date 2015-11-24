@@ -7,7 +7,8 @@
  * # AboutCtrl
  * Controller of the de.kombinatdelikat.www
  */
-angular.module('de.kombinatdelikat.www')
+angular
+    .module('de.kombinatdelikat.www')
   .controller('AboutCtrl', function ($scope) {
       $scope.$parent.meta = {
           title: 'Prädikat - Kombinat Delikat',

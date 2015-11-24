@@ -7,7 +7,8 @@
  * # PrivacyCtrl
  * Controller of the de.kombinatdelikat.www
  */
-angular.module('de.kombinatdelikat.www')
+angular
+    .module('de.kombinatdelikat.www')
     .controller('PrivacyCtrl', function ($scope) {
         $scope.$parent.meta = {
             title: 'Datenschutz - Kombinat Delikat',

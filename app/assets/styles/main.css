@@ -62,6 +62,7 @@ header {
     text-align: center;
     background-color: #000;
     z-index: 1;
+    transition: height .3s ease;
 }
 
 footer {
@@ -79,6 +80,12 @@ nav li a {
     font-weight: 700;
     line-height: 40px;
     text-transform: uppercase;
+}
+
+header nav li + li {
+    position: relative;
+    top: 0;
+    transition: top .3s ease;
 }
 
 header nav li:first-child {
@@ -325,25 +332,27 @@ section.locations {
     -webkit-filter: grayscale(100%);
 }
 
+html.loading header {
+    height: 100%;
+}
+
+html.loading header nav li + li {
+    top: -40px;
+}
 
 /* Make clicks pass-through */
-#loading-bar,
-#loading-bar-spinner {
+#loading-bar {
     pointer-events: none;
     transition: 350ms linear all;
 }
 
 #loading-bar.ng-enter,
-#loading-bar.ng-leave.ng-leave-active,
-#loading-bar-spinner.ng-enter,
-#loading-bar-spinner.ng-leave.ng-leave-active {
+#loading-bar.ng-leave.ng-leave-active {
     opacity: 0;
 }
 
 #loading-bar.ng-enter.ng-enter-active,
-#loading-bar.ng-leave,
-#loading-bar-spinner.ng-enter.ng-enter-active,
-#loading-bar-spinner.ng-leave {
+#loading-bar.ng-leave {
     opacity: 1;
 }
 
@@ -359,57 +368,4 @@ section.locations {
     height: 2px;
     border-bottom-right-radius: 1px;
     border-top-right-radius: 1px;
-}
-
-/* Fancy blur effect */
-#loading-bar .peg {
-    position: absolute;
-    width: 70px;
-    right: 0;
-    top: 0;
-    height: 2px;
-    opacity: .45;
-    box-shadow: #29d 1px 0 6px 1px;
-    border-radius: 100%;
-}
-
-#loading-bar-spinner {
-    display: block;
-    position: fixed;
-    z-index: 10002;
-    top: 10px;
-    left: 10px;
-}
-
-#loading-bar-spinner .spinner-icon {
-    width: 14px;
-    height: 14px;
-
-    border:  solid 2px transparent;
-    border-top-color:  #29d;
-    border-left-color: #29d;
-    border-radius: 50%;
-
-    animation: loading-bar-spinner 400ms linear infinite;
-}
-
-@-webkit-keyframes loading-bar-spinner {
-    0%   { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-moz-keyframes loading-bar-spinner {
-    0%   { -moz-transform: rotate(0deg); transform: rotate(0deg); }
-    100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-o-keyframes loading-bar-spinner {
-    0%   { -o-transform: rotate(0deg); transform: rotate(0deg); }
-    100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-ms-keyframes loading-bar-spinner {
-    0%   { -ms-transform: rotate(0deg); transform: rotate(0deg); }
-    100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@keyframes loading-bar-spinner {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="de.kombinatdelikat.www">
+<html ng-app="de.kombinatdelikat.www" ng-class="{'loading': loading}">
 <head>
     <base href="/">
     <title ng-bind="meta.title"></title>
@@ -46,34 +46,10 @@
         }
     </style>
 </head>
-<body ng-cloak>
+<body ng-cloak ng-click="loading=!loading">
 
 <!-- Add your site or application content here -->
-<div class="wrapper">
-    <header>
-        <nav role="navigation">
-            <ul>
-                <li><a ui-sref-active="active" ui-sref="news" aria-label="Neuigkeiten" ng-include="'assets/svg/logo.svg'">Neuigkeiten</a></li>
-                <li><a ui-sref-active="active" ui-sref="locations" aria-label="Probieren">Probieren</a></li>
-                <li><a ui-sref-active="active" ui-sref="about" aria-label="Prädikat">Prädikat</a></li>
-                <li><a ui-sref-active="active" ui-sref="order" aria-label="Bestellen">Bestellen</a></li>
-                <li><a ui-sref-active="active" ui-sref="contact" aria-label="Kontakt">Kontakt</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="main" ui-view></div>
-
-    <footer>
-        <nav role="navigation">
-            <ul>
-                <li><a ui-sref-active="active" ui-sref="contact" aria-label="Kontakt">Kontakt</a></li>
-                <li><a ui-sref-active="active" ui-sref="imprint" aria-label="Impressum">Impressum</a></li>
-                <li><a ui-sref-active="active" ui-sref="privacy" aria-label="Datenschutz">Datenschutz</a></li>
-            </ul>
-        </nav>
-    </footer>
-</div>
+<div class="wrapper" ui-view></div>
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your sites ID -->
@@ -100,9 +76,9 @@
 <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
 <script src="bower_components/lodash/lodash.js"></script>
 <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-<script src="bower_components/angular-parallax/scripts/angular-parallax.js"></script>
 <script src="bower_components/angular-scroll/angular-scroll.js"></script>
 <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-parallax/scripts/angular-parallax.js"></script>
 <!-- endbower -->
 <script src="bower_components/angular-i18n/angular-locale_de.js"></script>
 <!-- endbuild -->
@@ -112,6 +88,7 @@
 <script src="scripts/app.config.js"></script>
 <script src="scripts/app.loading.js"></script>
 <script src="scripts/app.route.js"></script>
+<script src="scripts/app.run.js"></script>
 
 <script src="scripts/filters/formatFacebook.filter.js"></script>
 
@@ -120,6 +97,7 @@
 
 <script src="scripts/services/facebook.service.js"></script>
 
+<script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
 <script src="scripts/controllers/contact.js"></script>
 <script src="scripts/controllers/imprint.js"></script>

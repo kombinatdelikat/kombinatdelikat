@@ -7,7 +7,8 @@
  * # LocationsCtrl
  * Controller of the de.kombinatdelikat.www
  */
-angular.module('de.kombinatdelikat.www')
+angular
+    .module('de.kombinatdelikat.www')
     .controller('LocationsCtrl', function ($scope) {
         $scope.$parent.meta = {
             title: 'Orte - Kombinat Delikat',

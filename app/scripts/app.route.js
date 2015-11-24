@@ -15,12 +15,18 @@ angular
         $locationProvider.html5Mode(true);
 
         // For any unmatched url, redirect to /main
-        $urlRouterProvider.otherwise('/aktuelles.html');
+        $urlRouterProvider.otherwise('/aktuelles');
 
         // Now set up the states
         $stateProvider
+            .state('main', {
+                abstract: true,
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
             .state('news', {
-                url: '/aktuelles.html',
+                parent: 'main',
+                url: '/aktuelles',
                 templateUrl: 'views/news.html',
                 controller: 'NewsCtrl',
                 resolve: {
@@ -30,32 +36,38 @@ angular
                 }
             })
             .state('locations', {
-                url: '/probieren.html',
+                parent: 'main',
+                url: '/probieren',
                 templateUrl: 'views/locations.html',
                 controller: 'LocationsCtrl'
             })
             .state('about', {
-                url: '/praedikat.html',
+                parent: 'main',
+                url: '/praedikat',
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
             })
             .state('order', {
-                url: '/bestellung.html',
+                parent: 'main',
+                url: '/bestellung',
                 templateUrl: 'views/order.html',
                 controller: 'OrderCtrl'
             })
             .state('contact', {
-                url: '/kontakt.html',
+                parent: 'main',
+                url: '/kontakt',
                 templateUrl: 'views/contact.html',
                 controller: 'ContactCtrl'
             })
             .state('imprint', {
-                url: '/impressum.html',
+                parent: 'main',
+                url: '/impressum',
                 templateUrl: 'views/imprint.html',
                 controller: 'ImprintCtrl'
             })
             .state('privacy', {
-                url: '/datenschutz.html',
+                parent: 'main',
+                url: '/datenschutz',
                 templateUrl: 'views/privacy.html',
                 controller: 'PrivacyCtrl'
             });

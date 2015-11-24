@@ -7,10 +7,11 @@
  * # ImprintCtrl
  * Controller of the de.kombinatdelikat.www
  */
-angular.module('de.kombinatdelikat.www')
-  .controller('ImprintCtrl', function ($scope) {
-      $scope.$parent.meta = {
-          title: 'Impressum - Kombinat Delikat',
-          description: ''
-      };
-  });
+angular
+    .module('de.kombinatdelikat.www')
+    .controller('ImprintCtrl', function ($scope) {
+        $scope.$parent.meta = {
+            title: 'Impressum - Kombinat Delikat',
+            description: ''
+        };
+    });

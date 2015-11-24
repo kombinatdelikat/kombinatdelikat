@@ -7,10 +7,11 @@
  * # OrderCtrl
  * Controller of the de.kombinatdelikat.www
  */
-angular.module('de.kombinatdelikat.www')
-  .controller('OrderCtrl', function ($scope) {
-      $scope.$parent.meta = {
-          title: 'Bestellen - Kombinat Delikat',
-          description: ''
-      };
-  });
+angular
+    .module('de.kombinatdelikat.www')
+    .controller('OrderCtrl', function ($scope) {
+        $scope.$parent.meta = {
+            title: 'Bestellen - Kombinat Delikat',
+            description: ''
+        };
+    });
