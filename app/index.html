@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="de.kombinatdelikat.www" ng-class="{'loading': loading}">
+<html ng-cloak ng-app="de.kombinatdelikat.www">
 <head>
     <base href="/">
     <title ng-bind="meta.title"></title>
@@ -46,7 +46,7 @@
         }
     </style>
 </head>
-<body ng-cloak ng-click="loading=!loading">
+<body>
 
 <!-- Add your site or application content here -->
 <div class="wrapper" ui-view></div>
@@ -88,7 +88,6 @@
 <script src="scripts/app.config.js"></script>
 <script src="scripts/app.loading.js"></script>
 <script src="scripts/app.route.js"></script>
-<script src="scripts/app.run.js"></script>
 
 <script src="scripts/filters/formatFacebook.filter.js"></script>
 

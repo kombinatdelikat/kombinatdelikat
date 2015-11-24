@@ -10,11 +10,17 @@
 angular
     .module('de.kombinatdelikat.www')
     .controller('MainCtrl', function ($timeout, cfpLoadingBar) {
-        $timeout(function () {
+/*
+        var f = function () {
             cfpLoadingBar.start();
-            cfpLoadingBar.set(.3);
+            cfpLoadingBar.set(0.3);
             $timeout(function () {
-                cfpLoadingBar.set(.7);
+                cfpLoadingBar.set(0.7);
+                $timeout(function () {
+                    f();
+                }, 2000);
             }, 2000);
-        }, 2000);
+        };
+        f();
+*/
     });
