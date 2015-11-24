@@ -15,12 +15,12 @@ angular
         $locationProvider.html5Mode(true);
 
         // For any unmatched url, redirect to /main
-        $urlRouterProvider.otherwise('/aktuelles');
+        $urlRouterProvider.otherwise('/aktuelles.html');
 
         // Now set up the states
         $stateProvider
             .state('news', {
-                url: '/aktuelles',
+                url: '/aktuelles.html',
                 templateUrl: 'views/news.html',
                 controller: 'NewsCtrl',
                 resolve: {
@@ -30,32 +30,32 @@ angular
                 }
             })
             .state('locations', {
-                url: '/probieren',
+                url: '/probieren.html',
                 templateUrl: 'views/locations.html',
                 controller: 'LocationsCtrl'
             })
             .state('about', {
-                url: '/praedikat',
+                url: '/praedikat.html',
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
             })
             .state('order', {
-                url: '/bestellung',
+                url: '/bestellung.html',
                 templateUrl: 'views/order.html',
                 controller: 'OrderCtrl'
             })
             .state('contact', {
-                url: '/kontakt',
+                url: '/kontakt.html',
                 templateUrl: 'views/contact.html',
                 controller: 'ContactCtrl'
             })
             .state('imprint', {
-                url: '/impressum',
+                url: '/impressum.html',
                 templateUrl: 'views/imprint.html',
                 controller: 'ImprintCtrl'
             })
             .state('privacy', {
-                url: '/datenschutz',
+                url: '/datenschutz.html',
                 templateUrl: 'views/privacy.html',
                 controller: 'PrivacyCtrl'
             });
