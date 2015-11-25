@@ -89,7 +89,22 @@ angular
                             cfpLoadingBar.set(1);
                             $timeout(cfpLoadingBar.complete, 350);
                         }
-                    }
+                    },
+
+                    markers: [
+                        {
+                            id: 1,
+                            title: 'test',
+                            latitude: 51.06879,
+                            longitude: 13.74312,
+                            options: {
+                                labelContent: 'Test',
+                                labelAnchor: '36 61',
+                                labelClass: 'label',
+                                labelInBackground: false
+                            }
+                        }
+                    ]
                 };
             };
 

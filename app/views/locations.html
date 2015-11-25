@@ -4,7 +4,9 @@
                         refresh="false"
                         options="model.options"
                         events="model.events">
-        <ui-gmap-marker idkey="0"
-                        coords="model.center"></ui-gmap-marker>
+        <ui-gmap-markers models="model.markers"
+                         coords="'self'"
+                         icon="'icon'"
+                         fit="model.markers.length > 1"></ui-gmap-markers>
     </ui-gmap-google-map>
 </section>
