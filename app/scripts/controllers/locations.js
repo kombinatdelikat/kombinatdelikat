@@ -9,7 +9,7 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('LocationsCtrl', function ($scope, $timeout, cfpLoadingBar) {
+    .controller('LocationsCtrl', ['$scope', '$timeout', 'cfpLoadingBar', function ($scope, $timeout, cfpLoadingBar) {
         var _resetLoader = function () {
                 cfpLoadingBar.start();
                 cfpLoadingBar.set(0.02);
@@ -110,4 +110,4 @@ angular
 
         _resetLoader();
         $timeout(_init, 500);
-    });
+    }]);

@@ -9,6 +9,4 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('MainCtrl', function () {
-
-    });
+    .controller('MainCtrl', [function () {}]);

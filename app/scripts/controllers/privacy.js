@@ -9,9 +9,9 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('PrivacyCtrl', function ($scope) {
-        $scope.$parent.meta = {
+    .controller('PrivacyCtrl', ['$scope', function ($scope) {
+        $scope.$root.meta = {
             title: 'Datenschutz - Kombinat Delikat',
             description: ''
         };
-    });
+    }]);

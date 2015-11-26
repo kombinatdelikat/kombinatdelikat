@@ -10,7 +10,7 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .config(function (cfpLoadingBarProvider) {
+    .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = false;
         cfpLoadingBarProvider.latencyThreshold = 50;
         cfpLoadingBarProvider.parentSelector = 'body';
@@ -27,4 +27,4 @@ angular
                     '</svg>' +
                 '</div>' +
             '</div>';
-    });
+    }]);

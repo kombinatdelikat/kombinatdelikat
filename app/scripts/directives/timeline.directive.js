@@ -8,7 +8,7 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .directive('timeline', function ($window, $timeout) {
+    .directive('timeline', ['$window', '$timeout', function ($window, $timeout) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -57,4 +57,4 @@ angular
                 $timeout(link, 50);
             }
         };
-    });
+    }]);

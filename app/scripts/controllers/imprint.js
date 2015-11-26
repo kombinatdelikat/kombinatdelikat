@@ -9,9 +9,9 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('ImprintCtrl', function ($scope) {
-        $scope.$parent.meta = {
+    .controller('ImprintCtrl', ['$scope', function ($scope) {
+        $scope.$root.meta = {
             title: 'Impressum - Kombinat Delikat',
             description: ''
         };
-    });
+    }]);

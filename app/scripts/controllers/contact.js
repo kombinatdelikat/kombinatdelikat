@@ -9,9 +9,9 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('ContactCtrl', function ($scope) {
-        $scope.$parent.meta = {
+    .controller('ContactCtrl', ['$scope', function ($scope) {
+        $scope.$root.meta = {
             title: 'Kontakt - Kombinat Delikat',
             description: ''
         };
-    });
+    }]);

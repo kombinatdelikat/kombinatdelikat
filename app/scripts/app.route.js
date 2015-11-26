@@ -10,7 +10,7 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function ($locationProvider, $stateProvider, $urlRouterProvider) {
         // Disable hash in url
         $locationProvider.html5Mode(true);
 
@@ -71,4 +71,4 @@ angular
                 templateUrl: 'views/privacy.html',
                 controller: 'PrivacyCtrl'
             });
-    });
+    }]);

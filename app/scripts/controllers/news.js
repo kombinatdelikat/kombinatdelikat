@@ -9,11 +9,11 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('NewsCtrl', function ($scope, $log, Posts) {
-        $scope.$parent.meta = {
+    .controller('NewsCtrl', ['$scope', '$log', 'Posts', function ($scope, $log, Posts) {
+        $scope.$root.meta = {
             title: 'Aktuelles - Kombinat Delikat',
             description: ''
         };
 
         $scope.posts = Posts;
-    });
+    }]);
