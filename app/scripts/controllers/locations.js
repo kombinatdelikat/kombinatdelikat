@@ -128,32 +128,6 @@ angular
                                 flat: true
                             }
                         }
-                    ],
-                    markers2: [
-                        {
-                            id: 4,
-                            title: 'Kombinat Delikat Fensterverkauf',
-                            coords: {
-                                latitude: 51.06908,
-                                longitude: 13.75537
-                            }
-                        },
-                        {
-                            id: 5,
-                            title: 'Sankt Pauli Tagesbar und Restaurant',
-                            coords: {
-                                latitude: 51.07512,
-                                longitude: 13.75033
-                            }
-                        },
-                        {
-                            id: 6,
-                            title: 'Kochbox',
-                            coords: {
-                                latitude: 51.066709,
-                                longitude: 13.754139
-                            }
-                        }
                     ]
                 };
 
