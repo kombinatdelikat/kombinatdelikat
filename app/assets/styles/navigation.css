@@ -1,0 +1,29 @@
+nav li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+nav li a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+
+nav li + li a.active {
+    color: #f15a24;
+}
+
+header nav li:first-child {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    display: block;
+    padding: 0;
+}
+
+header nav li:first-child a {
+    display: block;
+    width: 133px;
+}

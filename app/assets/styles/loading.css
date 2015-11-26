@@ -1,0 +1,70 @@
+/* * * * * * * * * * *
+ * Loading Animation *
+ * * * * * * * * * * */
+
+#loading-bar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 55px;
+    margin-left: -75px;
+    margin-top: -27.5px;
+    pointer-events: none;
+    transition: opacity .35s ease;
+    z-index: 10002;
+}
+
+#loading-bar:before {
+    content: '';
+    position: fixed;
+    top: 40px;
+    bottom: 0;
+    left: 0px;
+    display: block;
+    width: 100%;
+    pointer-events: none;
+    background-color: #fff;
+}
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave {
+    opacity: 1;
+}
+
+#loading-bar svg {
+    display: block;
+    width: 150px;
+    height: 55px;
+}
+
+#loading-bar .base,
+#loading-bar .bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+}
+
+#loading-bar .bar {
+    overflow: hidden;
+    background: none !important;
+    border-top-right-radius: 15% 60%;
+    border-bottom-right-radius: 20% 90%;
+    box-sizing: border-box;
+    transition: width .35s;
+}
+
+#loading-bar .base path {
+    fill: #000;
+}
+
+#loading-bar .bar path {
+    fill: #fff;
+}
