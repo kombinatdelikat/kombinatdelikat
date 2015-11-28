@@ -18,15 +18,16 @@ angular
                     o_small = angular.element(elem[0].querySelector('path.small')),
                     l = 49,
                     p = 51,
-                    c = 255;
+                    c = 255,
+                    q = 3.5;
 
                 w.bind('scroll', function () {
                     var y = this.pageYOffset,
-                        eq = y <= l,
-                        top = eq ? l - y : 0,
-                        padding = eq ? y / l * p : p,
-                        rgb = Math.round(eq ? y / l * c : c),
-                        opacity = eq ? y / l : 1;
+                        eq = y <= l * q,
+                        top = eq ? l - y / q : 0,
+                        padding = eq ? y / q / l * p : p,
+                        rgb = Math.round(eq ? y / q / l * c : c),
+                        opacity = eq ? y / q / l : 1;
 
                     e.css({
                         'top': top + 'px',
