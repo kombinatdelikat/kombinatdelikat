@@ -16,6 +16,5 @@ angular
         'ngSanitize',
         'ngTouch',
         'uiGmapgoogle-maps',
-        'angular-parallax',
         'angular-loading-bar'
     ]);

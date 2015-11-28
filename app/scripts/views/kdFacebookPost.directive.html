@@ -1,5 +1,5 @@
 <time datetime="{{kdPost.created_time}}">{{kdPost.created_time | date: 'd. MMMM yyyy' }}</time>
-<img ng-if="kdPost.type != 'video' && kdPost.full_picture" ng-src="{{kdPost.full_picture}}">
+<img ng-if="kdPost.type != 'video' && kdPost.full_picture && !hideImage" ng-src="{{kdPost.full_picture}}">
 <div ng-if="kdPost.type == 'video'" class="video-wrapper">
     <video>
         <source type="video/mp4" src="{{trustSrc(kdPost.source)}}">

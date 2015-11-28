@@ -27,6 +27,14 @@ figcaption {
     color: #000;
     background-color: #fff;
 }
+blockquote p:before {
+    content: '\00BB';
+    padding-right: 3px;
+}
+blockquote p:after {
+    content: '\00AB';
+    padding-left: 3px;
+}
 
 figcaption {
     padding-top: 10px;
@@ -51,6 +59,22 @@ cite a {
     text-transform: uppercase;
     letter-spacing: .05em;
     background-color: #000;
+}
+
+cite a {
+    padding-left: 14px;
+}
+
+cite a:before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    top: 1px;
+    padding-right: 7px;
+    font-size: 0px;
+    border: 7px solid transparent;
+    border-left-color: #fff;
+    border-right-width: 0;
 }
 
 header,

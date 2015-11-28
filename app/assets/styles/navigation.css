@@ -16,14 +16,25 @@ nav li + li a.active {
 }
 
 header nav li:first-child {
-    position: absolute;
-    top: 60px;
-    left: 60px;
-    display: block;
     padding: 0;
 }
 
 header nav li:first-child a {
+    position: absolute;
+    top: 50px;
+    left: 60px;
     display: block;
     width: 133px;
+    padding: 11px 0 0;
+    font-size: 0;
+    line-height: 0;
+    box-sizing: border-box;
+}
+
+header nav li:first-child a .big {
+    opacity: 1;
+}
+
+header nav li:first-child a .small {
+    opacity: 0;
 }

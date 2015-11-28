@@ -2,20 +2,20 @@
 
 /**
  * @ngdoc function
- * @name de.kombinatdelikat.www.service:FacebookService
+ * @name de.kombinatdelikat.www.service:ParseService
  * @description
- * # FacebookService
- * Facebook API service interface
+ * # ParseService
+ * Parse API service interface
  */
 angular
     .module('de.kombinatdelikat.www')
-    .factory('FacebookFactory', function ($q, $http, $log, config) {
+    .factory('ParseFactory', function ($q, $http, $log, config) {
         return {
             getPosts: function () {
                 var deferred = $q.defer();
 
                 $http
-                    .get(config.facebook.url + '/posts')
+                    .get(config.parse.url + '/locations')
                     .then(
                         function (res) {
                             deferred.resolve(res.data.data);
@@ -29,6 +29,6 @@ angular
             }
         };
     })
-    .service('FacebookService', function (FacebookFactory) {
-        return FacebookFactory;
+    .service('ParseService', function (ParseFactory) {
+        return ParseFactory;
     });

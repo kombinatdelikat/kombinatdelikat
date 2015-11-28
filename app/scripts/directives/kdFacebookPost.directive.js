@@ -15,7 +15,7 @@ angular
             scope: {
                 kdPost: '='
             },
-            link: function (scope, elem) {
+            link: function (scope, elem, attrs) {
                 scope.trustSrc = function (src) {
                     return $sce.trustAsResourceUrl(src);
                 };
@@ -43,7 +43,19 @@ angular
                 }
 
                 if (scope.kdPost.full_picture) {
-                    console.log(elem.find('img'), scope.kdPost.full_picture)
+                    var cache = new Image();
+
+                    scope.hideImage = false;
+
+                    cache.onload = function () {
+                        if (this.width <= 1 && this.height <= 1) {
+                            scope.hideImage = true;
+                        }
+                    };
+                    cache.onerror = function () {
+                        scope.hideImage = true;
+                    };
+                    cache.src = scope.kdPost.full_picture;
                 }
             }
         };
