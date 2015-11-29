@@ -9,4 +9,16 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .controller('MainCtrl', [function () {}]);
+    .controller('MainCtrl', ['$rootScope', '$state', function ($rootScope, $state) {
+        var setBodyClass = function (name) {
+            angular
+                .element(document.querySelector('body'))
+                .attr('data-state', name);
+        };
+
+        $rootScope.$on('$stateChangeSuccess', function (event, toState) {
+            setBodyClass(toState.name);
+        });
+
+        setBodyClass($state.current.name);
+    }]);
