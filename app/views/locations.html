@@ -1,5 +1,6 @@
 <section class="locations">
     <ui-gmap-google-map center="model.center"
+                        bounds="model.bounds"
                         zoom="model.zoom"
                         refresh="false"
                         options="model.options"
@@ -9,6 +10,6 @@
                          options="'options'"
                          icon="'icon'"
                          click="openMarker"
-                         fit="model.markers.length > 1"></ui-gmap-markers>
+                         fit="model.markers.length > 100"></ui-gmap-markers>
     </ui-gmap-google-map>
 </section>
