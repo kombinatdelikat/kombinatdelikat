@@ -31,8 +31,8 @@ angular
 
                     e.css({
                         'top': top + 'px',
-                        'padding': '11px ' + padding + 'px 0',
-                        'fill': 'rgb(' + rgb + ',' + rgb + ',' + rgb + ')'
+                        //'fill': 'rgb(' + rgb + ',' + rgb + ',' + rgb + ')',
+                        'padding': '11px ' + padding + 'px 0'
                     });
                     o_big.css('opacity', 1 - opacity);
                     o_small.css('opacity', opacity);

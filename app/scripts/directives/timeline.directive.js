@@ -30,7 +30,7 @@ angular
                             }
                         }
                     },
-                    // load event listener to force re-aligning items
+                // load event listener to force re-aligning items
                     checkImageLoad = function () {
                         var images = element[0].querySelectorAll('img');
                         for (var i in images) {
@@ -41,17 +41,31 @@ angular
                             }
                         }
                     },
-                    // window resize event listener to force re-aligning items
+                // event listener for prepared sources to force re-aligning items
+                    checkSourcePrepared = function () {
+                        var sources = element[0].querySelectorAll('video');
+                        for (var j in sources) {
+                            if (angular.isElement(sources[j])) {
+                                angular
+                                    .element(sources[j])
+                                    .bind('canplay', alignItems);
+                            }
+                        }
+                    },
+                // window resize event listener to force re-aligning items
                     checkResize = function () {
                         angular
                             .element($window)
                             .bind('resize', alignItems);
                     },
-                    // wrapper function
+                // wrapper function
                     link = function () {
                         alignItems();
                         checkResize();
-                        $timeout(checkImageLoad, 50);
+                        $timeout(function () {
+                            checkImageLoad();
+                            checkSourcePrepared();
+                        }, 50);
                     };
 
                 $timeout(link, 50);

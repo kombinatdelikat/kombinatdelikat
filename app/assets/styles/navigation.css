@@ -9,9 +9,10 @@ nav li a {
     font-weight: 700;
     line-height: 40px;
     text-transform: uppercase;
+    transition: color .35s ease;
 }
 
-nav li + li a.active {
+nav li a.active {
     color: #f15a24;
 }
 
@@ -31,10 +32,20 @@ header nav li:first-child a {
     box-sizing: border-box;
 }
 
+header nav li:first-child a path {
+    transition: fill .35s ease;
+}
+
 header nav li:first-child a .big {
     opacity: 1;
+    fill: #000;
 }
 
 header nav li:first-child a .small {
     opacity: 0;
+    fill: #fff;
+}
+
+body[data-state="locations"] header nav li:first-child a .big {
+    fill: #f15a24;
 }
