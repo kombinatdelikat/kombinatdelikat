@@ -22,7 +22,17 @@ angular
                             latitude: 51.071,
                             longitude: 13.75537
                         },
-                        zoom: 16,
+                        bounds: {
+                            northeast: {
+                                latitude: 51.071,
+                                longitude: 13.75537
+                            },
+                            southwest: {
+                                latitude: 51.071,
+                                longitude: 13.75537
+                            }
+                        },
+                        zoom: 15,
                         options: config.googlemaps,
                         events: {
                             tilesloaded: function () {
@@ -30,8 +40,10 @@ angular
                             },
                             idle: function () {
                                 cfpLoadingBar.set(1);
-                                $timeout(cfpLoadingBar.complete, 350);
-                                _openMarker(null, null, {id: 1});
+                                $timeout(function () {
+                                    cfpLoadingBar.complete();
+                                    _openMarker(null, null, {id: 1});
+                                }, 350);
                             }
                         },
 
@@ -76,7 +88,7 @@ angular
                                 }
                             }
                         ]
-                    }
+                    };
                 },
                 _openMarker = function (marker, eventType, model) {
                     var elems = angular.element(document.querySelectorAll('.marker:not(#marker-' + model.id + ')')),
