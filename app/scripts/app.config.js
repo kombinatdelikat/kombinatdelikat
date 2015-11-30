@@ -50,10 +50,22 @@ angular
                     "elementType": "labels.text.fill",
                     "stylers": [
                         {
-                            "visibility": "on"
+                            "color": "#ffffff"
                         },
                         {
-                            "color": "#ffffff"
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#333333"
+                        },
+                        {
+                            "visibility": "on"
                         }
                     ]
                 }
