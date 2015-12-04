@@ -1,0 +1,15 @@
+<section class="locations">
+    <ui-gmap-google-map center="model.center"
+                        bounds="model.bounds"
+                        zoom="model.zoom"
+                        refresh="false"
+                        options="model.options"
+                        events="model.events">
+        <ui-gmap-markers models="model.markers"
+                         coords="'coords'"
+                         options="'options'"
+                         icon="'icon'"
+                         click="openMarker"
+                         fit="model.markers.length > 100"></ui-gmap-markers>
+    </ui-gmap-google-map>
+</section>

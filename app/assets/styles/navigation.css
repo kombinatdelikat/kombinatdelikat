@@ -1,0 +1,51 @@
+nav li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+nav li a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+    text-transform: uppercase;
+    transition: color .35s ease;
+}
+
+nav li a.active {
+    color: #f15a24;
+}
+
+header nav li:first-child {
+    padding: 0;
+}
+
+header nav li:first-child a {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    display: block;
+    width: 133px;
+    padding: 11px 0 0;
+    font-size: 0;
+    line-height: 0;
+    box-sizing: border-box;
+}
+
+header nav li:first-child a path {
+    transition: fill .35s ease;
+}
+
+header nav li:first-child a .big {
+    opacity: 1;
+    fill: #000;
+}
+
+header nav li:first-child a .small {
+    opacity: 0;
+    fill: #fff;
+}
+
+body[data-state="locations"] header nav li:first-child a .big {
+    fill: #f15a24;
+}

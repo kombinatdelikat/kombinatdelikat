@@ -1,0 +1,286 @@
+
+/* * * * * * * * * * *
+ * Facebook Timeline *
+ * * * * * * * * * * */
+
+[timeline] {
+    position: relative;
+    width: 80%;
+    max-width: 940px;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+[timeline]:before,
+[timeline]:after {
+    content: '';
+}
+
+[timeline]:before {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    display: block;
+    width: 4px;
+    height: calc(100% + 40px);
+    margin-left: -2px;
+    background: #f15a24;
+}
+
+[timeline]:after {
+    clear: both;
+    display: table;
+}
+
+[timeline] > li {
+    position: relative;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 30px;
+    font-size: 17px;
+    color: #fff;
+}
+
+[timeline] > li li:before {
+    content: '* ';
+}
+
+[timeline] > li:first-child {
+    padding-top: 120px;
+}
+
+[timeline] > li:first-child + li {
+    padding-top: 240px;
+}
+
+[timeline] > li.left {
+    float: left;
+    clear: left;
+    text-align: right;
+}
+
+[timeline] > li.has-likes.left {
+    padding-left: 80px;
+}
+
+[timeline] > li.right {
+    float: right;
+    clear: right;
+    text-align: left;
+}
+
+[timeline] > li.has-likes.right {
+    padding-right: 80px;
+}
+
+[timeline] > li time {
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 30px;
+    color: #fff;
+    background-color: #f15a24;
+}
+
+[timeline] > li time:before,
+[timeline] > li time:after {
+    content: '';
+    position: absolute;
+    display: block;
+}
+
+[timeline] > li time:before {
+    top: 0;
+    border: 15px solid transparent;
+}
+
+[timeline] > li.left time:before {
+    right: -30px;
+    border-left-color: #f15a24;
+}
+
+[timeline] > li.right time:before {
+    left: -30px;
+    border-right-color: #f15a24;
+}
+
+[timeline] > li time:after {
+    top: 9px;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+[timeline] > li.left time:after {
+    right: -36px;
+}
+
+[timeline] > li.right time:after {
+    left: -36px;
+}
+
+[timeline] > li h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+[timeline] > li .video-wrapper {
+    position: relative;
+}
+
+[timeline] > li img,
+[timeline] > li .video-wrapper video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    background-color: #414141;
+}
+
+[timeline] > li .video-wrapper video {
+    position: relative;
+}
+
+[timeline] > li .video-wrapper button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    margin-left: -30px;
+    margin-top: -40px;
+    padding: 0;
+    background: none;
+    font-size: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+[timeline] > li .video-wrapper button.play {
+    border: 40px solid transparent;
+    border-left: 60px solid #fff;
+    border-right-width: 0;
+}
+
+[timeline] > li .video-wrapper button.pause {
+    width: 20px;
+    height: 80px;
+    border: 0 solid #fff;
+    border-left-width: 20px;
+    border-right-width: 20px;
+    box-sizing: content-box;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+[timeline] > li .video-wrapper:hover button.pause {
+    opacity: 1;
+}
+
+[timeline] > li .likes,
+[timeline] > li .likes:before {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+}
+
+[timeline] > li .likes:before {
+    content: '';
+    top: -41px;
+    background: #000 url("../svg/heart.svg") no-repeat center center;
+}
+
+[timeline] > li .likes {
+    top: 111px;
+}
+
+[timeline] > li.left .likes {
+    left: 30px;
+}
+
+[timeline] > li.right .likes {
+    right: 30px;
+}
+
+/* * * * * * * *
+ * Google Maps *
+ * * * * * * * */
+
+.angular-google-map,
+.angular-google-map-container {
+    width: 100%;
+    height: 100%;
+    background-color: transparent !important;
+}
+
+.angular-google-map a img {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+.angular-google-map .marker,
+.angular-google-map .marker > div {
+    display: block;
+    height: auto;
+    overflow: hidden;
+}
+
+.angular-google-map .marker {
+    position: absolute;
+    bottom: 0;
+    left: -77px;
+    width: 154px;
+    cursor: pointer;
+}
+.angular-google-map .marker > div {
+    width: 114px;
+    max-height: 0;
+    margin-bottom: 25px;
+    padding: 0 20px;
+    font-size: 17px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #f15a24;
+    transition: max-height .35s ease, padding .35s ease-out;
+}
+
+.angular-google-map .marker > div h2 {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-weight: 700;
+    border-bottom: 3px solid #fff;
+}
+.angular-google-map .marker > div p strong {
+    white-space: nowrap;
+}
+
+.angular-google-map .marker.active > div {
+    max-height: 400px;
+    padding: 15px 20px;
+    transition-timing-function: ease-in;
+}
+
+.angular-google-map .marker:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -15px;
+    border: 15px solid transparent;
+    border-top: 25px solid #f15a24;
+    border-bottom: none;
+}
