@@ -207,6 +207,14 @@
     top: 111px;
 }
 
+[timeline] > li:first-child .likes {
+    top: 201px;
+}
+
+[timeline] > li:first-child + li .likes {
+    top: 321px;
+}
+
 [timeline] > li.left .likes {
     left: 30px;
 }
