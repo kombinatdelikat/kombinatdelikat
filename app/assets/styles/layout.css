@@ -49,6 +49,19 @@ blockquote + div {
     margin-top: 10px;
 }
 
+[load-image] {
+    background-color: #414141;
+}
+
+[load-image] img {
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+[load-image].loaded img {
+    opacity: 1;
+}
+
 .button,
 cite a {
     margin-top: 10px;

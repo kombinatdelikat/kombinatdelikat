@@ -8,7 +8,7 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .directive('kdFacebookPost', ['$sce', '$http', function ($sce, $http) {
+    .directive('kdFacebookPost', ['$sce', '$window', function ($sce, $window) {
         return {
             templateUrl: 'scripts/views/kdFacebookPost.directive.html',
             restrict: 'EA',
@@ -20,6 +20,26 @@ angular
                 // trust video source
                 scope.trustSrc = function (src) {
                     return $sce.trustAsResourceUrl(src);
+                };
+
+                // google maps
+                scope.openMaps = function (place) {
+                    var address = ''; //place.name + ', ';
+                    if (place.location.street) {
+                        address+= place.location.street + ', ';
+                    }
+                    if (place.location.zip) {
+                        address+= place.location.zip + ' ';
+                    }
+                    if (place.location.city) {
+                        address+= place.location.city;
+                    }
+                    $window.open(
+                        'https://www.google.de/maps/place/' +
+                        encodeURI(address.replace(/\s/gi, '+').replace(/^\+|\+$/gi, '')) +
+                        '/@' + place.location.latitude + ',' + place.location.longitude + ',16z',
+                        '_blank'
+                    );
                 };
 
                 // video controls

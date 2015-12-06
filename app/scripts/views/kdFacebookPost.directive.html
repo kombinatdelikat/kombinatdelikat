@@ -1,5 +1,5 @@
 <time datetime="{{kdPost.created_time}}">{{kdPost.created_time | date: 'd. MMMM yyyy' }}</time>
-<img ng-if="kdPost.type != 'video' && kdPost.full_picture && !hideImage" ng-src="{{kdPost.full_picture}}">
+<img ng-if="kdPost.type != 'video' && kdPost.full_picture && !hideImage" ng-src="{{kdPost.full_picture}}" load-image>
 <div ng-if="kdPost.type == 'video'" class="video-wrapper">
     <video>
         <source type="video/mp4" src="{{trustSrc(kdPost.source)}}">
@@ -15,5 +15,9 @@
     <p ng-bind-html="kdPost.caption | formatFacebook"></p>
 </figcaption>
 <div ng-if="(kdPost.type != 'photo' && kdPost.type != 'video') || !kdPost.caption"
-     ng-bind-html="kdPost.message | formatFacebook:true"></div>
+     ng-bind-html="kdPost.message | formatFacebook:true"
+     class="message"></div>
+<div ng-if="kdPost.place" class="place">
+    hier: <strong ng-click="openMaps(kdPost.place)">{{kdPost.place.name}}</strong>
+</div>
 <div ng-if="showLikes && kdPost.likes.data.length" class="likes">{{kdPost.likes.data.length}}</div>

@@ -18,7 +18,7 @@ angular
                         var left_column_height = 0;
                         var right_column_height = 90;
                         var items = element.children();
-                        for (var i = 0; i < items.length; ++i) {
+                        for (var i = 1; i < items.length; ++i) {
                             var item = angular
                                 .element(items[i])
                                 .removeClass('left right');
