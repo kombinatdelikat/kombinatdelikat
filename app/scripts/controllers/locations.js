@@ -43,7 +43,7 @@ angular
                                 $timeout(function () {
                                     cfpLoadingBar.complete();
                                     _openMarker(null, null, {id: 1});
-                                }, 350);
+                                }, 500);
                             }
                         },
 

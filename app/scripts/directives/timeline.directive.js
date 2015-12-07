@@ -25,7 +25,9 @@ angular
 
                             if (left_column_height > right_column_height) {
                                 right_column_height += item.addClass('right').prop('offsetHeight');
-                            } else {
+                            }
+                            /*else if (left_column_height == right_column_height) {}*/
+                            else {
                                 left_column_height += item.addClass('left').prop('offsetHeight');
                             }
                         }

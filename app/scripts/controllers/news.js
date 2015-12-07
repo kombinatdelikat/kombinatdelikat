@@ -15,5 +15,7 @@ angular
             description: ''
         };
 
+        //Posts.splice(0, 2);
+
         $scope.posts = Posts;
     }]);

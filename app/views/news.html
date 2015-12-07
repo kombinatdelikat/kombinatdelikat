@@ -2,8 +2,7 @@
     <ul timeline>
         <li ng-repeat="post in posts"
             class="{{post.type}}"
-            ng-class="{'has-likes': post.likes.data.length}"
-            kd-facebook-post
-            kd-post="post"></li>
+            ng-class="{'has-likes': post.likes.data.length, 'hero': $first}"
+            kd-facebook-post="post"></li>
     </ul>
 </section>

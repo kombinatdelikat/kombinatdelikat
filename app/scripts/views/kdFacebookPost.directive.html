@@ -1,23 +1,24 @@
-<time datetime="{{kdPost.created_time}}">{{kdPost.created_time | date: 'd. MMMM yyyy' }}</time>
-<img ng-if="kdPost.type != 'video' && kdPost.full_picture && !hideImage" ng-src="{{kdPost.full_picture}}" load-image>
-<div ng-if="kdPost.type == 'video'" class="video-wrapper">
+<time datetime="{{post.created_time}}">{{post.created_time | date: 'd. MMMM yyyy' }}</time>
+<img ng-if="post.type != 'video' && post.full_picture && !hideImage" ng-src="{{post.full_picture}}" load-image>
+<img ng-if="post.type != 'video' && !post.full_picture && isHero" ng-src="assets/images/Pastrami-Sandwich-4.jpg" load-image>
+<div ng-if="post.type == 'video'" class="video-wrapper">
     <video>
-        <source type="video/mp4" src="{{trustSrc(kdPost.source)}}">
+        <source type="video/mp4" src="{{trustSrc(post.source)}}">
     </video>
     <button class="play" ng-click="toggleVideo($event)">Abspielen</button>
 </div>
-<blockquote ng-if="kdPost.type == 'link'">
-    <p ng-if="kdPost.description" ng-bind-html="kdPost.description | formatFacebook"></p>
-    <cite ng-if="kdPost.caption && kdPost.link"><a href="{{kdPost.link}}" target="_blank">{{kdPost.caption}}</a></cite>
-    <cite ng-if="kdPost.caption && !kdPost.link">{{kdPost.caption}}</cite>
+<blockquote ng-if="post.type == 'link'">
+    <p ng-if="post.description" ng-bind-html="post.description | formatFacebook"></p>
+    <cite ng-if="post.caption && post.link"><a href="{{post.link}}" target="_blank">{{post.caption}}</a></cite>
+    <cite ng-if="post.caption && !post.link">{{post.caption}}</cite>
 </blockquote>
-<figcaption ng-if="(kdPost.type == 'photo' || kdPost.type == 'video') && kdPost.caption">
-    <p ng-bind-html="kdPost.caption | formatFacebook"></p>
+<figcaption ng-if="(post.type == 'photo' || post.type == 'video') && post.caption">
+    <p ng-bind-html="post.caption | formatFacebook"></p>
 </figcaption>
-<div ng-if="(kdPost.type != 'photo' && kdPost.type != 'video') || !kdPost.caption"
-     ng-bind-html="kdPost.message | formatFacebook:true"
-     class="message"></div>
-<div ng-if="kdPost.place" class="place">
-    hier: <strong ng-click="openMaps(kdPost.place)">{{kdPost.place.name}}</strong>
+<div ng-if="(post.type != 'photo' && post.type != 'video') || !post.caption" class="message">
+    <div ng-bind-html="post.message | formatFacebook:true"></div>
 </div>
-<div ng-if="showLikes && kdPost.likes.data.length" class="likes">{{kdPost.likes.data.length}}</div>
+<div ng-if="post.place" class="place">
+    hier: <strong ng-click="openMaps(post.place)">{{post.place.name}}</strong>
+</div>
+<div ng-if="showLikes && post.likes.data.length" class="likes">{{post.likes.data.length}}</div>

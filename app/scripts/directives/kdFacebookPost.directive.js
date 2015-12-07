@@ -8,12 +8,12 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .directive('kdFacebookPost', ['$sce', '$window', function ($sce, $window) {
+    .directive('kdFacebookPost', ['$sce', '$window', '$timeout', function ($sce, $window, $timeout) {
         return {
             templateUrl: 'scripts/views/kdFacebookPost.directive.html',
             restrict: 'EA',
             scope: {
-                kdPost: '='
+                post: '=kdFacebookPost'
             },
             link: function (scope, elem, attrs) {
 
@@ -63,14 +63,20 @@ angular
                 };
 
                 // show likes on video and image elements
-                if (scope.kdPost.full_picture || scope.kdPost.source) {
+                if (scope.post.full_picture || scope.post.source) {
                     scope.showLikes = true;
                 }
 
+                // is hero?
+                $timeout(function () {
+                    scope.isHero = elem.hasClass('hero');
+                    //console.log(elem.hasClass('hero'), elem[0].className, attrs.class)
+                });
+
                 // preload image to determine if it's still existent
-                if (scope.kdPost.full_picture) {
+                if (scope.post.full_picture) {
                     scope.hideImage = false;
-                    var url = scope.kdPost.full_picture.match(/safe_image\.php.*url=(.*)/i),
+                    var url = scope.post.full_picture.match(/safe_image\.php.*url=(.*)/i),
                         cache = new Image();
                     if (url && url.length > 1) {
                         cache.onerror= function () {
