@@ -29,13 +29,13 @@ angular
                 if (deep) {
                     html = html
                         // first line to dot or colon (up to 90 signs) as headline
-                        .replace(/^(.{0,90})(\.|\:|\!|\?)+\s+/gi, '<h3>$1$2</h3>')
+                        .replace(/^(.{3,90})(\.|\:|\!|\?)+/gi, '<h3>$1$2</h3>')
 
                         // remove leading breaks after headlines
-                        .replace(/<\/h3>\s*<br>/gim, "</h3>")
+                        .replace(/<\/h3>\s*<br>/gim, "</h3>")/*
 
                         // prevent single headlines
-                        .replace(/^<h3>(.*)<\/h3>$/gi, '$1');
+                        .replace(/^<h3>(.*)<\/h3>$/gi, '$1')*/;
                 }
 
                 return html;
