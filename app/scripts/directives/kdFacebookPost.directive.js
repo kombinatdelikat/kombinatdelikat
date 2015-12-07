@@ -25,19 +25,26 @@ angular
                 // google maps
                 scope.openMaps = function (place) {
                     var address = ''; //place.name + ', ';
-                    if (place.location.street) {
-                        address+= place.location.street + ', ';
+                    // find by address
+                    if (place.location) {
+                        if (place.location.street) {
+                            address += place.location.street + ', ';
+                        }
+                        if (place.location.zip) {
+                            address += place.location.zip + ' ';
+                        }
+                        if (place.location.city) {
+                            address += place.location.city;
+                        }
                     }
-                    if (place.location.zip) {
-                        address+= place.location.zip + ' ';
-                    }
-                    if (place.location.city) {
-                        address+= place.location.city;
+                    // find by name
+                    else {
+                        address = place.name;
                     }
                     $window.open(
                         'https://www.google.de/maps/place/' +
                         encodeURI(address.replace(/\s/gi, '+').replace(/^\+|\+$/gi, '')) +
-                        '/@' + place.location.latitude + ',' + place.location.longitude + ',16z',
+                        (place.location && place.location.latitude ? '/@' + place.location.latitude + ',' + place.location.longitude + ',16z' : ''),
                         '_blank'
                     );
                 };
