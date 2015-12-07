@@ -120,12 +120,3 @@ section {
     padding-top: 40px;
     background-color: aquamarine;
 }
-
-section.news {
-    background-color: #4d4d4d;
-}
-
-section.locations {
-    height: calc(100% - 40px - 240px);
-    background-color: #4d4d4d;
-}

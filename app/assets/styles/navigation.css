@@ -45,7 +45,3 @@ header nav li:first-child a .small {
     opacity: 0;
     fill: #fff;
 }
-
-body[data-state="locations"] header nav li:first-child a .big {
-    fill: #f15a24;
-}

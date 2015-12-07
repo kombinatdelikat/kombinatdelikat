@@ -41,6 +41,10 @@
     color: #fff;
 }
 
+[timeline] > li.spaced {
+    padding-top: 40px;
+}
+
 [timeline] > li li:before {
     content: '* ';
 }
