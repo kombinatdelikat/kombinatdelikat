@@ -290,6 +290,7 @@
     height: 100%;
     max-height: 100px;
     z-index: 1;
+    -webkit-transform: translate3d(0,0,0);
 }
 
 [timeline] > li:first-child .image-container:before {
