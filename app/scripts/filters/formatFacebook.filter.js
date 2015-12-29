@@ -32,7 +32,10 @@ angular
                         .replace(/^(.{3,90})(\.|\:|\!|\?)+/gi, '<h3>$1$2</h3>')
 
                         // remove leading breaks after headlines
-                        .replace(/<\/h3>\s*<br>/gim, "</h3>")/*
+                        .replace(/<\/h3>\s*<br>/gim, "</h3>")
+
+                        // remove leading breaks before lists
+                        /*.replace(/<br>\s<ul>/gim, "<ul>")
 
                         // prevent single headlines
                         .replace(/^<h3>(.*)<\/h3>$/gi, '$1')*/;
