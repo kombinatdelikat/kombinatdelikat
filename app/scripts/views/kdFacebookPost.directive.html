@@ -1,6 +1,6 @@
 <time datetime="{{post.created_time}}">{{post.created_time | date: 'd. MMMM yyyy' }}</time>
 <img ng-if="post.type != 'video' && post.full_picture && !hideImage" ng-src="{{post.full_picture}}" load-image>
-<img ng-if="post.type != 'video' && !post.full_picture && isHero" ng-src="assets/images/Pastrami-Sandwich-4.jpg" load-image>
+<img ng-if="post.type != 'video' && !post.full_picture && isHero" ng-src="assets/images/grey.png" load-image>
 <div ng-if="post.type == 'video'" class="video-wrapper">
     <video>
         <source type="video/mp4" src="{{trustSrc(post.source)}}">
