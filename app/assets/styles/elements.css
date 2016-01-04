@@ -345,9 +345,11 @@
 .angular-google-map .marker {
     position: absolute;
     bottom: 0;
-    left: -77px;
-    width: 154px;
+    left: -15px;
+    width: 30px;
     cursor: pointer;
+    transition: left 0s linear, width 0s linear;
+    transition-delay: .35s;
 }
 .angular-google-map .marker > div {
     width: 114px;
@@ -356,6 +358,7 @@
     padding: 0 20px;
     font-size: 17px;
     font-family: 'Open Sans Condensed', sans-serif;
+    line-height: 1.2;
     text-align: center;
     text-transform: uppercase;
     background-color: #f15a24;
@@ -363,13 +366,29 @@
 }
 
 .angular-google-map .marker > div h2 {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 2px;
     font-weight: 700;
+}
+
+.angular-google-map .marker > div h3 {
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    color: #fff;
     border-bottom: 3px solid #fff;
 }
+
 .angular-google-map .marker > div p strong {
+    display: inline-block;
+    padding-top: 8px;
     white-space: nowrap;
+}
+
+.angular-google-map .marker.active {
+    left: -77px;
+    width: 154px;
+    transition-delay: 0s;
 }
 
 .angular-google-map .marker.active > div {
