@@ -34,6 +34,7 @@ angular
                         },
                         zoom: 15,
                         options: config.googlemaps,
+                        markers: config.markers,
                         events: {
                             tilesloaded: function () {
                                 cfpLoadingBar.set(0.5);
@@ -45,49 +46,7 @@ angular
                                     _openMarker(null, null, {id: 1});
                                 }, 2 * 1000);
                             }
-                        },
-
-                        markers: [
-                            {
-                                id: 1,
-                                title: 'Kombinat Delikat Fensterverkauf',
-                                coords: {
-                                    latitude: 51.06908,
-                                    longitude: 13.75537
-                                },
-                                options: {
-                                    content: '<div id="marker-1" class="marker uber"><div><h2>Fensterverkauf</h2><p>Nach Angebot,<br>immer Freitags<br><strong>18:00 - 20:00 Uhr</strong></p></div></div>',
-                                    shadow: false,
-                                    flat: true
-                                }
-                            },
-                            {
-                                id: 2,
-                                title: 'Sankt Pauli Tagesbar und Restaurant',
-                                coords: {
-                                    latitude: 51.07512,
-                                    longitude: 13.75033
-                                },
-                                options: {
-                                    content: '<div id="marker-2" class="marker"><div><h2>Sankt Pauli</h2><p>Pastrami-Sandwich</p></div></div>',
-                                    shadow: false,
-                                    flat: true
-                                }
-                            },
-                            {
-                                id: 3,
-                                title: 'Kochbox',
-                                coords: {
-                                    latitude: 51.066709,
-                                    longitude: 13.754139
-                                },
-                                options: {
-                                    content: '<div id="marker-3" class="marker"><div><h2>Kochbox</h2><p>Wechselnde Auswahl an Bratwurst</p></div></div>',
-                                    shadow: false,
-                                    flat: true
-                                }
-                            }
-                        ]
+                        }
                     };
                 },
                 _openMarker = function (marker, eventType, model) {
