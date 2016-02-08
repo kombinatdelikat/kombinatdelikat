@@ -24,3 +24,13 @@ section.locations {
     height: calc(100% - 40px - 240px);
     background-color: #4d4d4d;
 }
+
+section.contact {
+    color: #ccc;
+    background-color: #4d4d4d;
+}
+
+section.imprint,
+section.privacy {
+    background-color: #fff;
+}

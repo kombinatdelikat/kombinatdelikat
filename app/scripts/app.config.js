@@ -65,7 +65,7 @@ angular
                     longitude: 13.752910
                 },
                 options: {
-                    content: '<div id="marker-4" class="marker"><div><h2>Little Creatures</h2><h3>Louisenstraße 45,<br>01099 Dresden</h3><p>Königsberger Wurst und Soleier</p></div></div>',
+                    content: '<div id="marker-4" class="marker"><div><h2>Little Creatures</h2><h3>Louisenstraße 45,<br>01099 Dresden</h3><p>Soleier</p></div></div>',
                     shadow: false,
                     flat: true
                 }

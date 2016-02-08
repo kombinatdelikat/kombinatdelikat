@@ -12,9 +12,34 @@ body {
     background-color: #000;
 }
 
+h1, h2, h3 {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+p ~ * {
+    padding-top: 10px;
+}
+
 a {
     display: inline-block;
     text-decoration: none;
+}
+
+.content a {
+    color: #f15a24;
 }
 
 strong, .strong {
@@ -27,10 +52,12 @@ figcaption {
     color: #000;
     background-color: #fff;
 }
+
 blockquote p:before {
     content: '\00BB';
     padding-right: 3px;
 }
+
 blockquote p:after {
     content: '\00AB';
     padding-left: 3px;
@@ -119,4 +146,30 @@ section {
     min-height: 600px;
     padding-top: 40px;
     background-color: aquamarine;
+}
+
+.content {
+    width: 80%;
+    max-width: 940px;
+    margin: 0 auto;
+    padding-top: 120px;
+    padding-bottom: 80px;
+}
+
+.layout-row {
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: row;
+}
+
+.layout-row > .flex {
+    min-width: 0;
+}
+
+.flex {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 10px;
 }

@@ -149,6 +149,10 @@
     margin-bottom: 10px;
 }
 
+[timeline] > li blockquote {
+    margin-top: -10px;
+}
+
 [timeline] > li .video-wrapper video {
     position: relative;
 }

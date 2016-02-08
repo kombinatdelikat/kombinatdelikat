@@ -126,6 +126,12 @@ FileETag None
   RewriteBase /
 
   ##
+  # Uncomment the following lines to add "www." to the domain:
+  ##
+  RewriteCond %{HTTP_HOST} ^kombinatdelikat\.de$ [NC]
+  RewriteRule (.*) http://www.kombinatdelikat.de/$1 [R=301,L]
+
+  ##
   # html5-mode enabled in ui-router
   # Redirect everything to angular router
   ##
