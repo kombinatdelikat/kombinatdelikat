@@ -12,6 +12,9 @@ angular
     .controller('LocationsCtrl', [
         '$scope', '$timeout', 'cfpLoadingBar', 'config',
         function ($scope, $timeout, cfpLoadingBar, config) {
+            // fixes lodash error by angular google maps
+            _.contains = _.includes;
+
             var _resetLoader = function () {
                     cfpLoadingBar.start();
                 },
