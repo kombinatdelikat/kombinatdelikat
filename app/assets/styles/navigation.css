@@ -32,6 +32,10 @@ header nav li:first-child a {
     box-sizing: border-box;
 }
 
+header nav li:first-child a svg {
+    width: 100%;
+}
+
 header nav li:first-child a path {
     transition: fill .35s ease;
 }
