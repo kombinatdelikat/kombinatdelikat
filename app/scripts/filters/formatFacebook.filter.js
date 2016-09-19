@@ -29,7 +29,7 @@ angular
                 if (deep) {
                     html = html
                         // first line to dot or colon (up to 90 signs) as headline
-                        .replace(/^(.{3,90})(\.|\:|\!|\?)+/gi, '<h3>$1$2</h3>')
+                        .replace(/^(.{3,150})(\.|(?!:\d{1,2}})|!|\?)+/gi, '<h3>$1$2</h3>')
 
                         // remove leading breaks after headlines
                         .replace(/<\/h3>\s*<br>/gim, "</h3>")
