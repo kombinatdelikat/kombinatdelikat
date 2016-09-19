@@ -7,7 +7,7 @@ Thumbs.db
 .project
 .settings/
 .build/
-.idea/
+.idea
 nbproject/
 
 # project
