@@ -3,9 +3,21 @@ nav li {
     padding: 0 20px;
 }
 
+@media screen and (max-width: 600px) {
+    nav ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+
+    nav li {
+        padding: 0;
+    }
+}
+
 nav li a {
     color: #fff;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
     line-height: 40px;
     text-transform: uppercase;
@@ -14,6 +26,11 @@ nav li a {
 
 nav li a.active {
     color: #f15a24;
+}
+
+header nav input,
+header nav button {
+    display: none;
 }
 
 header nav li:first-child {
@@ -48,4 +65,91 @@ header nav li:first-child a .big {
 header nav li:first-child a .small {
     opacity: 0;
     fill: #fff;
+}
+
+@media screen and (max-width: 600px) {
+    header nav button,
+    header nav button:before,
+    header nav button:after {
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+        transition: .15s ease;
+        transition-property: transform, width;
+    }
+    header nav button {
+        top: 19px;
+        right: 10px;
+        z-index: 10;
+        padding: 0;
+        border: none;
+    }
+    header nav button:before,
+    header nav button:after {
+        content: '';
+    }
+    header nav button:before {
+        top: -7px;
+    }
+    header nav button:after {
+        bottom: -7px;
+    }
+    header nav.toggled button {
+        transform: rotate(45deg);
+    }
+    header nav.toggled button:before {
+        top: 0;
+        opacity: 0;
+    }
+    header nav.toggled button:after {
+        bottom: 0;
+        transform: rotate(-90deg);
+    }
+
+    header nav ul {
+        display: block;
+    }
+    header nav li {
+        display: block;
+        background-color: #000;
+    }
+    header nav li:first-child a {
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 3;
+    }
+    html:not(.scrolling) header nav li:first-child a {
+        transition: .3s ease;
+        transition-property: top, padding;
+    }
+    header nav li:first-child + li {
+        padding-top: 40px;
+    }
+    header nav li:first-child ~ li {
+        margin-top: -40px;
+        opacity: 0;
+        transition: .3s ease;
+        transition-property: opacity, margin-top;
+        pointer-events: none;
+    }
+    header nav li:last-child {
+        padding-bottom: 12px;
+    }
+    header nav.toggled li:first-child ~ li {
+        opacity: 1;
+        margin-top: 0;
+        pointer-events: all;
+    }
+    header nav.toggled li:first-child a {
+        top: 0 !important;
+        padding: 11px 51px 0px !important;
+    }
+    header nav.toggled li:first-child a svg path.big {
+        opacity: 0 !important;
+    }
+    header nav.toggled li:first-child a svg path.small {
+        opacity: 1 !important;
+    }
 }

@@ -1,6 +1,7 @@
 
 <header>
-    <nav role="navigation">
+    <nav role="navigation" ng-class="toggle ? 'toggled' : ''">
+        <button for="toggle" ng-click="toggle=!toggle"></button>
         <ul>
             <li><a ui-sref-active="active" ui-sref="news" aria-label="Aktuelles" ng-include="'assets/svg/logo.svg'" kd-logo>Aktuelles</a></li>
             <li><a ui-sref-active="active" ui-sref="news" aria-label="Aktuelles">Aktuelles</a></li>

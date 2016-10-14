@@ -2,14 +2,23 @@ html, body, .wrapper {
     height: 100%;
 }
 
+html {
+    font-size: 62.5%; /* 62.5% of 16px = 10px */
+    -ms-word-break: break-all;
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
 body {
-    font: 300 14px/1.7 'Open Sans Condensed', sans-serif;
+    background-color: #000;
+    font: 300 1.4em/1.7 'Open Sans Condensed', sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
-    letter-spacing: .025em;
-    background-color: #000;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: .025rem;
 }
 
 h1, h2, h3 {
@@ -18,15 +27,15 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 22px;
+    font-size: 2.2rem;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 1.8rem;
 }
 
 h3 {
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 p ~ * {
@@ -76,6 +85,10 @@ blockquote + div {
     margin-top: 10px;
 }
 
+*:focus {
+    outline: none;
+}
+
 [load-image] {
     background-color: #414141;
 }
@@ -97,7 +110,7 @@ cite a {
     line-height: 40px;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: .05em;
+    letter-spacing: .05rem;
     background-color: #000;
 }
 
@@ -111,7 +124,7 @@ cite a:before {
     display: inline-block;
     top: 1px;
     padding-right: 7px;
-    font-size: 0px;
+    font-size: 0;
     border: 7px solid transparent;
     border-left-color: #fff;
     border-right-width: 0;
@@ -138,12 +151,18 @@ footer {
     padding: 100px 60px;
 }
 
+@media screen and (max-width: 600px) {
+    footer {
+        padding: 20px 10px;
+    }
+}
+
 .main {
     display: inline;
 }
 
 section {
-    min-height: 600px;
+    min-height: 620px;
     padding-top: 40px;
     background-color: aquamarine;
 }

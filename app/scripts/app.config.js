@@ -72,13 +72,39 @@ angular
             },
             {
                 id: 5,
+                title: 'Bagel\'s Dresden',
+                coords: {
+                    latitude: 51.0658,
+                    longitude: 13.7564
+                },
+                options: {
+                    content: '<div id="marker-5" class="marker"><div><h2>Bagel\'s Dresden</h2><h3>Louisenstraße 77,<br>01099 Dresden</h3><p>Pastrami-Bagel</p></div></div>',
+                    shadow: false,
+                    flat: true
+                }
+            },
+            {
+                id: 6,
+                title: 'Sidedoor',
+                coords: {
+                    latitude: 51.06428,
+                    longitude: 13.7552
+                },
+                options: {
+                    content: '<div id="marker-6" class="marker"><div><h2>Sidedoor</h2><h3>Böhmische Straße 38,<br>01099 Dresden</h3><p>Pastrami- und Reuben-Sandwich</p></div></div>',
+                    shadow: false,
+                    flat: true
+                }
+            },
+            {
+                id: 7,
                 title: 'Bar Holda',
                 coords: {
                     latitude: 51.064006,
                     longitude: 13.756392
                 },
                 options: {
-                    content: '<div id="marker-5" class="marker"><div><h2>Bar Holda</h2><h3>Martin-Luther-Platz 4,<br>01099 Dresden</h3><p>Königsberger Wurst</p></div></div>',
+                    content: '<div id="marker-7" class="marker"><div><h2>Bar Holda</h2><h3>Martin-Luther-Platz 4,<br>01099 Dresden</h3><p>Königsberger Wurst</p></div></div>',
                     shadow: false,
                     flat: true
                 }
@@ -102,7 +128,7 @@ angular
                 },
                 {
                     "featureType": "road",
-                    "elementType": "geometry.stroke",
+                    "elementType": "geometry.fill",
                     "stylers": [
                         {
                             "color": "#000000"

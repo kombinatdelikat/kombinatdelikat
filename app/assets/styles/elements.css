@@ -37,7 +37,7 @@
     box-sizing: border-box;
     width: 50%;
     padding: 30px;
-    font-size: 17px;
+    font-size: 1.7rem;
     color: #fff;
 }
 
@@ -83,7 +83,7 @@
     height: 30px;
     margin-bottom: 10px;
     padding: 0 10px;
-    font-size: 17px;
+    font-size: 1.7rem;
     font-weight: 700;
     line-height: 30px;
     color: #fff;
@@ -131,7 +131,7 @@
 }
 
 [timeline] > li h3 {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.4;
     text-transform: uppercase;
@@ -258,13 +258,12 @@
 
 [timeline] > li:first-child .message div {
     display: inline-block;
-    font-size: 30px;
 }
 
 [timeline] > li:first-child .message h3 {
     display: inline;
     padding: 0;
-    font-size: 50px;
+    font-size: 5rem;
     line-height: 1.8;
     background-color: #000;
     box-shadow: 20px 0 0 #000, -20px 0 0 #000;
@@ -272,6 +271,7 @@
 
 [timeline] > li:first-child .message h3 + * {
     padding-top: 20px;
+    font-size: 3rem;
 }
 
 [timeline] > li:first-child .image-container {
@@ -323,6 +323,28 @@
     display: none;
 }
 
+@media screen and (max-width: 600px) {
+    [timeline] {
+        width: 100%;
+    }
+    [timeline] > li.has-likes.left {
+        padding-left: 10px;
+    }
+    [timeline] > li.has-likes.right {
+        padding-right: 10px;
+    }
+    [timeline] > li:first-child {
+        padding-top: 120px;
+    }
+    [timeline] > li:first-child .message h3 {
+        font-size: 3rem;
+    }
+    [timeline] > li:first-child .message h3 + * {
+        font-size: 2rem;
+    }
+}
+
+
 /* * * * * * * *
  * Google Maps *
  * * * * * * * */
@@ -360,7 +382,7 @@
     max-height: 0;
     margin-bottom: 25px;
     padding: 0 20px;
-    font-size: 17px;
+    font-size: 1.7rem;
     font-family: 'Open Sans Condensed', sans-serif;
     line-height: 1.2;
     text-align: center;
@@ -377,7 +399,7 @@
 .angular-google-map .marker > div h3 {
     margin-bottom: 8px;
     padding-bottom: 10px;
-    font-size: 14px;
+    font-size: 1.4rem;
     white-space: nowrap;
     color: #fff;
     border-bottom: 3px solid #fff;

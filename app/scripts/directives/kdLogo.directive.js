@@ -8,34 +8,40 @@
  */
 angular
     .module('de.kombinatdelikat.www')
-    .directive('kdLogo', ['$window', function ($window) {
+    .directive('kdLogo', ['$window', '$timeout', function ($window, $timeout) {
         return {
             restrict: 'A',
-            link: function (scope, elem) {
-                var e = elem,
-                    w = angular.element($window),
-                    o_big = angular.element(elem[0].querySelector('path.big')),
-                    o_small = angular.element(elem[0].querySelector('path.small')),
-                    l = 49,
+            link: function (scope, element) {
+                var l = 49,
                     p = 51,
-                    c = 255,
-                    q = 3.5;
+                    //c = 255,
+                    q = 3.5,
+                    html = angular.element($window.document.querySelector('html')),
+                    timeout;
 
-                w.bind('scroll', function () {
+                angular.element($window).bind('scroll', function () {
                     var y = this.pageYOffset,
                         eq = y <= l * q,
                         top = eq ? l - y / q : 0,
                         padding = eq ? y / q / l * p : p,
-                        rgb = Math.round(eq ? y / q / l * c : c),
+                        //rgb = Math.round(eq ? y / q / l * c : c),
                         opacity = eq ? y / q / l : 1;
 
-                    e.css({
+                    // apply styles
+                    element.css({
                         'top': top + 'px',
                         //'fill': 'rgb(' + rgb + ',' + rgb + ',' + rgb + ')',
                         'padding': '11px ' + padding + 'px 0'
                     });
-                    o_big.css('opacity', 1 - opacity);
-                    o_small.css('opacity', opacity);
+                    angular.element(element[0].querySelector('path.big')).css('opacity', 1 - opacity);
+                    angular.element(element[0].querySelector('path.small')).css('opacity', opacity);
+
+                    // set scroll class
+                    html.addClass('scrolling');
+                    if (timeout) $timeout.cancel(timeout);
+                    timeout = $timeout(function() {
+                        html.removeClass('scrolling');
+                    }, 100);
                 });
             }
         };
